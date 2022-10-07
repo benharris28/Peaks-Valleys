@@ -27,17 +27,21 @@ class GameScreen extends React.Component {
 
     const { currentSymbol } = this.state;
     const symbolArray = [1,2,3];
+    const symbolArray2 = [{ id: 1, symbol: "test"}, { id: 2, symbol: "test 2"}, { id: 3, symbol: "test 3"}];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== currentSymbol)
     console.log(filterSymbol)
+
+    const filterSymbol2 = symbolArray2.filter(symbol => symbol.id !== currentSymbol)
+    console.log(filterSymbol2)
     
     const newSymbol = filterSymbol[Math.floor(Math.random()*filterSymbol.length)];
 
     console.log(newSymbol)
 
     this.setState({
-      currentSymbol: newSymbol
-    })
+      currentSymbol: newSymbol    
+    }, () => this.displaySymbol())
     
   }
 
@@ -47,8 +51,10 @@ class GameScreen extends React.Component {
 
     const rand = Math.round(Math.random() * (maxTime - minTime)) + 500;
     console.log(rand)
+
+    this.generateNewSymbol()
     
-    setInterval(this.generateNewSymbol, this.generateSymbolInterval())
+    setInterval(this.generateNewSymbol, 10000)
 
     
     
@@ -62,9 +68,27 @@ class GameScreen extends React.Component {
     console.log(rand)
     return rand;
   }
+
+  displaySymbol = () => {
+    const symbolNumber = this.state.currentSymbol
+
+    const symbolArray2 = [{ id: 1, symbol: "⬆"}, { id: 2, symbol: "⬇️"}, { id: 3, symbol: "🤟"}];
+   
+  const symbolToDisplay = symbolArray2.filter(symbol => symbol.id === symbolNumber)
+  const newSymbol = symbolToDisplay
+  console.log(symbolToDisplay)
+
+  this.setState({
+    symbol: newSymbol[0].symbol
+  })
+  
+    
+  }
+
+  
   
   render() {
-
+  console.log(this.state)
    
     return (
       <div>
@@ -74,7 +98,8 @@ class GameScreen extends React.Component {
           Start Game
         </button>
         <div>
-          {this.state.currentSymbol}
+          {this.state.symbol}
+        
         </div>
         
       </div>

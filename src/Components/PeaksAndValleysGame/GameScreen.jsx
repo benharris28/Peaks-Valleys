@@ -1,5 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 
 
 class GameScreen extends React.Component {
@@ -10,7 +12,7 @@ class GameScreen extends React.Component {
     prompt: "Advice to my younger self",
     gameOver: false
   }
-  
+
   //Placeholder for timer
   //Placeholder for phrase
   //Number generator
@@ -27,23 +29,23 @@ class GameScreen extends React.Component {
     //add it to state
 
     const { currentSymbol } = this.state;
-    const symbolArray = [1,2,3];
-    const symbolArray2 = [{ id: 1, symbol: "test"}, { id: 2, symbol: "test 2"}, { id: 3, symbol: "test 3"}];
+    const symbolArray = [1, 2, 3];
+    const symbolArray2 = [{ id: 1, symbol: "test" }, { id: 2, symbol: "test 2" }, { id: 3, symbol: "test 3" }];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== currentSymbol)
     console.log(filterSymbol)
 
     const filterSymbol2 = symbolArray2.filter(symbol => symbol.id !== currentSymbol)
     console.log(filterSymbol2)
-    
-    const newSymbol = filterSymbol[Math.floor(Math.random()*filterSymbol.length)];
+
+    const newSymbol = filterSymbol[Math.floor(Math.random() * filterSymbol.length)];
 
     console.log(newSymbol)
 
     this.setState({
-      currentSymbol: newSymbol    
+      currentSymbol: newSymbol
     }, () => this.displaySymbol())
-    
+
   }
 
   setSymbolTimer = () => {
@@ -54,17 +56,17 @@ class GameScreen extends React.Component {
     console.log(rand)
 
     this.generateNewSymbol()
-    
+
     setInterval(this.generateNewSymbol, 10000)
 
-    
-    
+
+
   }
 
   generateSymbolInterval = () => {
     const minTime = 6000
     const maxTime = 20000
-   
+
     const rand = Math.round(Math.random() * (maxTime - minTime)) + 500;
     console.log(rand)
     return rand;
@@ -73,24 +75,24 @@ class GameScreen extends React.Component {
   displaySymbol = () => {
     const symbolNumber = this.state.currentSymbol
 
-    const symbolArray2 = [{ id: 1, symbol: "⬆"}, { id: 2, symbol: "⬇️"}, { id: 3, symbol: "🤟"}];
-   
-  const symbolToDisplay = symbolArray2.filter(symbol => symbol.id === symbolNumber)
-  const newSymbol = symbolToDisplay
-  console.log(symbolToDisplay)
+    const symbolArray2 = [{ id: 1, symbol: "⬆" }, { id: 2, symbol: "⬇️" }, { id: 3, symbol: "🤟" }];
 
-  this.setState({
-    symbol: newSymbol[0].symbol
-  })
-  
-    
+    const symbolToDisplay = symbolArray2.filter(symbol => symbol.id === symbolNumber)
+    const newSymbol = symbolToDisplay
+    console.log(symbolToDisplay)
+
+    this.setState({
+      symbol: newSymbol[0].symbol
+    })
+
+
   }
 
-  
-  
+
+
   render() {
-  console.log(this.state)
-   
+    console.log(this.state)
+
     return (
       <div>
         <Container>
@@ -98,25 +100,41 @@ class GameScreen extends React.Component {
             Peaks & Valleys
           </div>
           <div>
-            Timer
+            <Card>
+              <Card.Title>
+                Peaks & Valleys
+              </Card.Title>
+              <Badge bg="secondary">Timer</Badge>
+            </Card>
+          </div>
+          <div className="margin-bottom">
+            <Card>
+             <Card.Img variant="top" src="https://res.cloudinary.com/dhkmle6ei/image/upload/v1665260744/slim-emcee-152brjBa5WA-unsplash_zhf801.jpg" />
+            </Card>
           </div>
           <div>
-            Symbol Container
-          </div>
-          <div>
-            Prompt
+            <Card>
+
+
+              <Card.Body>
+                <Card.Title>Your Topic</Card.Title>
+                {this.state.prompt}
+              </Card.Body>
+            </Card>
+
+
           </div>
         </Container>
-        
+
         <button
           onClick={() => this.setSymbolTimer()}>
           Start Game
         </button>
         <div>
           {this.state.symbol}
-        
+
         </div>
-        
+
       </div>
     )
   }

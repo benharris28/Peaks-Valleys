@@ -1,5 +1,26 @@
-main {
-  text-align: center;
-  vertical-align: center;
-  line-height: 100vh
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+
+body.lock-zoom {
+  touch-action: none;
+  overscroll-behavior-y: none;
+}
+
+.container-medium {
+  max-width: 500px;
+  margin: auto;
+}
+
+.margin-bottom {
+  margin-bottom: 1rem;
 }

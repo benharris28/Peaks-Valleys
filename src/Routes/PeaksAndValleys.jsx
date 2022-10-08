@@ -6,7 +6,7 @@ class PeaksAndValleys extends React.Component {
   render() {
     return (
       <div>
-        Peaks And Valleys
+       
         <GameScreen />
       </div>
     )

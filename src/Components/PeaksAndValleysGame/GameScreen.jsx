@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
 
 class GameScreen extends React.Component {
@@ -92,7 +93,21 @@ class GameScreen extends React.Component {
    
     return (
       <div>
-        Game Screen
+        <Container>
+          <div>
+            Peaks & Valleys
+          </div>
+          <div>
+            Timer
+          </div>
+          <div>
+            Symbol Container
+          </div>
+          <div>
+            Prompt
+          </div>
+        </Container>
+        
         <button
           onClick={() => this.setSymbolTimer()}>
           Start Game

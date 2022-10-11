@@ -49,27 +49,22 @@ class GameScreen extends React.Component {
   }
 
   setSymbolTimer = () => {
-    const minTime = 6000
-    const maxTime = 20000
+    const minTime = 2000
+    const maxTime = 4000
 
     const rand = Math.round(Math.random() * (maxTime - minTime)) + 500;
     console.log(rand)
 
-    this.generateNewSymbol()
-
-    setInterval(this.generateNewSymbol, 10000)
 
 
+    setTimeout(this.generateNewSymbol(), rand)
+
+   
 
   }
 
   generateSymbolInterval = () => {
-    const minTime = 6000
-    const maxTime = 20000
-
-    const rand = Math.round(Math.random() * (maxTime - minTime)) + 500;
-    console.log(rand)
-    return rand;
+   setTimeout(this.setSymbolTimer, 3000)
   }
 
   displaySymbol = () => {
@@ -83,7 +78,7 @@ class GameScreen extends React.Component {
 
     this.setState({
       symbol: newSymbol[0].symbol
-    })
+    }, () => this.setSymbolTimer() )
 
 
   }
@@ -127,7 +122,7 @@ class GameScreen extends React.Component {
         </Container>
 
         <button
-          onClick={() => this.setSymbolTimer()}>
+          onClick={() => this.generateNewSymbol()}>
           Start Game
         </button>
         <div>

@@ -18,8 +18,9 @@ class GameScreen extends React.Component {
     secondsRemaining: '',
     status: 'started',
     time: {},
-    seconds: 100,
-    timer: 0
+    seconds: 10,
+    timer: 0,
+    running: false
   }
 
    secondsToTime = (secs) => {
@@ -45,10 +46,13 @@ class GameScreen extends React.Component {
   }
 
   startTimer = () => {
+    this.generateNewSymbol()
+    
     if (this.state.seconds > 0) {
       const interval = setInterval(this.countDown, 1000);
       this.setState({
-        interval: interval
+        interval: interval,
+        running: true
       })
     }
   }
@@ -63,7 +67,14 @@ class GameScreen extends React.Component {
     
     // Check if we're at zero.
     if (seconds == 0) { 
+
+      this.setState({
+        running: false,
+        gameOver: true
+      })
+      
       clearInterval(this.state.interval);
+     
     }
   }
 
@@ -138,9 +149,7 @@ class GameScreen extends React.Component {
           </div>
           <div>
             <Card>
-              <Card.Title>
-                Peaks & Valleys
-              </Card.Title>
+            
               <Badge bg="secondary">
                 {this.state.time.m} : {this.state.time.s}
               </Badge>
@@ -164,12 +173,21 @@ class GameScreen extends React.Component {
 
           </div>
         </Container>
+        {this.state.running === false && this.state.gameOver === false &&
 
         <button
           onClick={() => this.startTimer()}>
           Start Game
         </button>
-       
+        }
+
+        {this.state.running === false && this.state.gameOver === true &&
+
+        <button
+          onClick={() => this.startTimer()}>
+          Play Again
+        </button>
+        }
 
       </div>
     )

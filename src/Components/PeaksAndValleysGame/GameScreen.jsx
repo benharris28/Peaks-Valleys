@@ -20,6 +20,8 @@ class GameScreen extends React.Component {
   //function to randomize the array at the beginning of the game
   //function to display a new symbol from array
 
+  //Set the first symbol on button click
+  //
   generateNewSymbol = () => {
     //check the symbol that is beign displayed
     //filter the array of symbols for that symbol
@@ -30,21 +32,24 @@ class GameScreen extends React.Component {
 
     const { currentSymbol } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "test" }, { id: 2, symbol: "test 2" }, { id: 3, symbol: "test 3" }];
+    const symbolArray2 = [{ id: 1, symbol: "⬆" }, { id: 2, symbol: "⬇️" }, { id: 3, symbol: "🤟" }];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== currentSymbol)
     console.log(filterSymbol)
 
-    const filterSymbol2 = symbolArray2.filter(symbol => symbol.id !== currentSymbol)
-    console.log(filterSymbol2)
+    
 
     const newSymbol = filterSymbol[Math.floor(Math.random() * filterSymbol.length)];
-
+    
+    const filterSymbol2 = symbolArray2.filter(symbol => symbol.id == newSymbol)
+    console.log(filterSymbol2)
     console.log(newSymbol)
 
     this.setState({
-      currentSymbol: newSymbol
-    }, () => this.displaySymbol())
+     
+      symbolNumber: newSymbol,
+      currentSymbol: filterSymbol2[0].symbol
+    })
 
   }
 
@@ -63,25 +68,8 @@ class GameScreen extends React.Component {
 
   }
 
-  generateSymbolInterval = () => {
-   setTimeout(this.setSymbolTimer, 3000)
-  }
-
-  displaySymbol = () => {
-    const symbolNumber = this.state.currentSymbol
-
-    const symbolArray2 = [{ id: 1, symbol: "⬆" }, { id: 2, symbol: "⬇️" }, { id: 3, symbol: "🤟" }];
-
-    const symbolToDisplay = symbolArray2.filter(symbol => symbol.id === symbolNumber)
-    const newSymbol = symbolToDisplay
-    console.log(symbolToDisplay)
-
-    this.setState({
-      symbol: newSymbol[0].symbol
-    }, () => this.setSymbolTimer() )
 
 
-  }
 
 
 

@@ -7,7 +7,8 @@ import Badge from 'react-bootstrap/Badge';
 class GameScreen extends React.Component {
 
   state = {
-    currentSymbol: 1,
+    symbolNumber: 1,
+    currentSymbol: '',
     currentInterval: 20,
     prompt: "Advice to my younger self",
     gameOver: false
@@ -30,11 +31,11 @@ class GameScreen extends React.Component {
     //generate a random display interval
     //add it to state
 
-    const { currentSymbol } = this.state;
+    const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
     const symbolArray2 = [{ id: 1, symbol: "⬆" }, { id: 2, symbol: "⬇️" }, { id: 3, symbol: "🤟" }];
 
-    const filterSymbol = symbolArray.filter(symbol => symbol !== currentSymbol)
+    const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
     console.log(filterSymbol)
 
     
@@ -45,28 +46,21 @@ class GameScreen extends React.Component {
     console.log(filterSymbol2)
     console.log(newSymbol)
 
+    const minTime = 5000
+    const maxTime = 10000
+    const rand = Math.round(Math.random() * (maxTime - minTime)) + minTime;
+    console.log(rand)
+
     this.setState({
      
       symbolNumber: newSymbol,
       currentSymbol: filterSymbol2[0].symbol
-    })
+    }, () => { 
+      setTimeout(this.generateNewSymbol, rand)})
 
   }
 
-  setSymbolTimer = () => {
-    const minTime = 2000
-    const maxTime = 4000
 
-    const rand = Math.round(Math.random() * (maxTime - minTime)) + 500;
-    console.log(rand)
-
-
-
-    setTimeout(this.generateNewSymbol(), rand)
-
-   
-
-  }
 
 
 
@@ -114,7 +108,7 @@ class GameScreen extends React.Component {
           Start Game
         </button>
         <div>
-          {this.state.symbol}
+          {this.state.currentSymbol}
 
         </div>
 

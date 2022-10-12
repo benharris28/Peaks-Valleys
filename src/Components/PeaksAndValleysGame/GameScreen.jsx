@@ -2,6 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Countdown from 'react-countdown';
 
 
 class GameScreen extends React.Component {
@@ -12,8 +13,61 @@ class GameScreen extends React.Component {
     currentInterval: 20,
     prompt: "Advice to my younger self",
     gameOver: false,
-    gameStarted: false
+    gameStarted: false,
+    timerCount: 10000,
+    secondsRemaining: '',
+    status: 'started',
+    time: {},
+    seconds: 100,
+    timer: 0
   }
+
+   secondsToTime = (secs) => {
+    let hours = Math.floor(secs / (60 * 60));
+
+    let divisor_for_minutes = secs % (60 * 60);
+    let minutes = Math.floor(divisor_for_minutes / 60);
+
+    let divisor_for_seconds = divisor_for_minutes % 60;
+    let seconds = Math.ceil(divisor_for_seconds);
+
+    let obj = {
+      "h": hours,
+      "m": minutes,
+      "s": seconds
+    };
+    return obj;
+  }
+
+  componentDidMount() {
+    let timeLeftVar = this.secondsToTime(this.state.seconds);
+    this.setState({ time: timeLeftVar });
+  }
+
+  startTimer = () => {
+    if (this.state.seconds > 0) {
+      const interval = setInterval(this.countDown, 1000);
+      this.setState({
+        interval: interval
+      })
+    }
+  }
+
+  countDown = () => {
+    // Remove one second, set state so a re-render happens.
+    let seconds = this.state.seconds - 1;
+    this.setState({
+      time: this.secondsToTime(seconds),
+      seconds: seconds,
+    });
+    
+    // Check if we're at zero.
+    if (seconds == 0) { 
+      clearInterval(this.state.interval);
+    }
+  }
+
+
 
   //Placeholder for timer
   //Placeholder for phrase
@@ -74,7 +128,8 @@ class GameScreen extends React.Component {
 
   render() {
     console.log(this.state)
-
+  
+    
     return (
       <div>
         <Container>
@@ -86,7 +141,9 @@ class GameScreen extends React.Component {
               <Card.Title>
                 Peaks & Valleys
               </Card.Title>
-              <Badge bg="secondary">Timer</Badge>
+              <Badge bg="secondary">
+                {this.state.time.m} : {this.state.time.s}
+              </Badge>
             </Card>
           </div>
           <div className="margin-bottom">
@@ -109,7 +166,7 @@ class GameScreen extends React.Component {
         </Container>
 
         <button
-          onClick={() => this.generateNewSymbol()}>
+          onClick={() => this.startTimer()}>
           Start Game
         </button>
        

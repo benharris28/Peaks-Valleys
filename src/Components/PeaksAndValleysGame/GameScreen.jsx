@@ -8,10 +8,11 @@ class GameScreen extends React.Component {
 
   state = {
     symbolNumber: 1,
-    currentSymbol: '',
+    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
     currentInterval: 20,
     prompt: "Advice to my younger self",
-    gameOver: false
+    gameOver: false,
+    gameStarted: false
   }
 
   //Placeholder for timer
@@ -33,7 +34,10 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "⬆" }, { id: 2, symbol: "⬇️" }, { id: 3, symbol: "🤟" }];
+    const symbolArray2 = [{ id: 1, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591206/GET_3_sasj1n.png" },
+                          { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591140/GET_r7z0v4.png" },
+                          { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591104/GET_1_nj9wwm.png" }
+                         ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
     console.log(filterSymbol)
@@ -54,7 +58,8 @@ class GameScreen extends React.Component {
     this.setState({
      
       symbolNumber: newSymbol,
-      currentSymbol: filterSymbol2[0].symbol
+      currentSymbol: filterSymbol2[0].url,
+      gameStarted: true
     }, () => { 
       setTimeout(this.generateNewSymbol, rand)})
 
@@ -86,7 +91,7 @@ class GameScreen extends React.Component {
           </div>
           <div className="margin-bottom">
             <Card>
-             <Card.Img variant="top" src="https://res.cloudinary.com/dhkmle6ei/image/upload/v1665260744/slim-emcee-152brjBa5WA-unsplash_zhf801.jpg" />
+             <Card.Img variant="top" src={this.state.currentSymbol} />
             </Card>
           </div>
           <div>
@@ -107,10 +112,7 @@ class GameScreen extends React.Component {
           onClick={() => this.generateNewSymbol()}>
           Start Game
         </button>
-        <div>
-          {this.state.currentSymbol}
-
-        </div>
+       
 
       </div>
     )

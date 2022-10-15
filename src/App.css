@@ -24,3 +24,11 @@ body.lock-zoom {
 .margin-bottom {
   margin-bottom: 1rem;
 }
+
+.flex {
+  display: flex;
+}
+
+.center {
+  text-align: center;
+}

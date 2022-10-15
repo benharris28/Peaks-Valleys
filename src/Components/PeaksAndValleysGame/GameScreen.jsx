@@ -2,7 +2,9 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 import Countdown from 'react-countdown';
+
 
 
 class GameScreen extends React.Component {
@@ -10,6 +12,7 @@ class GameScreen extends React.Component {
   state = {
     symbolNumber: 1,
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
+    endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
     currentInterval: 20,
     prompt: "Advice to my younger self",
     gameOver: false,
@@ -24,7 +27,7 @@ class GameScreen extends React.Component {
     initialSeconds: 10
   }
 
-   secondsToTime = (secs) => {
+  secondsToTime = (secs) => {
     let hours = Math.floor(secs / (60 * 60));
 
     let divisor_for_minutes = secs % (60 * 60);
@@ -50,19 +53,19 @@ class GameScreen extends React.Component {
     this.generateNewSymbol()
     const initialSeconds = this.state.initialSeconds
     let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
-    this.setState({ time: timeLeftVar, seconds: initialSeconds  }, () => {
+    this.setState({ time: timeLeftVar, seconds: initialSeconds }, () => {
 
-if (this.state.seconds > 0) {
-      const interval = setInterval(this.countDown, 1000);
-      this.setState({
-        interval: interval,
-        running: true
-      })
-    }
-      
+      if (this.state.seconds > 0) {
+        const interval = setInterval(this.countDown, 1000);
+        this.setState({
+          interval: interval,
+          running: true
+        })
+      }
+
     });
-    
-    
+
+
   }
 
   countDown = () => {
@@ -72,15 +75,16 @@ if (this.state.seconds > 0) {
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
-    
+
     // Check if we're at zero.
-    if (seconds == 0) { 
+    if (seconds == 0) {
 
       this.setState({
         running: false,
-        gameOver: true
+        gameOver: true,
+        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
       })
-      
+
       clearInterval(this.state.interval);
       clearInterval(this.state.symbolInterval)
     }
@@ -108,17 +112,17 @@ if (this.state.seconds > 0) {
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
     const symbolArray2 = [{ id: 1, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591206/GET_3_sasj1n.png" },
-                          { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591140/GET_r7z0v4.png" },
-                          { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591104/GET_1_nj9wwm.png" }
-                         ];
+    { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591140/GET_r7z0v4.png" },
+    { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591104/GET_1_nj9wwm.png" }
+    ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
     console.log(filterSymbol)
 
-    
+
 
     const newSymbol = filterSymbol[Math.floor(Math.random() * filterSymbol.length)];
-    
+
     const filterSymbol2 = symbolArray2.filter(symbol => symbol.id == newSymbol)
     console.log(filterSymbol2)
     console.log(newSymbol)
@@ -129,11 +133,11 @@ if (this.state.seconds > 0) {
     console.log(rand)
 
     this.setState({
-     
+
       symbolNumber: newSymbol,
       currentSymbol: filterSymbol2[0].url,
       gameStarted: true
-    }, () => { 
+    }, () => {
       const symbolInterval = setTimeout(this.generateNewSymbol, rand)
       this.setState({
         symbolInterval: symbolInterval
@@ -151,55 +155,59 @@ if (this.state.seconds > 0) {
 
   render() {
     console.log(this.state)
-  
-    
+
+
     return (
       <div>
         <Container>
-          <div>
-            Peaks & Valleys
-          </div>
+        
+       
+       
           <div>
             <Card>
-            
-              <Badge bg="secondary">
+ <Card.Header className="center">
+                <Badge bg="secondary">
                 {this.state.time.m} : {this.state.time.s}
               </Badge>
-            </Card>
-          </div>
-          <div className="margin-bottom">
-            <Card>
-             <Card.Img variant="top" src={this.state.currentSymbol} />
-            </Card>
-          </div>
-          <div>
-            <Card>
+              </Card.Header>
+              <Card.Img variant="top" src={this.state.currentSymbol} />
+           
 
-
-              <Card.Body>
+              <Card.Body className="center">
                 <Card.Title>Your Topic</Card.Title>
-                {this.state.prompt}
-              </Card.Body>
+                <div className="margin-bottom">
+                  {this.state.prompt}
+                </div>
+                
+             
+           <div className="center">
+            
+              {this.state.running === false && this.state.gameOver === false &&
+
+            <Button
+              onClick={() => this.startTimer()}>
+              Start Game
+            </Button>
+          }
+
+          {this.state.running === false && this.state.gameOver === true &&
+
+            <Button
+              onClick={() => this.startTimer()}>
+              Play Again
+            </Button>
+          }
+             </div>
+
+                 </Card.Body>
+            
             </Card>
 
 
           </div>
+        
         </Container>
-        {this.state.running === false && this.state.gameOver === false &&
 
-        <button
-          onClick={() => this.startTimer()}>
-          Start Game
-        </button>
-        }
-
-        {this.state.running === false && this.state.gameOver === true &&
-
-        <button
-          onClick={() => this.startTimer()}>
-          Play Again
-        </button>
-        }
 
       </div>
     )

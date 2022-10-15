@@ -20,7 +20,8 @@ class GameScreen extends React.Component {
     time: {},
     seconds: 10,
     timer: 0,
-    running: false
+    running: false,
+    initialSeconds: 10
   }
 
    secondsToTime = (secs) => {
@@ -41,20 +42,27 @@ class GameScreen extends React.Component {
   }
 
   componentDidMount() {
-    let timeLeftVar = this.secondsToTime(this.state.seconds);
+    let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
     this.setState({ time: timeLeftVar });
   }
 
   startTimer = () => {
     this.generateNewSymbol()
-    
-    if (this.state.seconds > 0) {
+    const initialSeconds = this.state.initialSeconds
+    let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
+    this.setState({ time: timeLeftVar, seconds: initialSeconds  }, () => {
+
+if (this.state.seconds > 0) {
       const interval = setInterval(this.countDown, 1000);
       this.setState({
         interval: interval,
         running: true
       })
     }
+      
+    });
+    
+    
   }
 
   countDown = () => {
@@ -74,7 +82,7 @@ class GameScreen extends React.Component {
       })
       
       clearInterval(this.state.interval);
-     
+      clearInterval(this.state.symbolInterval)
     }
   }
 
@@ -126,7 +134,11 @@ class GameScreen extends React.Component {
       currentSymbol: filterSymbol2[0].url,
       gameStarted: true
     }, () => { 
-      setTimeout(this.generateNewSymbol, rand)})
+      const symbolInterval = setTimeout(this.generateNewSymbol, rand)
+      this.setState({
+        symbolInterval: symbolInterval
+      })
+    })
 
   }
 

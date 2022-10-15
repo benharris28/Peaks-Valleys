@@ -32,3 +32,13 @@ body.lock-zoom {
 .center {
   text-align: center;
 }
+
+.game {
+  padding-top: 1rem;
+ 
+}
+
+.symbol-image {
+  height: 320px;
+  object-fit: cover;
+}

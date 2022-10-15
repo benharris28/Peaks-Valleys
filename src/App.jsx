@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './Components/Nav'
 import './App.css'
 import {
   Routes,
@@ -12,6 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/peaks-valleys" element={<PeaksAndValleys />} />

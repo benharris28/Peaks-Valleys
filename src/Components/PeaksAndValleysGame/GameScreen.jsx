@@ -11,8 +11,8 @@ class GameScreen extends React.Component {
 
   state = {
     symbolNumber: 1,
-    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
-    endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
+    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851561/GET_8_eit47w.png',
+    endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851594/GET_9_fv3ksa.png',
     currentInterval: 20,
     prompt: "Advice to my younger self",
     gameOver: false,
@@ -21,10 +21,10 @@ class GameScreen extends React.Component {
     secondsRemaining: '',
     status: 'started',
     time: {},
-    seconds: 10,
+    seconds: 30,
     timer: 0,
     running: false,
-    initialSeconds: 10
+    initialSeconds: 30
   }
 
   secondsToTime = (secs) => {
@@ -82,7 +82,7 @@ class GameScreen extends React.Component {
       this.setState({
         running: false,
         gameOver: true,
-        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665590984/GET_2_wifzlx.png',
+        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851594/GET_9_fv3ksa.png',
       })
 
       clearInterval(this.state.interval);
@@ -111,9 +111,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591206/GET_3_sasj1n.png" },
-    { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591140/GET_r7z0v4.png" },
-    { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665591104/GET_1_nj9wwm.png" }
+    const symbolArray2 = [{ id: 1, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851433/GET_5_qgtoif.png" },
+    { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851485/GET_6_retp5c.png" },
+    { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851523/GET_7_ywc7xn.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
@@ -158,19 +158,23 @@ class GameScreen extends React.Component {
 
 
     return (
-      <div>
+      <div className="game">
         <Container>
-        
+        <div className="center">
+          <h4>Peaks and Valleys</h4>
+        </div>
        
        
           <div>
             <Card>
  <Card.Header className="center">
+   <div>Time Left</div>
                 <Badge bg="secondary">
+                  
                 {this.state.time.m} : {this.state.time.s}
               </Badge>
               </Card.Header>
-              <Card.Img variant="top" src={this.state.currentSymbol} />
+              <Card.Img className="symbol-image" variant="top" src={this.state.currentSymbol} />
            
 
               <Card.Body className="center">

@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Countdown from 'react-countdown';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
 
@@ -24,7 +25,9 @@ class GameScreen extends React.Component {
     seconds: 30,
     timer: 0,
     running: false,
-    initialSeconds: 30
+    initialSeconds: 30,
+    initialMilliseconds: 3000,
+    milliSeconds: 3000
   }
 
   secondsToTime = (secs) => {
@@ -56,7 +59,7 @@ class GameScreen extends React.Component {
     this.setState({ time: timeLeftVar, seconds: initialSeconds }, () => {
 
       if (this.state.seconds > 0) {
-        const interval = setInterval(this.countDown, 1000);
+        const interval = setInterval(this.countDown, 100);
         this.setState({
           interval: interval,
           running: true
@@ -70,14 +73,17 @@ class GameScreen extends React.Component {
 
   countDown = () => {
     // Remove one second, set state so a re-render happens.
-    let seconds = this.state.seconds - 1;
+    let seconds = this.state.seconds - 0.1;
+    let milliSeconds = this.state.milliseconds - 10
+
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
+      milliSeconds: milliSeconds
     });
 
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (seconds < 0) {
 
       this.setState({
         running: false,
@@ -160,56 +166,62 @@ class GameScreen extends React.Component {
     return (
       <div className="game">
         <Container>
-        <div className="center">
-          <h4>Peaks and Valleys</h4>
-        </div>
-       
-       
+          <div className="center">
+            <h4>Peaks and Valleys</h4>
+          </div>
+
+
           <div>
             <Card>
- <Card.Header className="center">
-   <div>Time Left</div>
+              <Card.Header className="center">
+                <div>Time Left</div>
                 <Badge bg="secondary">
-                  
-                {this.state.time.m} : {this.state.time.s}
-              </Badge>
+
+                  {this.state.time.m} : {this.state.time.s}
+                </Badge>
+                <ProgressBar now={this.state.seconds} animated min={0} max={this.state.initialSeconds} />
               </Card.Header>
               <Card.Img className="symbol-image" variant="top" src={this.state.currentSymbol} />
-           
+
 
               <Card.Body className="center">
-                <Card.Title>Your Topic</Card.Title>
-                <div className="margin-bottom">
-                  {this.state.prompt}
+
+                {this.state.running === true && this.state.gameOver === false &&
+                  <div>
+                    <Card.Title>Your Topic</Card.Title>
+                    <div className="margin-bottom">
+                      {this.state.prompt}
+                    </div>
+                  </div>
+                }
+
+
+                <div className="center">
+
+                  {this.state.running === false && this.state.gameOver === false &&
+
+                    <Button
+                      onClick={() => this.startTimer()}>
+                      Start Game
+                    </Button>
+                  }
+
+                  {this.state.running === false && this.state.gameOver === true &&
+
+                    <Button
+                      onClick={() => this.startTimer()}>
+                      Play Again
+                    </Button>
+                  }
                 </div>
-                
-             
-           <div className="center">
-            
-              {this.state.running === false && this.state.gameOver === false &&
 
-            <Button
-              onClick={() => this.startTimer()}>
-              Start Game
-            </Button>
-          }
+              </Card.Body>
 
-          {this.state.running === false && this.state.gameOver === true &&
-
-            <Button
-              onClick={() => this.startTimer()}>
-              Play Again
-            </Button>
-          }
-             </div>
-
-                 </Card.Body>
-            
             </Card>
 
 
           </div>
-        
+
         </Container>
 
 

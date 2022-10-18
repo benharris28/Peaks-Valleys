@@ -8,10 +8,28 @@ import {
 } from "react-router-dom";
 import Home from './Routes/Home';
 import PeaksAndValleys from './Routes/PeaksAndValleys';
+import ApiContext from './ApiContext';
 
 class App extends React.Component {
+
+  state = {
+    showPeaksInfoModal: false,
+    userGameInfo: {
+      peakGames: '',
+      peakPrompt: '',
+      peakGameOver: true
+    }
+  }
+  
   render() {
+
+      const value = {
+      ...this.state,
+     
+    }
+    
     return (
+      <ApiContext.Provider value={value}>
       <div>
         <Nav />
         <Routes>
@@ -20,6 +38,7 @@ class App extends React.Component {
         </Routes>
        
       </div>
+      </ApiContext.Provider>
     )
   }
 }

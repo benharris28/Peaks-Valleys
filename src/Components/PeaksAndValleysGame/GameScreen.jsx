@@ -59,10 +59,11 @@ class GameScreen extends React.Component {
     this.setState({ time: timeLeftVar, seconds: initialSeconds }, () => {
 
       if (this.state.seconds > 0) {
-        const interval = setInterval(this.countDown, 100);
+        const interval = setInterval(this.countDown, 1000);
         this.setState({
           interval: interval,
-          running: true
+          running: true,
+          gameOver: false
         })
       }
 
@@ -73,7 +74,7 @@ class GameScreen extends React.Component {
 
   countDown = () => {
     // Remove one second, set state so a re-render happens.
-    let seconds = this.state.seconds - 0.1;
+    let seconds = this.state.seconds - 1;
     let milliSeconds = this.state.milliseconds - 10
 
     this.setState({
@@ -175,11 +176,8 @@ class GameScreen extends React.Component {
             <Card>
               <Card.Header className="center">
                 <div>Time Left</div>
-                <Badge bg="secondary">
-
-                  {this.state.time.m} : {this.state.time.s}
-                </Badge>
-                <ProgressBar now={this.state.seconds} animated min={0} max={this.state.initialSeconds} />
+             
+                <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={this.state.initialSeconds} />
               </Card.Header>
               <Card.Img className="symbol-image" variant="top" src={this.state.currentSymbol} />
 

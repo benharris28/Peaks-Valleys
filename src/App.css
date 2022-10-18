@@ -42,3 +42,7 @@ body.lock-zoom {
   height: 320px;
   object-fit: cover;
 }
+
+.progress-bar {
+  transition: width 1s linear!important;
+}

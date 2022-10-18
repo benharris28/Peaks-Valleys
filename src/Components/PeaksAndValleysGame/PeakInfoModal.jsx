@@ -10,7 +10,12 @@ class PeakInfoModal extends React.Component {
     prompt: ''
   }
 
-
+handlePrompt = (prompt) => {
+        this.setState({
+            prompt: prompt
+        })
+    }
+  
   render() {
     const { show, onHide } = this.props;
 
@@ -41,11 +46,18 @@ class PeakInfoModal extends React.Component {
            </ul>
          </div>
          <div>
-           <input 
-             type="text"
-             value={this.state.prompt}
-             
-             />
+           <form>
+            <input
+            name="prompt"
+            className="prompt-form-input"
+            type="text"
+            placeholder="Type in your topic"
+            value={this.state.prompt}
+            onChange={(e) => this.handlePrompt(e.target.value)}
+            >
+          </input>
+            
+             </form>
          </div>
        
        

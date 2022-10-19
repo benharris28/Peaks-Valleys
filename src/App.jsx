@@ -18,7 +18,7 @@ class App extends React.Component {
       peakGames: '',
       peakPrompt: 'Advice to my younger self',
       peakTime: '',
-      peakGameOver: true
+      peakGameOver: false
     }
   }
 
@@ -29,17 +29,31 @@ class App extends React.Component {
       userGameInfo: {
         ...userGameInfo,
         peakPrompt: prompt,
-      peakTime: time
+        peakTime: time,
+        peakGameOver: false
+      }
+      
+    })
+  }
+
+  resetPeakGame = (status) => {
+    const { userGameInfo } = this.state;
+    this.setState({
+      userGameInfo: {
+        ...userGameInfo,
+      peakGameOver: status
       }
       
     })
   }
   
   render() {
+    console.log(this.state)
 
       const value = {
       ...this.state,
-        handlePeakGame: this.handlePeakGame
+        handlePeakGame: this.handlePeakGame,
+        resetPeakGame: this.resetPeakGame
      
     }
     

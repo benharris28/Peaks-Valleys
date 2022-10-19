@@ -39,7 +39,7 @@ handlePrompt = (prompt) => {
       this.context.handlePeakGame(newPrompt, time)
     }
 
-    
+    this.props.onHide()
   }
   
   render() {
@@ -95,7 +95,7 @@ handlePrompt = (prompt) => {
                onChange={(e) => this.handleTime(e.target.value)}
                value={this.state.time}
                >
-   
+       <option value="5">5 seconds</option>
       <option value="30">30 seconds</option>
       <option value="60">1 minute</option>
       <option value="120">2 minutes</option>

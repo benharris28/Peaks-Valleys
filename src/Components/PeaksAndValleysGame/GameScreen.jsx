@@ -57,11 +57,13 @@ class GameScreen extends React.Component {
                   });
   }
 
+
+
   startTimer = () => {
     this.generateNewSymbol()
-    const initialSeconds = this.state.initialSeconds
+    const initialSeconds = this.context.userGameInfo.peakTime
     let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
-    this.setState({ time: timeLeftVar, seconds: initialSeconds, prompt: this.context.userGameInfo.peakPrompt }, () => {
+    this.setState({ time: timeLeftVar, seconds: this.context.userGameInfo.peakTime, prompt: this.context.userGameInfo.peakPrompt }, () => {
 
       if (this.state.seconds > 0) {
         const interval = setInterval(this.countDown, 1000);
@@ -75,6 +77,10 @@ class GameScreen extends React.Component {
     });
 
 
+  }
+
+  resetGame = () => {
+    this.context.resetPeakGame()
   }
 
   countDown = () => {
@@ -99,27 +105,16 @@ class GameScreen extends React.Component {
 
       clearInterval(this.state.interval);
       clearInterval(this.state.symbolInterval)
+
+      this.context.resetPeakGame(true)
     }
   }
 
 
 
-  //Placeholder for timer
-  //Placeholder for phrase
-  //Number generator
-  //variable to determine how long to display each symbol
-  //function to randomize the array at the beginning of the game
-  //function to display a new symbol from array
 
-  //Set the first symbol on button click
-  //
   generateNewSymbol = () => {
-    //check the symbol that is beign displayed
-    //filter the array of symbols for that symbol
-    //Generate a random number from the filtered array
-    //add it to state
-    //generate a random display interval
-    //add it to state
+
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
@@ -167,6 +162,7 @@ class GameScreen extends React.Component {
 
   render() {
     console.log(this.state)
+    const { time } = this.props
 
 
     return (
@@ -182,7 +178,7 @@ class GameScreen extends React.Component {
               <Card.Header className="center">
                 <div>Time Left</div>
              
-                <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={this.state.initialSeconds} />
+                <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={time} />
               </Card.Header>
               <Card.Img className="symbol-image" variant="top" src={this.state.currentSymbol} />
 
@@ -201,7 +197,7 @@ class GameScreen extends React.Component {
 
                 <div className="center">
 
-                  {this.state.running === false && this.state.gameOver === false &&
+                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
 
                     <Button
                       onClick={() => this.startTimer()}>
@@ -209,10 +205,10 @@ class GameScreen extends React.Component {
                     </Button>
                   }
 
-                  {this.state.running === false && this.state.gameOver === true &&
+                  {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
 
                     <Button
-                      onClick={() => this.startTimer()}>
+                      onClick={() => this.props.show()}>
                       Play Again
                     </Button>
                   }

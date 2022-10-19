@@ -9,7 +9,12 @@ class PeaksAndValleys extends React.Component {
   static contextType = ApiContext;
  
   state = {
-    showPeakInfoModal: false
+    showPeakInfoModal: false,
+    gameOver: this.context.userGameInfo.peakGameOver
+  }
+
+  componentDidMount() {
+    this.setPeakInfoModal(true)
   }
 
   setPeakInfoModal = (status) => {
@@ -17,28 +22,25 @@ class PeaksAndValleys extends React.Component {
       showPeakInfoModal: status
     })
   }
+
+  resetPeakGame = () => {
+    
+  }
   
   render() {
     return (
       <div>
         <div className="container-medium">
 
-           <div className="center">
-            <h4>Peaks and Valleys</h4>
-          </div>
+          
 
-          {this.context.userGameInfo.peakGameOver && 
-            <div>
-              <Button
-                onClick={() => this.setPeakInfoModal(true)}
-                >
-                Hello
-              </Button>
-            </div>
+       
           
-          }
-          
-          <GameScreen />
+          <GameScreen 
+            show={() => this.setPeakInfoModal(true)}
+            onHide={() => this.setPeakInfoModal(false)}
+            time={this.context.userGameInfo.peakTime}
+            />
 
           <PeakInfoModal
               show={this.state.showPeakInfoModal}

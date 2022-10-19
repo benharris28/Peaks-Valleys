@@ -118,9 +118,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851433/GET_5_qgtoif.png" },
-    { id: 2, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851485/GET_6_retp5c.png" },
-    { id: 3, symbol: "⬆", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851523/GET_7_ywc7xn.png" }
+    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666205828/GET_10_ykcs3x.png" },
+    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851485/GET_6_retp5c.png" },
+    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666205824/GET_11_if3nxn.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)

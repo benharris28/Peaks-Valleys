@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../../ApiContext'
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -7,7 +8,8 @@ class PeakInfoModal extends React.Component {
   static contextType = ApiContext;
 
   state = {
-    prompt: ''
+    prompt: '',
+    time: 30
   }
 
 handlePrompt = (prompt) => {
@@ -15,10 +17,34 @@ handlePrompt = (prompt) => {
             prompt: prompt
         })
     }
+
+  handleTime = (time) => {
+        this.setState({
+            time: time
+        })
+    }
+
+  handleSubmit = (e) => {
+   e.preventDefault()
+
+    
+    const prompt = this.state.prompt
+    const time = this.state.time
+
+    if (prompt) {
+      const newPrompt = this.state.prompt
+      this.context.handlePeakGame(newPrompt, time)
+    } else {
+      const newPrompt = 'Advice to my younger self'
+      this.context.handlePeakGame(newPrompt, time)
+    }
+
+    
+  }
   
   render() {
     const { show, onHide } = this.props;
-
+  console.log(this.state)
   
     
 
@@ -29,6 +55,7 @@ handlePrompt = (prompt) => {
       contentClassName="info-modal-content"
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
+       backdrop="static"
       centered>
 
         <Modal.Header closeButton>
@@ -37,27 +64,54 @@ handlePrompt = (prompt) => {
         </Modal.Title>
       </Modal.Header>
        <Modal.Body>
-         <h4>How to Peaks and Valleys</h4>
-         <div>
-           <ul>
-             <li>Guess the selling price of the house in 5 tries</li>
-             <li>A guess within $50k of the price is a winner</li>
-             <li>We'll reveal a new detail about the house after each guess</li>
-           </ul>
-         </div>
+         <h4>How to Play Peaks and Valleys</h4>
+     
          <div>
            <form>
-            <input
-            name="prompt"
-            className="prompt-form-input"
-            type="text"
-            placeholder="Type in your topic"
-            value={this.state.prompt}
-            onChange={(e) => this.handlePrompt(e.target.value)}
-            >
-          </input>
-            
+             
+             
+               <div className="margin-bottom">
+                 <Form.Group className="mb-3" controlId="promptInput">
+                <Form.Control type="text" placeholder="test" 
+                  as="textarea" rows={3}
+                  name="prompt"
+                  className="prompt-form-input"
+                  type="text"
+                  placeholder="Type in your topic"
+                  value={this.state.prompt}
+                  onChange={(e) => this.handlePrompt(e.target.value)}
+                  
+                  />
+                
+                 <Form.Text id="passwordHelpBlock" muted>
+        You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
+      </Form.Text>
+                
+                </Form.Group>
+                 </div>
+                <div className="margin-bottom">
+      <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
+             <Form.Select aria-label="Default select example"
+               onChange={(e) => this.handleTime(e.target.value)}
+               value={this.state.time}
+               >
+   
+      <option value="30">30 seconds</option>
+      <option value="60">1 minute</option>
+      <option value="120">2 minutes</option>
+      <option value="10800">3 hours (I don't have much to do today)</option>
+    </Form.Select>
+                  </div>
+             
              </form>
+         </div>
+
+         <div>
+           <Button
+             onClick={this.handleSubmit}
+             >
+             Enter Game
+           </Button>
          </div>
        
        
@@ -65,8 +119,7 @@ handlePrompt = (prompt) => {
       
        
          
-         <hr />
-         <p>A new listing will be available each day</p>
+         
        </Modal.Body>
      </Modal>
 

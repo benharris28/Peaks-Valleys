@@ -16,15 +16,30 @@ class App extends React.Component {
     showPeaksInfoModal: false,
     userGameInfo: {
       peakGames: '',
-      peakPrompt: '',
+      peakPrompt: 'Advice to my younger self',
+      peakTime: '',
       peakGameOver: true
     }
+  }
+
+  handlePeakGame = (prompt, time) => {
+    const { userGameInfo } = this.state;
+    
+    this.setState({
+      userGameInfo: {
+        ...userGameInfo,
+        peakPrompt: prompt,
+      peakTime: time
+      }
+      
+    })
   }
   
   render() {
 
       const value = {
       ...this.state,
+        handlePeakGame: this.handlePeakGame
      
     }
     

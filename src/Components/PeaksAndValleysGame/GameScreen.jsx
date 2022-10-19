@@ -1,4 +1,5 @@
 import React from 'react';
+import ApiContext from '../../ApiContext'
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
@@ -9,7 +10,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 
 class GameScreen extends React.Component {
-
+  static contextType = ApiContext;
   state = {
     symbolNumber: 1,
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851561/GET_8_eit47w.png',
@@ -49,14 +50,18 @@ class GameScreen extends React.Component {
 
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
-    this.setState({ time: timeLeftVar });
+    this.setState({ time: timeLeftVar,
+                   prompt: this.context.userGameInfo.peakPrompt,
+                   
+                  
+                  });
   }
 
   startTimer = () => {
     this.generateNewSymbol()
     const initialSeconds = this.state.initialSeconds
     let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
-    this.setState({ time: timeLeftVar, seconds: initialSeconds }, () => {
+    this.setState({ time: timeLeftVar, seconds: initialSeconds, prompt: this.context.userGameInfo.peakPrompt }, () => {
 
       if (this.state.seconds > 0) {
         const interval = setInterval(this.countDown, 1000);

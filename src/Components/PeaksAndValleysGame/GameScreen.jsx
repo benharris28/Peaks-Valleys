@@ -23,10 +23,10 @@ class GameScreen extends React.Component {
     secondsRemaining: '',
     status: 'started',
     time: {},
-    seconds: 30,
+    seconds: 200,
     timer: 0,
     running: false,
-    initialSeconds: 30,
+    initialSeconds: 200,
     initialMilliseconds: 3000,
     milliSeconds: 3000
   }

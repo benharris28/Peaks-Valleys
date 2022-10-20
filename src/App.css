@@ -17,7 +17,7 @@ body.lock-zoom {
 }
 
 .container-medium {
-  max-width: 500px;
+  
   margin: auto;
 }
 
@@ -39,7 +39,7 @@ body.lock-zoom {
 }
 
 .symbol-image {
-  height: 320px;
+  width: 100%;
   object-fit: cover;
 }
 

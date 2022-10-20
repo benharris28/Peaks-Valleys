@@ -1,7 +1,10 @@
 import React from 'react';
 import ApiContext from '../../ApiContext'
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Countdown from 'react-countdown';
@@ -50,11 +53,12 @@ class GameScreen extends React.Component {
 
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
-    this.setState({ time: timeLeftVar,
-                   prompt: this.context.userGameInfo.peakPrompt,
-                   
-                  
-                  });
+    this.setState({
+      time: timeLeftVar,
+      prompt: this.context.userGameInfo.peakPrompt,
+
+
+    });
   }
 
 
@@ -168,58 +172,52 @@ class GameScreen extends React.Component {
     return (
       <div className="game">
         <Container>
-          <div className="center">
-            <h4>Peaks and Valleys</h4>
-          </div>
+          <Row>
+            <Col sm={12} md={6}>
+              <Image className="symbol-image" src={this.state.currentSymbol} />
+            </Col>
 
-
-          <div>
-            <Card>
-              <Card.Header className="center">
+            <Col sm={12} md={6}>
+              <div>
                 <div>Time Left</div>
-             
                 <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={time} />
-              </Card.Header>
-              <Card.Img className="symbol-image" variant="top" src={this.state.currentSymbol} />
+              </div>
 
-
-              <Card.Body className="center">
-
-                {this.state.running === true && this.state.gameOver === false &&
-                  <div>
-                    <Card.Title>Your Topic</Card.Title>
-                    <div className="margin-bottom">
-                      {this.state.prompt}
-                    </div>
+              {this.state.running === true && this.state.gameOver === false &&
+                <div>
+                  <div>Your Topic</div>
+                  <div className="margin-bottom">
+                    {this.state.prompt}
                   </div>
+                </div>
+              }
+
+              <div className="center">
+
+                {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
+
+                  <Button
+                    onClick={() => this.startTimer()}>
+                    Start Game
+                  </Button>
                 }
 
+                {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
 
-                <div className="center">
+                  <Button
+                    onClick={() => this.props.show()}>
+                    Play Again
+                  </Button>
+                }
+              </div>
 
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
+            </Col>
 
-                    <Button
-                      onClick={() => this.startTimer()}>
-                      Start Game
-                    </Button>
-                  }
-
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
-
-                    <Button
-                      onClick={() => this.props.show()}>
-                      Play Again
-                    </Button>
-                  }
-                </div>
-
-              </Card.Body>
-
-            </Card>
+          </Row>
 
 
-          </div>
+
+
 
         </Container>
 

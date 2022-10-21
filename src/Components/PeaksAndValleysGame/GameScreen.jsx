@@ -9,6 +9,7 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Countdown from 'react-countdown';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Alert from 'react-bootstrap/Alert';
 
 
 
@@ -174,23 +175,28 @@ class GameScreen extends React.Component {
         <Container>
           <Row>
             <Col sm={12} md={6}>
-              <Image className="symbol-image" src={this.state.currentSymbol} />
+              
+              <div>
+                
+                <Image className="symbol-image" src={this.state.currentSymbol} />
+                
+                
+              </div>
             </Col>
 
             <Col sm={12} md={6}>
-              <div>
-                <div>Time Left</div>
-                <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={time} />
-              </div>
+              
 
-              {this.state.running === true && this.state.gameOver === false &&
+              
                 <div>
+                 
                   <div>Your Topic</div>
                   <div className="margin-bottom">
-                    {this.state.prompt}
+                    <h1>{this.state.prompt}</h1>
                   </div>
+                
                 </div>
-              }
+              
 
               <div className="center">
 
@@ -210,6 +216,13 @@ class GameScreen extends React.Component {
                   </Button>
                 }
               </div>
+              <Alert>
+                  <div className="margin-bottom">Time Left</div>
+                  <div className="progress-bar-container">
+                  <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={time} />
+                </div>
+                
+                </Alert>
 
             </Col>
 

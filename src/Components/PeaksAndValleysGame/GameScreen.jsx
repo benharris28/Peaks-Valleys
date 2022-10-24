@@ -172,67 +172,73 @@ class GameScreen extends React.Component {
 
     return (
       <div className="game">
-        <Container>
-          <Row>
-            <Col sm={12} md={6}>
-              
-              <div>
-                
-                <Image className="symbol-image" src={this.state.currentSymbol} />
-                
-                
-              </div>
-            </Col>
+        <div className="pt-2 pb-2 pr-4 pl-4">
+          <Container fluid>
+            <Row>
+              <Col sm={12} md={12} lg={5}>
 
-            <Col sm={12} md={6}>
-              
+                <div className="hero">
+                  <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
+                    <div className="hero-wrap">
+                      <div className="progress-bar-container">
+                        <div className="mb-1">Time Left</div>
+                        <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
+                      </div>
+                    </div>
 
-              
-                <div>
-                 
+                  </div>
+
+
+
+
+
+
+                </div>
+              </Col>
+
+              <Col sm={12} md={12} lg={7}>
+
+
+
+                <div className="p-4">
+
                   <div>Your Topic</div>
                   <div className="margin-bottom">
-                    <h1>{this.state.prompt}</h1>
+                    <h1 className="topic">{this.state.prompt}</h1>
                   </div>
-                
+
                 </div>
-              
 
-              <div className="center">
 
-                {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
+                <div className="center">
 
-                  <Button
-                    onClick={() => this.startTimer()}>
-                    Start Game
-                  </Button>
-                }
+                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
 
-                {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+                    <Button
+                      onClick={() => this.startTimer()}>
+                      Start Game
+                    </Button>
+                  }
 
-                  <Button
-                    onClick={() => this.props.show()}>
-                    Play Again
-                  </Button>
-                }
-              </div>
-              <Alert>
-                  <div className="margin-bottom">Time Left</div>
-                  <div className="progress-bar-container">
-                  <ProgressBar className="timer-bar" now={this.state.seconds} animated min={0} max={time} />
+                  {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+
+                    <Button
+                      onClick={() => this.props.show()}>
+                      Play Again
+                    </Button>
+                  }
                 </div>
-                
-                </Alert>
-
-            </Col>
-
-          </Row>
 
 
+              </Col>
+
+            </Row>
 
 
+          </Container>
 
-        </Container>
+
+        </div>
 
 
       </div>

@@ -16,10 +16,33 @@ body.lock-zoom {
   overscroll-behavior-y: none;
 }
 
+/* App */
+.app {
+  z-index: 5;
+}
+
+/*
+.background {
+  position: fixed;
+  z-index: 1;
+      left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://assets.website-files.com/61678d6b37c12ee4c5ce8ac4/6167c56a28eaa24755b60c10_gradient.png');
+  background-size: 33em;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+/*
+
 /* Font */
 
 h1 {
-  font-size: 4rem!important;
+  font-size: 4rem!importan;
 }
 
 .container-medium {
@@ -45,7 +68,7 @@ h1 {
 
 .game {
   padding-top: 1rem;
- 
+  
 }
 
 .symbol-image {
@@ -54,6 +77,65 @@ h1 {
   object-fit: cover!important;
 }
 
+/* Topic */ 
+
+.topic {
+  font-size: 4rem!important;
+}
+
+/* Progress Bar */
+
 .progress-bar {
   transition: width 1s linear!important;
+  border-style: solid grey;
+  border-width: 3px!important;
+  border-color: rgba(234, 233, 238, 0.3);
+  background-color: #fd92fe!important;
+}
+
+/* Hero */
+
+.hero {
+  height: 86vh;
+}
+
+.hero-image {
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.hero-wrap {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 100%;
+}
+
+/* Time Container */
+
+.time-container {
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.timer {
+  height: 100%;
+  width: 100px;
+  background-color: black;
+  display: flex;
+  color: white;
+  justify-content: 
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .hero {
+    height: 40vh;
+  }
 }

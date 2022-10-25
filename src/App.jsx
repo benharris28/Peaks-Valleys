@@ -30,7 +30,8 @@ class App extends React.Component {
         ...userGameInfo,
         peakPrompt: prompt,
         peakTime: time,
-        peakGameOver: false
+        peakGameOver: false,
+        peakGameRunning: true
       }
       
     })

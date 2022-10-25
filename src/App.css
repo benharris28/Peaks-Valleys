@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton");
+
 html {
   height: 100%;
 }
@@ -8,12 +10,19 @@ html {
 
 body {
   height: 100%;
+  background-color: #eae9ee!important;
 }
 
 
 body.lock-zoom {
   touch-action: none;
   overscroll-behavior-y: none;
+}
+
+/* Styles */
+
+.content {
+  padding-top: 8rem;
 }
 
 /* App */
@@ -77,10 +86,19 @@ h1 {
   object-fit: cover!important;
 }
 
+/* Content Section */
+
+.content {
+  padding-top: 8rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+
 /* Topic */ 
 
 .topic {
-  font-size: 4rem!important;
+  font-size: 5rem!important;
+  font-family: 'Anton'
 }
 
 /* Progress Bar */
@@ -97,6 +115,8 @@ h1 {
 
 .hero {
   height: 86vh;
+  background-color: #0d0514;
+  border-radius: 20px;
 }
 
 .hero-image {
@@ -104,6 +124,7 @@ h1 {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  linear-gradient: (180deg, rgba(13, 5, 20, 0), rgba(13, 5, 20, 0) 71%, #0d0514 90%);
 }
 
 .hero-wrap {
@@ -134,8 +155,41 @@ h1 {
   
 }
 
+/* Buttons */
+
+.game-button {
+    width: 30%;
+    height: 50px;
+    background-color: #47ffbe!important;
+    color: black!important;
+    border: 2px solid black!important;
+    font-weight: 700!important;
+  }
+
 @media only screen and (max-width: 600px) {
   .hero {
     height: 40vh;
+  }
+
+  .content {
+  padding-top: 1rem;
+}
+  
+  .topic {
+  font-size: 3rem!important;
+  font-family: 'Anton'
+}
+
+  .topic-container {
+    text-align: center;
+  }
+
+  .game-button {
+    width: 100%;
+    height: 50px;
+    background-color: #47ffbe!important;
+    color: black!important;
+    border: 2px solid black!important;
+    font-weight: 700!important;
   }
 }

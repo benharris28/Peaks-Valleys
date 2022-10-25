@@ -17,8 +17,8 @@ class GameScreen extends React.Component {
   static contextType = ApiContext;
   state = {
     symbolNumber: 1,
-    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851561/GET_8_eit47w.png',
-    endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851594/GET_9_fv3ksa.png',
+    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666709816/GET_13_dnwcwx.png',
+    endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
     currentInterval: 20,
     prompt: "Advice to my younger self",
     gameOver: false,
@@ -105,7 +105,7 @@ class GameScreen extends React.Component {
       this.setState({
         running: false,
         gameOver: true,
-        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851594/GET_9_fv3ksa.png',
+        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666709816/GET_13_dnwcwx.png',
       })
 
       clearInterval(this.state.interval);
@@ -123,9 +123,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666205828/GET_10_ykcs3x.png" },
-    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1665851485/GET_6_retp5c.png" },
-    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666205824/GET_11_if3nxn.png" }
+    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713271/GET_14_fw9utn.png" },
+    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713328/GET_15_ovurfn.png" },
+    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713361/GET_16_invpyv.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
@@ -197,39 +197,53 @@ class GameScreen extends React.Component {
               </Col>
 
               <Col sm={12} md={12} lg={7}>
+                <div className="content">
 
 
+                  {this.state.running === true &&
+                  <div className="topic-container mb-4">
+ 
+                    <div>Your Topic</div>
+                    <div className="margin-bottom">
+                      <h1 className="topic">{this.state.prompt}</h1>
+                    </div>
+                  
+                  </div>
+}
 
-                <div className="p-4">
+                  {this.state.running === false &&
+                  <div className="topic-container mb-4">
+ 
+                    <div>Get Ready</div>
+                    <div className="margin-bottom">
+                      <h1 className="topic">Are you ready to play?</h1>
+                    </div>
+                  
+                  </div>
+}
 
-                  <div>Your Topic</div>
-                  <div className="margin-bottom">
-                    <h1 className="topic">{this.state.prompt}</h1>
+                  <div className="center">
+
+                    {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
+
+                      <Button
+                        className="game-button"
+                        onClick={() => this.startTimer()}>
+                        Start Game
+                      </Button>
+                    }
+
+                    {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+
+                      <Button
+                        className="game-button"
+                        onClick={() => this.props.show()}>
+                        Play Again
+                      </Button>
+                    }
                   </div>
 
                 </div>
-
-
-                <div className="center">
-
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
-
-                    <Button
-                      onClick={() => this.startTimer()}>
-                      Start Game
-                    </Button>
-                  }
-
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
-
-                    <Button
-                      onClick={() => this.props.show()}>
-                      Play Again
-                    </Button>
-                  }
-                </div>
-
-
               </Col>
 
             </Row>

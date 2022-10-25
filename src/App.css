@@ -103,12 +103,19 @@ h1 {
 
 /* Progress Bar */
 
+.progress {
+  border-radius: 15px!important;
+}
+
 .progress-bar {
   transition: width 1s linear!important;
   border-style: solid grey;
   border-width: 3px!important;
   border-color: rgba(234, 233, 238, 0.3);
   background-color: #fd92fe!important;
+  border: 2px solid white!important;
+  padding: 3px!important;
+  border-radius: 15px!important;
 }
 
 /* Hero */
@@ -116,7 +123,7 @@ h1 {
 .hero {
   height: 86vh;
   background-color: #0d0514;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .hero-image {
@@ -155,6 +162,10 @@ h1 {
   
 }
 
+.mobile-timer {
+    display: none;
+  }
+
 /* Buttons */
 
 .game-button {
@@ -173,6 +184,8 @@ h1 {
 
   .content {
   padding-top: 1rem;
+    padding-right: 2rem;
+  padding-left: 2rem;
 }
   
   .topic {
@@ -191,5 +204,20 @@ h1 {
     color: black!important;
     border: 2px solid black!important;
     font-weight: 700!important;
+  }
+
+  .mobile-timer {
+    display: block;
+     width: 100%;
+    border-radius: 15px;
+    background-color: #d5f7eb!important;
+    color: black!important;
+    border: 2px solid black!important;
+    font-weight: 400!important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 14px;
   }
 }

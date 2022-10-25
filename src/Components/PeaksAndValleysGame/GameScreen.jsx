@@ -105,7 +105,7 @@ class GameScreen extends React.Component {
       this.setState({
         running: false,
         gameOver: true,
-        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666709816/GET_13_dnwcwx.png',
+        currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
       })
 
       clearInterval(this.state.interval);
@@ -211,7 +211,7 @@ class GameScreen extends React.Component {
                   </div>
 }
 
-                  {this.state.running === false &&
+                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
                   <div className="topic-container mb-4">
  
                     <div>Get Ready</div>
@@ -220,7 +220,19 @@ class GameScreen extends React.Component {
                     </div>
                   
                   </div>
-}
+                  }
+
+                    {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+                  <div className="topic-container mb-4">
+ 
+                    <div>Great Work!</div>
+                    <div className="margin-bottom">
+                      <h1 className="topic">Should we play again??</h1>
+                    </div>
+                  
+                  </div>
+                    }
+
 
                   <div className="center">
 
@@ -240,6 +252,21 @@ class GameScreen extends React.Component {
                         onClick={() => this.props.show()}>
                         Play Again
                       </Button>
+                    }
+
+                     {this.state.running === true &&
+
+                      <div
+                        className="mobile-timer"
+                        >
+                        <div className="progress-bar-container">
+                        <div>Time Left</div>
+                           <Badge bg="secondary">
+                {this.state.time.m} : {this.state.time.s}
+              </Badge>
+                        
+                      </div>
+                      </div>
                     }
                   </div>
 

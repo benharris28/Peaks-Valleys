@@ -17,7 +17,7 @@ class GameScreen extends React.Component {
   static contextType = ApiContext;
   state = {
     symbolNumber: 1,
-    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666709816/GET_13_dnwcwx.png',
+    currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666883887/GET_22_yuuusy.png',
     endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
     currentInterval: 20,
     prompt: "Advice to my younger self",
@@ -123,9 +123,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713271/GET_14_fw9utn.png" },
-    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713328/GET_15_ovurfn.png" },
-    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713361/GET_16_invpyv.png" }
+    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
+    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
+    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
@@ -179,6 +179,7 @@ class GameScreen extends React.Component {
 
                 <div className="hero">
                   <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
+                    
                     <div className="hero-wrap">
                       <div className="progress-bar-container">
                         <div className="mb-1">Time Left</div>

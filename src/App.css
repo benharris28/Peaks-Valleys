@@ -10,7 +10,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #eae9ee!important;
+  background-color: #F7FFF7!important;
 }
 
 
@@ -100,6 +100,8 @@ h1 {
   font-size: 5rem!important;
   font-family: 'Anton'
 }
+
+
 
 /* Progress Bar */
 
@@ -193,9 +195,16 @@ h1 {
   font-family: 'Anton'
 }
 
+
   .topic-container {
     text-align: center;
   }
+
+  /* Button Container */ 
+
+.button-container {
+  text-align: center;
+}
 
   .game-button {
     width: 100%;

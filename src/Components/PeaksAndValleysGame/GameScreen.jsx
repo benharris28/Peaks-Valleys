@@ -234,7 +234,7 @@ class GameScreen extends React.Component {
                     }
 
 
-                  <div className="center">
+                  <div className="button-container">
 
                     {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
 

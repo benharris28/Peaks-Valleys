@@ -75,10 +75,7 @@ h1 {
   height: 80vh;
 }
 
-.game {
-  padding-top: 1rem;
-  
-}
+
 
 .symbol-image {
   max-width: 100%;
@@ -106,8 +103,9 @@ h1 {
 /* Progress Bar */
 
 .progress {
-  border-radius: 15px!important;
+  height: 2rem!important;
 }
+
 
 .progress-bar {
   transition: width 1s linear!important;
@@ -117,7 +115,21 @@ h1 {
   background-color: #fd92fe!important;
   border: 2px solid white!important;
   padding: 3px!important;
-  border-radius: 15px!important;
+  
+  
+}
+
+.progress-bar-container {
+  position: relative;
+ 
+}
+
+.progress-bar-label {
+  position: absolute;
+  width: 100%;
+  top: 15%;
+  text-align: center;
+
 }
 
 /* Hero */

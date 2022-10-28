@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../../ApiContext'
+import Symbol from './Symbol'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,6 +11,11 @@ import Button from 'react-bootstrap/Button';
 import Countdown from 'react-countdown';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Alert from 'react-bootstrap/Alert';
+import Lottie from 'react-lottie-player';
+import energyRocket from '../../Lotties/energyRocket.json'
+import downArrow from '../../Lotties/downArrow.json'
+
+
 
 
 
@@ -17,6 +23,7 @@ class GameScreen extends React.Component {
   static contextType = ApiContext;
   state = {
     symbolNumber: 1,
+    symbolLottie: energyRocket,
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666883887/GET_22_yuuusy.png',
     endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
     currentInterval: 20,
@@ -123,9 +130,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: "Up", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
-    { id: 2, symbol: "Down", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
-    { id: 3, symbol: "You", url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
+    const symbolArray2 = [{ id: 1, symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
+    { id: 2, symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
+    { id: 3, symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
@@ -148,6 +155,7 @@ class GameScreen extends React.Component {
 
       symbolNumber: newSymbol,
       currentSymbol: filterSymbol2[0].url,
+      symbolLottie: filterSymbol2[0].symbol,
       gameStarted: true
     }, () => {
       const symbolInterval = setTimeout(this.generateNewSymbol, rand)
@@ -187,7 +195,7 @@ class GameScreen extends React.Component {
                   <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
                     
                     <div className="hero-wrap">
-                      
+                      <Symbol play loopValue={3} lottieToPlay={this.state.symbolLottie}/>
                     </div>
 
                   </div>

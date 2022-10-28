@@ -172,16 +172,16 @@ class GameScreen extends React.Component {
 
     return (
       <div className="game">
-         
-        <div className="pb-2 pr-4 pl-4">
-           <div className="progress-bar-container">
+          <div className="progress-bar-container">
                         <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
                         <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
                       </div>
+        <div className="pb-2 pt-2 pr-4 pl-4">
+           
           <Container fluid fluid={true}>
-          
+         
             <Row>
-              <Col sm={12} md={12} lg={5}>
+              <Col sm={12} md={12} lg={6}>
 
                 <div className="hero">
                   <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
@@ -200,7 +200,7 @@ class GameScreen extends React.Component {
                 </div>
               </Col>
 
-              <Col sm={12} md={12} lg={7}>
+              <Col sm={12} md={12} lg={6}>
                 <div className="content">
 
 

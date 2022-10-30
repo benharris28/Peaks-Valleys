@@ -14,6 +14,8 @@ import Alert from 'react-bootstrap/Alert';
 import Lottie from 'react-lottie-player';
 import energyRocket from '../../Lotties/energyRocket.json'
 import downArrow from '../../Lotties/downArrow.json'
+import selfArrow from '../../Lotties/selfArrow.json'
+import welcome from '../../Lotties/welcome.json'
 
 
 
@@ -24,9 +26,9 @@ class GameScreen extends React.Component {
   state = {
     symbolNumber: 1,
     animationPosition: 0,
-    symbolLottie: '',
+    symbolLottie: welcome,
     newClass: 'hero black',
-    hint: '',
+    hint: 'Peaks & Valleys',
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666883887/GET_22_yuuusy.png',
     endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
     currentInterval: 20,
@@ -143,7 +145,7 @@ class GameScreen extends React.Component {
     const symbolArray = [1, 2, 3];
     const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
     { id: 2, newClass: "hero blue", hint: "Bring the energy down...", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
-    { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
+    { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: selfArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)

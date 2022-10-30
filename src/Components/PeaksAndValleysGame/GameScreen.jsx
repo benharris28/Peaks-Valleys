@@ -24,7 +24,9 @@ class GameScreen extends React.Component {
   state = {
     symbolNumber: 1,
     animationPosition: 0,
-    symbolLottie: energyRocket,
+    symbolLottie: '',
+    newClass: 'hero black',
+    hint: '',
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666883887/GET_22_yuuusy.png',
     endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
     currentInterval: 20,
@@ -139,9 +141,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
-    { id: 2, symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
-    { id: 3, symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
+    const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
+    { id: 2, newClass: "hero blue", hint: "Bring the energy down...", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
+    { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
@@ -165,6 +167,8 @@ class GameScreen extends React.Component {
       symbolNumber: newSymbol,
       currentSymbol: filterSymbol2[0].url,
       symbolLottie: filterSymbol2[0].symbol,
+      hint: filterSymbol2[0].hint,
+      newClass: filterSymbol2[0].newClass,
       gameStarted: true
     }, () => {
       this.setLottie()
@@ -207,17 +211,19 @@ setAnimationPostion = () => {
             <Row>
               <Col sm={12} md={12} lg={6}>
 
-                <div className="hero">
-                  <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
+                <div className={this.state.newClass}>
+                  <div className="hero-image">
                     
                     <div className="hero-wrap">
                       <Lottie 
                         key={this.state.symbolNumber}
-                        loop={true}
+                        loop={3}
                         goTo={0}
                         animationData={lottie}
                         play={true}
+                        style={{ width: "70%" }}
                         />
+                      <div><h2 className="white">{this.state.hint}</h2></div>
                     </div>
 
                   </div>
@@ -288,20 +294,7 @@ setAnimationPostion = () => {
                       </Button>
                     }
 
-                     {this.state.running === true &&
-
-                      <div
-                        className="mobile-timer"
-                        >
-                        <div className="progress-bar-container">
-                        <div>Time Left</div>
-                           <Badge bg="secondary">
-                {this.state.time.m} : {this.state.time.s}
-              </Badge>
-                        
-                      </div>
-                      </div>
-                    }
+              
                   </div>
 
                 </div>

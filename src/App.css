@@ -25,6 +25,51 @@ body.lock-zoom {
   padding-top: 8rem;
 }
 
+.white {
+  color: white;
+}
+
+/* Background Changes */
+
+@keyframes changeToYellow {
+
+  to {background-color: #FFED67;}
+}
+
+@keyframes changeToBlue {
+
+  to {background-color: #67CFE3}
+}
+
+@keyframes changeToPink {
+
+  to {background-color: #FF79A3;}
+}
+
+.yellow {
+ 
+  animation-name: changeToYellow;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.blue {
+ 
+  animation-name: changeToBlue;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.pink {
+  animation-name: changeToPink;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.black {
+  background-color: #231F20;
+}
+
 /* App */
 .app {
   z-index: 5;
@@ -136,7 +181,7 @@ h1 {
 
 .hero {
   height: 86vh;
-  background-color: #0d0514;
+ 
   border-radius: 15px;
 }
 
@@ -145,14 +190,15 @@ h1 {
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  linear-gradient: (180deg, rgba(13, 5, 20, 0), rgba(13, 5, 20, 0) 71%, #0d0514 90%);
+  
 }
 
 .hero-wrap {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
     height: 100%;
 }
 

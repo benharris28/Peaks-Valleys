@@ -23,6 +23,7 @@ class GameScreen extends React.Component {
   static contextType = ApiContext;
   state = {
     symbolNumber: 1,
+    animationPosition: 0,
     symbolLottie: energyRocket,
     currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666883887/GET_22_yuuusy.png',
     endSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
@@ -42,6 +43,14 @@ class GameScreen extends React.Component {
     milliSeconds: 3000
   }
 
+  setLottie = () => {
+    const lottie = <Symbol play autoplay={true} loopValue={3} lottieToPlay={this.state.symbolLottie} />
+    this.setState({
+      newLottie: lottie
+    })
+    
+  }
+  
   secondsToTime = (secs) => {
     let hours = Math.floor(secs / (60 * 60));
 
@@ -158,6 +167,7 @@ class GameScreen extends React.Component {
       symbolLottie: filterSymbol2[0].symbol,
       gameStarted: true
     }, () => {
+      this.setLottie()
       const symbolInterval = setTimeout(this.generateNewSymbol, rand)
       this.setState({
         symbolInterval: symbolInterval
@@ -167,7 +177,11 @@ class GameScreen extends React.Component {
   }
 
 
-
+setAnimationPostion = () => {
+  this.setState({
+    animationPostion: 0
+  })
+}
 
 
 
@@ -176,6 +190,8 @@ class GameScreen extends React.Component {
   render() {
     console.log(this.state)
     const { time } = this.props
+    const lottie = this.state.symbolLottie
+    
 
 
     return (
@@ -195,7 +211,13 @@ class GameScreen extends React.Component {
                   <div className="hero-image" style={{ "backgroundImage": `url(${this.state.currentSymbol})` }}>
                     
                     <div className="hero-wrap">
-                      <Symbol play loopValue={3} lottieToPlay={this.state.symbolLottie}/>
+                      <Lottie 
+                        key={this.state.symbolNumber}
+                        loop={true}
+                        goTo={0}
+                        animationData={lottie}
+                        play={true}
+                        />
                     </div>
 
                   </div>

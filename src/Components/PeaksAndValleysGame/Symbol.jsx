@@ -5,14 +5,16 @@ import downArrow from '../../Lotties/downArrow.json'
 
 class Symbol extends React.Component {
   render() {
-    const { lottieToPlay, loopValue, play } = this.props;
+    const { lottieToPlay, loopValue, play, autoplay } = this.props;
+    
+    
     return (
       <div>
                       <Lottie
       loop={loopValue}
-                        
+      autoplay                
       animationData={lottieToPlay}
-      play
+     
       style={{ width: 150, height: 150 }}
     />
       </div>

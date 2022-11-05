@@ -148,7 +148,7 @@ h1 {
 /* Progress Bar */
 
 .progress {
-  height: 2rem!important;
+  height: 0.5rem!important;
 }
 
 
@@ -168,6 +168,7 @@ h1 {
   position: relative;
  
 }
+/*
 
 .progress-bar-label {
   position: absolute;
@@ -177,12 +178,15 @@ h1 {
 
 }
 
+*/
+
 /* Hero */
 
 .hero {
-  height: 86vh;
+  height: 80vh;
  
   border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .hero-image {

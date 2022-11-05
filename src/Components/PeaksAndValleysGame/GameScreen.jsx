@@ -202,13 +202,14 @@ setAnimationPostion = () => {
 
     return (
       <div className="game">
-          <div className="progress-bar-container">
+         
+        <div className="pb-2 pt-4 pr-4 pl-4">
+           
+          <Container fluid fluid={true}>
+             <div className="progress-bar-container mb-3">
                         <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
                         <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
                       </div>
-        <div className="pb-2 pt-2 pr-4 pl-4">
-           
-          <Container fluid fluid={true}>
          
             <Row>
               <Col sm={12} md={12} lg={6}>

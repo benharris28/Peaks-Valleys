@@ -27,24 +27,21 @@ class Home extends React.Component {
           <div className="mb-5">
             <h1>Game Zone</h1>
           </div>
-          <Row className="mb-3">
+          <Row>
             {games.map((game, index) =>
               <Link className="no-decoration" key={index} to={game.link}>
                 <Card>
+                  <Card.Body>
                   <Card.Title>{game.name}</Card.Title>
                   <Card.Text>
                     {game.subtitle}
                   </Card.Text>
-
+                  </Card.Body>
                 </Card>
               </Link>)}
           </Row>
           
-          <Row>
-            <Card>
-              <Card.Title>Test</Card.Title>
-            </Card>
-          </Row>
+          
         </Container>
       </div>
     )

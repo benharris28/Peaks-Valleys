@@ -62,7 +62,7 @@ class App extends React.Component {
       <ApiContext.Provider value={value}>
       <div className="app">
         <div className="background"></div>
-        <Nav />
+      
         <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />

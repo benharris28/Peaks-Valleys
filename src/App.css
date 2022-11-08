@@ -10,7 +10,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #F7FFF7!important;
+  background-color: #231F20!important;
 }
 
 
@@ -23,6 +23,9 @@ body.lock-zoom {
 
 .content {
   padding-top: 8rem;
+  box-shadow: 0px 0px 56px 00000;
+  
+  
 }
 
 .white {
@@ -73,6 +76,15 @@ body.lock-zoom {
 /* App */
 .app {
   z-index: 5;
+}
+
+/* Game */
+
+.game {
+  max-width: 600px;
+  margin: auto;
+  height: 100%;
+ 
 }
 
 /*
@@ -128,19 +140,44 @@ h1 {
   object-fit: cover!important;
 }
 
+/* Game Grid */
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  height: 40vh;
+}
+
 /* Content Section */
 
 .content {
   padding-top: 8rem;
   padding-right: 3rem;
   padding-left: 3rem;
+  border-radius: 30px 30px 0px 0px;
+  background-color: #F7FFF7;
+  height: 100%;
 }
 
 /* Topic */ 
 
 .topic {
-  font-size: 5rem!important;
+  font-size: 2rem!important;
+  font-weight: 300;
   font-family: 'Anton'
+}
+
+.topic-button {
+  background-color: #1A535C;
+  width: 150px;
+  color: #47FFBE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
+  
 }
 
 
@@ -157,7 +194,7 @@ h1 {
   border-style: solid grey;
   border-width: 3px!important;
   border-color: rgba(234, 233, 238, 0.3);
-  background-color: #fd92fe!important;
+  background-color: #47ffbe!important;
   padding: 3px!important;
   
   
@@ -167,17 +204,15 @@ h1 {
   position: relative;
  
 }
-/*
+
 
 .progress-bar-label {
-  position: absolute;
-  width: 100%;
-  top: 15%;
-  text-align: center;
-
+  color: #1A535C;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-*/
+
 
 /* Hero */
 
@@ -231,13 +266,27 @@ h1 {
 
 /* Buttons */
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  width: 100%;
+}
+
 .game-button {
-    width: 30%;
+    width: 100%;
+    display: flex;
     height: 50px;
-    background-color: #47ffbe!important;
-    color: black!important;
-    border: 2px solid black!important;
+    background-color: #1A535C!important;
+    color: white!important;
     font-weight: 700!important;
+    border-radius: 30px!important;
+    
   }
 
 @media only screen and (max-width: 600px) {
@@ -246,19 +295,16 @@ h1 {
   }
 
   .content {
-  padding-top: 1rem;
-    padding-right: 1rem;
-  padding-left: 1rem;
+  padding-top: 2rem;
+    padding-right: 2rem;
+  padding-left: 2rem;
 }
   
-  .topic {
-  font-size: 2.5rem!important;
-  font-family: 'Anton'
-}
+ 
 
 
   .topic-container {
-    text-align: center;
+    text-align: left;
   }
 
   /* Button Container */ 
@@ -267,14 +313,7 @@ h1 {
   text-align: center;
 }
 
-  .game-button {
-    width: 100%;
-    height: 50px;
-    background-color: #47ffbe!important;
-    color: black!important;
-    border: 2px solid black!important;
-    font-weight: 700!important;
-  }
+ 
 
   .mobile-timer {
     display: block;

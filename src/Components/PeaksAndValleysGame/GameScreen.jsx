@@ -206,13 +206,10 @@ setAnimationPostion = () => {
         <div className="pb-2 pt-4 pr-4 pl-4">
            
           <Container fluid fluid={true}>
-             <div className="progress-bar-container mb-3">
-                        <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
-                        <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
-                      </div>
+            
          
             <Row>
-              <Col sm={12} md={12} lg={6}>
+              <Col sm={12} md={12} lg={12}>
 
                 <div className={this.state.newClass}>
                   <div className="hero-image">
@@ -239,33 +236,33 @@ setAnimationPostion = () => {
                 </div>
               </Col>
 
-              <Col sm={12} md={12} lg={6}>
+              <Col className="bottom" sm={12} md={12} lg={12}>
+                
+                
                 <div className="content">
+                   
+              <div className="progress-bar-container mb-3">
+                        <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
+                        <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
+                      </div>
 
-
-                  {this.state.running === true &&
+                  <div className="buttons">
+                       
+                    
+                    {this.state.running === true &&
                   <div className="topic-container mb-4">
  
-                    <div>Your Topic</div>
+                    <div className="topic-button">Your Topic</div>
                     <div className="margin-bottom">
                       <h1 className="topic">{this.state.prompt}</h1>
                     </div>
                   
                   </div>
-}
-
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
-                  <div className="topic-container mb-4">
- 
-                    <div>Get Ready</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">Are you ready to play?</h1>
-                    </div>
+                        }
+                 
                   
-                  </div>
-                  }
-
-                    {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+                  
+                   {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
                   <div className="topic-container mb-4">
  
                     <div>Great Work!</div>
@@ -277,7 +274,8 @@ setAnimationPostion = () => {
                     }
 
 
-                  <div className="button-container">
+
+                      <div className="button-container">
 
                     {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
 
@@ -299,6 +297,17 @@ setAnimationPostion = () => {
 
               
                   </div>
+                  
+                  </div>
+
+               
+
+             
+
+                   
+
+
+                
 
                 </div>
               </Col>

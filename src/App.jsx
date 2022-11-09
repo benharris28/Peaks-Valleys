@@ -19,7 +19,20 @@ class App extends React.Component {
       peakPrompt: 'Advice to my younger self',
       peakTime: '',
       peakGameOver: false
-    }
+    },
+    height: '100%'
+  }
+
+  handleResizedScreen = () => {
+    this.setState({
+     
+      height: window.innerHeight + 'px'
+    });
+  };
+
+  componentDidMount() {
+    this.setState({ height: window.innerHeight + 'px' });
+    window.addEventListener('resize', this.handleResizedScreen);
   }
 
   handlePeakGame = (prompt, time) => {
@@ -47,9 +60,20 @@ class App extends React.Component {
       
     })
   }
+
+  handleResize = () => {
+    this.setState({
+      height: window.innerHeight,
+    
+  });
+  }
   
   render() {
     console.log(this.state)
+    console.log(this.state.height)
+    const height = this.state.height
+   
+   
 
       const value = {
       ...this.state,
@@ -60,7 +84,7 @@ class App extends React.Component {
     
     return (
       <ApiContext.Provider value={value}>
-      <div className="app">
+      <div className="app" style={{ height: `${height}`}}>
         <div className="background"></div>
       
         <div className="main">

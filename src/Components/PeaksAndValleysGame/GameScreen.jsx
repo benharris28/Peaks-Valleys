@@ -203,12 +203,12 @@ setAnimationPostion = () => {
     return (
       <div className="game">
          
-        <div className="pb-2 pt-4 pr-4 pl-4">
+        <div className="pt-4 pr-4 pl-4 full">
            
-          <Container fluid fluid={true}>
+          <Container className="full" fluid fluid={true}>
             
          
-            <Row>
+            <Row className="full">
               <Col sm={12} md={12} lg={12}>
 
                 <div className={this.state.newClass}>
@@ -221,7 +221,7 @@ setAnimationPostion = () => {
                         goTo={0}
                         animationData={lottie}
                         play={true}
-                        style={{ width: "70%" }}
+                        style={{ width: "150px" }}
                         />
                       <div><h2 className="white">{this.state.hint}</h2></div>
                     </div>

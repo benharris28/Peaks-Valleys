@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton");
-
+:root {
+  height: 100!;
+}
 html {
   height: 100%;
 }
@@ -11,8 +13,12 @@ html {
 body {
   height: 100%;
   background-color: #231F20!important;
+  
 }
 
+.full {
+  height: 100%;
+}
 
 body.lock-zoom {
   touch-action: none;
@@ -22,7 +28,7 @@ body.lock-zoom {
 /* Styles */
 
 .content {
-  padding-top: 8rem;
+  padding-top: 2rem;
   box-shadow: 0px 0px 56px 00000;
   
   
@@ -76,12 +82,14 @@ body.lock-zoom {
 /* App */
 .app {
   z-index: 5;
+  margin: auto;
+  max-width: 600px;
 }
 
 /* Game */
 
 .game {
-  max-width: 600px;
+  
   margin: auto;
   height: 100%;
  
@@ -112,7 +120,7 @@ h1 {
 }
 
 .container-medium {
-  
+  height: 100%;
   margin: auto;
 }
 
@@ -129,7 +137,7 @@ h1 {
 }
 
 .main {
-  height: 80vh;
+  height: 100%;
 }
 
 
@@ -143,15 +151,16 @@ h1 {
 /* Game Grid */
 
 .bottom {
-  position: fixed;
+  position: relative;
   bottom: 0;
-  height: 40vh;
+    left: 0;
+    right: 0;
 }
 
 /* Content Section */
 
 .content {
-  padding-top: 8rem;
+  padding-top: 2rem;
   padding-right: 3rem;
   padding-left: 3rem;
   border-radius: 30px 30px 0px 0px;
@@ -217,14 +226,14 @@ h1 {
 /* Hero */
 
 .hero {
-  height: 80vh;
+  
  
   border-radius: 15px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .hero-image {
-  height: 100%;
+  
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -237,7 +246,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+   
 }
 
 /* Time Container */
@@ -329,4 +338,12 @@ h1 {
     padding-left: 1rem;
     font-size: 14px;
   }
+
+  .bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40vh;
+}
 }

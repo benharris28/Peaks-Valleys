@@ -15,6 +15,7 @@ import Lottie from 'react-lottie-player';
 import energyRocket from '../../Lotties/energyRocket.json'
 import downArrow from '../../Lotties/downArrow.json'
 import selfArrow from '../../Lotties/selfArrow.json'
+import newRocket from '../../Lotties/newRocket.json'
 import welcome from '../../Lotties/welcome.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
@@ -145,7 +146,7 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-    const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
+    const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: newRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
     { id: 2, newClass: "hero blue", hint: "Bring the energy down...", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
     { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: selfArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];

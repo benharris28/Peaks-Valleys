@@ -12,7 +12,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #231F20!important;
+  background-color: #000!important;
   
 }
 
@@ -52,7 +52,7 @@ body.lock-zoom {
 
 @keyframes changeToPink {
 
-  to {background-color: #FF79A3;}
+  to {border: 2px solid #FF79A3;}
 }
 
 .yellow {
@@ -149,6 +149,35 @@ h1 {
 }
 
 /* Game Grid */
+.title-box {
+  color: #47FFBE;
+  text-align: center;
+}
+
+.hint {
+  background-color: #FCC7F3;
+  width: 70%;
+  margin: auto;
+  border-radius: 30px;
+  padding: 0.5rem;
+  display: flex;
+  font-size: 1rem;
+}
+
+.icon-box {
+  margin-right: 1rem;
+  border-radius: 30px;
+  height: 100%;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+
+}
 
 .bottom {
   position: relative;
@@ -164,7 +193,7 @@ h1 {
   padding-right: 3rem;
   padding-left: 3rem;
   border-radius: 30px 30px 0px 0px;
-  background-color: #F7FFF7;
+  border: 2px solid #47FFBE;
   height: 100%;
 }
 
@@ -228,8 +257,11 @@ h1 {
 .hero {
   
  
-  border-radius: 15px;
+  border-radius: 180px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width: 250px;
+  height: 250px;
+  margin: auto;
 }
 
 .hero-image {
@@ -241,6 +273,8 @@ h1 {
 }
 
 .hero-wrap {
+    width: 250px;
+    height: 250px;
     padding: 20px;
     display: flex;
     flex-direction: column;

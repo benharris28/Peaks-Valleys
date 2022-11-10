@@ -16,6 +16,8 @@ import energyRocket from '../../Lotties/energyRocket.json'
 import downArrow from '../../Lotties/downArrow.json'
 import selfArrow from '../../Lotties/selfArrow.json'
 import welcome from '../../Lotties/welcome.json'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -206,10 +208,13 @@ setAnimationPostion = () => {
         <div className="pt-4 pr-4 pl-4 full">
            
           <Container className="full" fluid fluid={true}>
-            
+            <div className="title-box">
+                  Peaks & Valleys
+                </div>
          
-            <Row className="full">
+            <Row style={{ height: '60%'}}>
               <Col sm={12} md={12} lg={12}>
+                
 
                 <div className={this.state.newClass}>
                   <div className="hero-image">
@@ -223,7 +228,7 @@ setAnimationPostion = () => {
                         play={true}
                         style={{ width: "150px" }}
                         />
-                      <div><h2 className="white">{this.state.hint}</h2></div>
+                    
                     </div>
 
                   </div>
@@ -234,7 +239,20 @@ setAnimationPostion = () => {
 
 
                 </div>
+                <div className="hint">
+                  <div className="icon-box mr-1">
+                    <FontAwesomeIcon className="icon" icon={faCircleInfo} />
+                  </div>
+                  <div>
+                    {this.state.hint}
+                  </div>
+                 
+                 
+                </div>
               </Col>
+              </Row>
+            <Row style={{ height: '40%'}}>
+         
 
               <Col className="bottom" sm={12} md={12} lg={12}>
                 

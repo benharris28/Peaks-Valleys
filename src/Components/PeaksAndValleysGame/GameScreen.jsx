@@ -55,9 +55,9 @@ class GameScreen extends React.Component {
     this.setState({
       newLottie: lottie
     })
-    
+
   }
-  
+
   secondsToTime = (secs) => {
     let hours = Math.floor(secs / (60 * 60));
 
@@ -186,11 +186,11 @@ class GameScreen extends React.Component {
   }
 
 
-setAnimationPostion = () => {
-  this.setState({
-    animationPostion: 0
-  })
-}
+  setAnimationPostion = () => {
+    this.setState({
+      animationPostion: 0
+    })
+  }
 
 
 
@@ -200,133 +200,133 @@ setAnimationPostion = () => {
     console.log(this.state)
     const { time } = this.props
     const lottie = this.state.symbolLottie
-    
+
 
 
     return (
       <div className="game">
-         
-        <div className="pt-4 pr-4 pl-4 full">
-           
+
+        <div className="pt-4 pb-4 pr-4 pl-4 full">
+
           <Container className="full" fluid fluid={true}>
             <div className="title-box">
-                  Peaks & Valleys
-                </div>
-         
-            <Row style={{ height: '60%'}}>
+              Peaks & Valleys
+            </div>
+
+            <Row className="pb-2 mb-2" style={{ height: '40%'}}>
               <Col sm={12} md={12} lg={12}>
-                
+
 
                 <div className={this.state.newClass}>
                   <div className="hero-image">
-                    
+
                     <div className="hero-wrap">
-                      <Lottie 
+                      <Lottie
                         key={this.state.symbolNumber}
                         loop={3}
                         goTo={0}
                         animationData={lottie}
                         play={true}
                         style={{ width: "150px" }}
-                        />
-                    
+                      />
+
                     </div>
 
                   </div>
 
+                  <div className="hint">
+                    <div className="icon-box mr-1">
+                      <FontAwesomeIcon className="icon" icon={faCircleInfo} />
+                    </div>
+                    <div>
+                      {this.state.hint}
+                    </div>
 
+
+                  </div>
 
 
 
 
                 </div>
-                <div className="hint">
-                  <div className="icon-box mr-1">
-                    <FontAwesomeIcon className="icon" icon={faCircleInfo} />
-                  </div>
-                  <div>
-                    {this.state.hint}
-                  </div>
-                 
-                 
-                </div>
+
               </Col>
-              </Row>
-            <Row style={{ height: '40%'}}>
-         
+            </Row>
+            <Row className="pt-3" style={{ height: '50%'}}>
 
-              <Col className="bottom" sm={12} md={12} lg={12}>
-                
-                
+
+              <Col sm={12} md={12} lg={12}>
+
+
                 <div className="content">
-                   
-              <div className="progress-bar-container mb-3">
-                        <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
-                        <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
-                      </div>
+
+                  <div className="progress-bar-container mb-3">
+                    <div className="progress-bar-label">Time Left: {this.state.seconds > 0 ? this.state.seconds : 0}</div>
+                    <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
+                  </div>
 
                   <div className="buttons">
-                       
-                    
+
+
                     {this.state.running === true &&
-                  <div className="topic-container mb-4">
- 
-                    <div className="topic-button">Your Topic</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">{this.state.prompt}</h1>
-                    </div>
-                  
-                  </div>
-                        }
-                 
-                  
-                  
-                   {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
-                  <div className="topic-container mb-4">
- 
-                    <div>Great Work!</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">Should we play again??</h1>
-                    </div>
-                  
-                  </div>
+                      <div className="topic-container mb-4">
+
+                        <div className="topic-button">Your Topic</div>
+                        <div className="margin-bottom">
+                          <h1 className="topic">{this.state.prompt}</h1>
+                        </div>
+
+                      </div>
                     }
 
 
-
-                      <div className="button-container">
-
-                    {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
-
-                      <Button
-                        className="game-button"
-                        onClick={() => this.startTimer()}>
-                        Start Game
-                      </Button>
-                    }
 
                     {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+                      <div className="topic-container mb-4">
 
-                      <Button
-                        className="game-button"
-                        onClick={() => this.props.show()}>
-                        Play Again
-                      </Button>
+                     
+                        <div className="margin-bottom">
+                          <h1 className="topic">Great work! Should we play again??</h1>
+                        </div>
+
+                      </div>
                     }
 
-              
+
+
+                    <div className="button-container">
+
+                      {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
+
+                        <Button
+                          className="game-button"
+                          onClick={() => this.startTimer()}>
+                          Start Game
+                        </Button>
+                      }
+
+                      {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
+
+                        <Button
+                          className="game-button"
+                          onClick={() => this.props.show()}>
+                          Play Again
+                        </Button>
+                      }
+
+
+                    </div>
+
                   </div>
-                  
-                  </div>
-
-               
-
-             
-
-                   
 
 
-                
+
+
+
+
+
+
+
 
                 </div>
               </Col>

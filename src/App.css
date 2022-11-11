@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
 :root {
   height: 100!;
 }
@@ -8,6 +10,7 @@ html {
 
 * {
   box-sizing: border-box;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 body {
@@ -28,8 +31,10 @@ body.lock-zoom {
 /* Styles */
 
 .content {
-  padding-top: 2rem;
+  padding-top: 1rem;
   box-shadow: 0px 0px 56px 00000;
+  border-radius: 30px;
+  background-color: #4A4E55;
   
   
 }
@@ -51,8 +56,7 @@ body.lock-zoom {
 }
 
 @keyframes changeToPink {
-
-  to {border: 2px solid #FF79A3;}
+ to {background-color: #FF79A3}
 }
 
 .yellow {
@@ -83,7 +87,7 @@ body.lock-zoom {
 .app {
   z-index: 5;
   margin: auto;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 /* Game */
@@ -151,12 +155,13 @@ h1 {
 /* Game Grid */
 .title-box {
   color: #47FFBE;
-  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hint {
-  background-color: #FCC7F3;
-  width: 70%;
+  background-color: #fff;
+  width: 100%;
   margin: auto;
   border-radius: 30px;
   padding: 0.5rem;
@@ -179,20 +184,14 @@ h1 {
 
 }
 
-.bottom {
-  position: relative;
-  bottom: 0;
-    left: 0;
-    right: 0;
-}
+
 
 /* Content Section */
 
 .content {
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-right: 3rem;
   padding-left: 3rem;
-  border-radius: 30px 30px 0px 0px;
   border: 2px solid #47FFBE;
   height: 100%;
 }
@@ -200,15 +199,15 @@ h1 {
 /* Topic */ 
 
 .topic {
-  font-size: 2rem!important;
+  font-size: 1.5rem!important;
   font-weight: 300;
-  font-family: 'Anton'
+  color: #fff;
 }
 
 .topic-button {
-  background-color: #1A535C;
+  background-color: #47FFBE;
   width: 150px;
-  color: #47FFBE;
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,9 +244,10 @@ h1 {
 
 
 .progress-bar-label {
-  color: #1A535C;
+  color: #fff;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 
@@ -257,29 +257,26 @@ h1 {
 .hero {
   
  
-  border-radius: 180px;
+  border-radius: 30px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
   margin: auto;
+  background-color: #47FFBE;
+  padding: 1rem;
 }
 
-.hero-image {
-  
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  
-}
+
 
 .hero-wrap {
     width: 250px;
-    height: 250px;
-    padding: 20px;
+    height: 150px;
     display: flex;
+    margin: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
    
 }
 
@@ -325,20 +322,19 @@ h1 {
     width: 100%;
     display: flex;
     height: 50px;
-    background-color: #1A535C!important;
-    color: white!important;
+    background-color: #47FFBE!important;
+    color: #000!important;
     font-weight: 700!important;
     border-radius: 30px!important;
+    border: 0px!important;
     
   }
 
 @media only screen and (max-width: 600px) {
-  .hero {
-    height: 40vh;
-  }
+
 
   .content {
-  padding-top: 2rem;
+  padding-top: 1rem;
     padding-right: 2rem;
   padding-left: 2rem;
 }
@@ -373,11 +369,5 @@ h1 {
     font-size: 14px;
   }
 
-  .bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40vh;
-}
+ 
 }

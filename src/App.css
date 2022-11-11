@@ -90,6 +90,11 @@ body.lock-zoom {
   max-width: 500px;
 }
 
+/* Info Modal */ 
+
+.info-modal-body {
+  
+}
 /* Game */
 
 .game {

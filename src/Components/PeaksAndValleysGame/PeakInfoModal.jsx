@@ -61,18 +61,20 @@ class PeakInfoModal extends React.Component {
         {...this.props}
         dialogClassName="info-modal"
         contentClassName="info-modal-content"
-        size="lg"
+        fullscreen={true}
         aria-labelledby="contained-modal-title-vcenter"
         backdrop="static"
         centered>
 
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-
-          </Modal.Title>
-        </Modal.Header>
+       
         <Modal.Body>
-          <h4>How to Play Peaks and Valleys</h4>
+          <div className="info-modal-body">
+            <div className="center mt-4 mb-4">
+              <h1>How to Play Peaks and Valleys</h1>
+            </div>
+            
+          
+          
 
           <div>
             <form>
@@ -136,7 +138,7 @@ class PeakInfoModal extends React.Component {
 
 
 
-
+</div>
         </Modal.Body>
       </Modal>
 

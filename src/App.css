@@ -92,8 +92,16 @@ body.lock-zoom {
 
 /* Info Modal */ 
 
-.info-modal-body {
-  
+.toggle-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 250px;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.toggle-button {
+  width: 100px;
 }
 /* Game */
 

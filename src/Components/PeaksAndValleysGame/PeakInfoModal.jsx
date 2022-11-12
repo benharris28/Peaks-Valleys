@@ -3,6 +3,8 @@ import ApiContext from '../../ApiContext'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 
 class PeakInfoModal extends React.Component {
   static contextType = ApiContext;
@@ -61,84 +63,111 @@ class PeakInfoModal extends React.Component {
         {...this.props}
         dialogClassName="info-modal"
         contentClassName="info-modal-content"
-        fullscreen={true}
+
         aria-labelledby="contained-modal-title-vcenter"
         backdrop="static"
         centered>
 
-       
+
         <Modal.Body>
           <div className="info-modal-body">
             <div className="center mt-4 mb-4">
-              <h1>How to Play Peaks and Valleys</h1>
+              <h2>How to Play Peaks and Valleys</h2>
             </div>
-            
-          
-          
-
-          <div>
-            <form>
-              <Form.Check
-                type="switch"
-                id="custom-switch"
-                label="Choose a topic for me"
-                checked={this.state.promptCheck}
-                onChange={(e) => this.handlePromptCheck(e.target.value)}
-              />
-              {!this.state.promptCheck &&
 
 
-                <div className="margin-bottom">
-                  <Form.Group className="mb-3" controlId="promptInput">
-                    <Form.Control type="text" placeholder="test"
-                      as="textarea" rows={3}
-                      name="prompt"
-                      className="prompt-form-input"
-                      type="text"
-                      placeholder="Type in your topic"
-                      value={this.state.prompt}
-                      onChange={(e) => this.handlePrompt(e.target.value)}
 
-                    />
 
-                    <Form.Text id="passwordHelpBlock" muted>
-                      You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
-                    </Form.Text>
-
-                  </Form.Group>
-                </div>
-              }
-              <div className="margin-bottom">
-                <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
-                <Form.Select aria-label="Default select example"
-                  onChange={(e) => this.handleTime(e.target.value)}
-                  value={this.state.time}
-                >
-                  <option value="5">5 seconds</option>
-                  <option value="30">30 seconds</option>
-                  <option value="60">1 minute</option>
-                  <option value="120">2 minutes</option>
-                  <option value="10800">3 hours (I don't have much to do today)</option>
-                </Form.Select>
+            <div className="center">
+              <div className="mb-2">
+                First, let's pick a topic to talk about. Would you like us to provide a topic for you?
               </div>
+              
+              <form>
+                <div className="toggle-container">
+                <ButtonGroup className="toggle-button">
+                  <ToggleButton
+                    id="toggle-check"
+                    type="checkbox"
+                    variant="secondary"
+                    checked={this.state.promptCheck}
+                    value="true"
+                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                  >
+                    Yes
+                  </ToggleButton>
+                  </ButtonGroup>
+                <ButtonGroup className="toggle-button">
+                  <ToggleButton
+              
+                    id="toggle-check"
+                    type="checkbox"
+                    variant="secondary"
+                    checked={!this.state.promptCheck}
+                    value="true"
+                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                  >
+                    No
+                  </ToggleButton>
+                  
+                </ButtonGroup>
+                </div>
+                
+               
+                {!this.state.promptCheck &&
 
-            </form>
+
+                  <div className="margin-bottom">
+                    <Form.Group className="mb-3" controlId="promptInput">
+                      <Form.Control type="text" placeholder="test"
+                        as="textarea" rows={3}
+                        name="prompt"
+                        className="prompt-form-input"
+                        type="text"
+                        placeholder="Type in your topic"
+                        value={this.state.prompt}
+                        onChange={(e) => this.handlePrompt(e.target.value)}
+
+                      />
+
+                      <Form.Text id="passwordHelpBlock" muted>
+                        You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
+                      </Form.Text>
+
+                    </Form.Group>
+                  </div>
+                }
+                <div className="margin-bottom">
+                  <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
+                  <Form.Select aria-label="Default select example"
+                    onChange={(e) => this.handleTime(e.target.value)}
+                    value={this.state.time}
+                  >
+                    <option value="5">5 seconds</option>
+                    <option value="30">30 seconds</option>
+                    <option value="60">1 minute</option>
+                    <option value="120">2 minutes</option>
+                    <option value="10800">3 hours (I don't have much to do today)</option>
+                  </Form.Select>
+                </div>
+
+              </form>
+            </div>
+
+            <div>
+              <Button
+                onClick={this.handleSubmit}
+              >
+                Enter Game
+              </Button>
+            </div>
+
+
+
+
+
+
           </div>
-
-          <div>
-            <Button
-              onClick={this.handleSubmit}
-            >
-              Enter Game
-            </Button>
-          </div>
-
-
-
-
-
-
-</div>
         </Modal.Body>
       </Modal>
 

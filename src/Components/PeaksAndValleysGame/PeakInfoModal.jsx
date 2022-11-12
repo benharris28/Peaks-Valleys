@@ -10,6 +10,7 @@ class PeakInfoModal extends React.Component {
   static contextType = ApiContext;
 
   state = {
+    page: 1,
     prompt: '',
     time: 30,
     promptCheck: true
@@ -32,6 +33,19 @@ class PeakInfoModal extends React.Component {
     this.setState({
       promptCheck: !checked
     })
+  }
+
+  handlePageForward = () => {
+    this.setState({
+        page: 2
+      })
+  }
+
+  handlePageBack = () => {
+    this.setState({
+      page: 1
+    })
+    
   }
 
   handleSubmit = (e) => {
@@ -137,6 +151,13 @@ class PeakInfoModal extends React.Component {
                     </Form.Group>
                   </div>
                 }
+                
+                <div>
+                  <Button
+                    onClick={this.handlePageForward}>
+                    Next
+                  </Button>
+                </div>
                 <div className="margin-bottom">
                   <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
                   <Form.Select aria-label="Default select example"

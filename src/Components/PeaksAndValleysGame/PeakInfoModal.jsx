@@ -13,13 +13,25 @@ class PeakInfoModal extends React.Component {
     page: 1,
     prompt: '',
     time: 30,
-    promptCheck: true
+    promptCheck: true,
+    disableNextButton: true
   }
 
   handlePrompt = (prompt) => {
     this.setState({
       prompt: prompt
     })
+
+    if (this.state.prompt.length > 1) {
+      this.setState({
+        disableNextButton: false
+      })
+    } else {
+      this.setState({
+        disableNextButton: true
+      
+      })
+    }
   }
 
   handleTime = (time) => {
@@ -36,6 +48,10 @@ class PeakInfoModal extends React.Component {
   }
 
   handlePageForward = () => {
+    
+
+   
+    
     this.setState({
         page: 2
       })
@@ -55,7 +71,12 @@ class PeakInfoModal extends React.Component {
     const prompt = this.state.prompt
     const time = this.state.time
 
-    if (prompt) {
+    if (this.state.promptCheck === false && prompt === '') {
+      this.setState({
+        promptValidationMessage: 'Please enter a topic'
+      })
+      
+    } else if (prompt) {
       const newPrompt = this.state.prompt
       this.context.handlePeakGame(newPrompt, time)
     } else {
@@ -98,6 +119,8 @@ class PeakInfoModal extends React.Component {
               </div>
               
               <form>
+                {this.state.page === 1 && 
+                <>
                 <div className="toggle-container">
                 <ButtonGroup className="toggle-button">
                   <ToggleButton
@@ -154,10 +177,16 @@ class PeakInfoModal extends React.Component {
                 
                 <div>
                   <Button
-                    onClick={this.handlePageForward}>
+                    onClick={this.handlePageForward}
+                    disabled={this.state.disableNextButton}>
                     Next
                   </Button>
                 </div>
+                </>
+                }
+
+                {this.state.page === 2 &&
+                  <>
                 <div className="margin-bottom">
                   <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
                   <Form.Select aria-label="Default select example"
@@ -171,17 +200,25 @@ class PeakInfoModal extends React.Component {
                     <option value="10800">3 hours (I don't have much to do today)</option>
                   </Form.Select>
                 </div>
-
-              </form>
-            </div>
-
-            <div>
+                     <div>
               <Button
+                onClick={this.handlePageBack}
+              >
+                Back
+              </Button>
+                       <Button
                 onClick={this.handleSubmit}
               >
                 Enter Game
               </Button>
             </div>
+                  </>
+                }
+
+              </form>
+            </div>
+
+           
 
 
 

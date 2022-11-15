@@ -55,6 +55,7 @@ class App extends React.Component {
     this.setState({
       userGameInfo: {
         ...userGameInfo,
+        peakPrompt: '',
       peakGameOver: status
       }
       

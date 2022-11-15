@@ -42,7 +42,7 @@ class GameScreen extends React.Component {
     secondsRemaining: '',
     status: 'started',
     time: {},
-    seconds: 200,
+    seconds: '',
     timer: 0,
     running: false,
     initialSeconds: 200,
@@ -162,8 +162,8 @@ class GameScreen extends React.Component {
     console.log(filterSymbol2)
     console.log(newSymbol)
 
-    const minTime = 5000
-    const maxTime = 10000
+    const minTime = 10000
+    const maxTime = 15000
     const rand = Math.round(Math.random() * (maxTime - minTime)) + minTime;
     console.log(rand)
 
@@ -261,7 +261,7 @@ class GameScreen extends React.Component {
                 <div className="content">
 
                   <div className="progress-bar-container mb-3">
-                    <div className="progress-bar-label">Time Left: {this.state.seconds > 0 ? this.state.seconds : 0}</div>
+                    <div className="progress-bar-label">Time Left: {this.state.seconds > 0 ? this.state.seconds : 'Ready'}</div>
                     <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
                   </div>
 

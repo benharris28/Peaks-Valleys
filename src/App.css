@@ -103,6 +103,18 @@ body.lock-zoom {
 .toggle-button {
   width: 100px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+ 
+  margin: auto;
+  
+}
+
+.form-button {
+  width: 100px;
+}
 /* Game */
 
 .game {

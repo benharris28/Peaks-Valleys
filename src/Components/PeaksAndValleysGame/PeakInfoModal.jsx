@@ -14,9 +14,14 @@ class PeakInfoModal extends React.Component {
     prompt: '',
     time: 30,
     promptCheck: true,
-    disableNextButton: true
+    disableNextButton: false
   }
 
+  componentDidMount = () => {
+    this.setState({
+      prompt: ''
+    })
+  }
   handlePrompt = (prompt) => {
     this.setState({
       prompt: prompt
@@ -71,12 +76,7 @@ class PeakInfoModal extends React.Component {
     const prompt = this.state.prompt
     const time = this.state.time
 
-    if (this.state.promptCheck === false && prompt === '') {
-      this.setState({
-        promptValidationMessage: 'Please enter a topic'
-      })
-      
-    } else if (prompt) {
+   if (prompt) {
       const newPrompt = this.state.prompt
       this.context.handlePeakGame(newPrompt, time)
     } else {
@@ -84,7 +84,13 @@ class PeakInfoModal extends React.Component {
       this.context.handlePeakGame(newPrompt, time)
     }
 
+    
+
     this.props.onHide()
+    this.setState({
+      page: 1,
+      prompt: ''
+    })
   }
 
   render() {
@@ -114,19 +120,21 @@ class PeakInfoModal extends React.Component {
 
 
             <div className="center">
-              <div className="mb-2">
-                First, let's pick a topic to talk about. Would you like us to provide a topic for you?
-              </div>
+              
               
               <form>
                 {this.state.page === 1 && 
                 <>
+                  <div className="mb-2">
+                First, let's pick a topic to talk about. Would you like us to provide a topic for you?
+              </div>
                 <div className="toggle-container">
                 <ButtonGroup className="toggle-button">
+                 
                   <ToggleButton
                     id="toggle-check"
                     type="checkbox"
-                    variant="secondary"
+                    variant="outline-primary"
                     checked={this.state.promptCheck}
                     value="true"
                     onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
@@ -139,7 +147,7 @@ class PeakInfoModal extends React.Component {
               
                     id="toggle-check"
                     type="checkbox"
-                    variant="secondary"
+                    variant="outline-primary"
                     checked={!this.state.promptCheck}
                     value="true"
                     onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
@@ -153,7 +161,7 @@ class PeakInfoModal extends React.Component {
                
                 {!this.state.promptCheck &&
 
-
+                  <>
                   <div className="margin-bottom">
                     <Form.Group className="mb-3" controlId="promptInput">
                       <Form.Control type="text" placeholder="test"
@@ -173,15 +181,19 @@ class PeakInfoModal extends React.Component {
 
                     </Form.Group>
                   </div>
-                }
                 
-                <div>
+                
+                
+                  </>
+                }
+                  <div>
                   <Button
                     onClick={this.handlePageForward}
                     disabled={this.state.disableNextButton}>
                     Next
                   </Button>
                 </div>
+                
                 </>
                 }
 
@@ -200,8 +212,11 @@ class PeakInfoModal extends React.Component {
                     <option value="10800">3 hours (I don't have much to do today)</option>
                   </Form.Select>
                 </div>
-                     <div>
+                     <div className="button-container">
+                      
               <Button
+                className="form-button"
+                variant="outline-primary"
                 onClick={this.handlePageBack}
               >
                 Back
@@ -211,6 +226,7 @@ class PeakInfoModal extends React.Component {
               >
                 Enter Game
               </Button>
+                         
             </div>
                   </>
                 }

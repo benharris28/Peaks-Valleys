@@ -15,7 +15,7 @@ import Lottie from 'react-lottie-player';
 import energyRocket from '../../Lotties/energyRocket.json'
 import downArrow from '../../Lotties/downArrow.json'
 import selfArrow from '../../Lotties/selfArrow.json'
-import welcome from '../../Lotties/welcome.json'
+import gwelcome from '../../Lotties/welcome.json'
 
 
 

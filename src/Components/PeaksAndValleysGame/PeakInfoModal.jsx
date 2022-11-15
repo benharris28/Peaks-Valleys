@@ -3,23 +3,14 @@ import ApiContext from '../../ApiContext'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-<<<<<<< HEAD
-=======
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
->>>>>>> design-update
+
 
 class PeakInfoModal extends React.Component {
   static contextType = ApiContext;
 
   state = {
-<<<<<<< HEAD
-    prompt: '',
-    time: 30,
-    promptCheck: true
-  }
-
-=======
     page: 1,
     prompt: '',
     time: 30,
@@ -32,13 +23,12 @@ class PeakInfoModal extends React.Component {
       prompt: ''
     })
   }
->>>>>>> design-update
+
   handlePrompt = (prompt) => {
     this.setState({
       prompt: prompt
     })
-<<<<<<< HEAD
-=======
+
 
     if (this.state.prompt.length > 1) {
       this.setState({
@@ -50,7 +40,7 @@ class PeakInfoModal extends React.Component {
       
       })
     }
->>>>>>> design-update
+
   }
 
   handleTime = (time) => {
@@ -66,8 +56,7 @@ class PeakInfoModal extends React.Component {
     })
   }
 
-<<<<<<< HEAD
-=======
+
   handlePageForward = () => {
     
 
@@ -85,7 +74,7 @@ class PeakInfoModal extends React.Component {
     
   }
 
->>>>>>> design-update
+
   handleSubmit = (e) => {
     e.preventDefault()
 
@@ -93,11 +82,9 @@ class PeakInfoModal extends React.Component {
     const prompt = this.state.prompt
     const time = this.state.time
 
-<<<<<<< HEAD
-    if (prompt) {
-=======
+
    if (prompt) {
->>>>>>> design-update
+
       const newPrompt = this.state.prompt
       this.context.handlePeakGame(newPrompt, time)
     } else {
@@ -105,9 +92,7 @@ class PeakInfoModal extends React.Component {
       this.context.handlePeakGame(newPrompt, time)
     }
 
-<<<<<<< HEAD
-    this.props.onHide()
-=======
+
     
 
     this.props.onHide()
@@ -115,7 +100,7 @@ class PeakInfoModal extends React.Component {
       page: 1,
       prompt: ''
     })
->>>>>>> design-update
+
   }
 
   render() {
@@ -129,83 +114,12 @@ class PeakInfoModal extends React.Component {
         {...this.props}
         dialogClassName="info-modal"
         contentClassName="info-modal-content"
-<<<<<<< HEAD
-        size="lg"
-=======
-
->>>>>>> design-update
         aria-labelledby="contained-modal-title-vcenter"
         backdrop="static"
         centered>
 
-<<<<<<< HEAD
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
 
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>How to Play Peaks and Valleys</h4>
-
-          <div>
-            <form>
-              <Form.Check
-                type="switch"
-                id="custom-switch"
-                label="Choose a topic for me"
-                checked={this.state.promptCheck}
-                onChange={(e) => this.handlePromptCheck(e.target.value)}
-              />
-              {!this.state.promptCheck &&
-
-
-                <div className="margin-bottom">
-                  <Form.Group className="mb-3" controlId="promptInput">
-                    <Form.Control type="text" placeholder="test"
-                      as="textarea" rows={3}
-                      name="prompt"
-                      className="prompt-form-input"
-                      type="text"
-                      placeholder="Type in your topic"
-                      value={this.state.prompt}
-                      onChange={(e) => this.handlePrompt(e.target.value)}
-
-                    />
-
-                    <Form.Text id="passwordHelpBlock" muted>
-                      You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
-                    </Form.Text>
-
-                  </Form.Group>
-                </div>
-              }
-              <div className="margin-bottom">
-                <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
-                <Form.Select aria-label="Default select example"
-                  onChange={(e) => this.handleTime(e.target.value)}
-                  value={this.state.time}
-                >
-                  <option value="5">5 seconds</option>
-                  <option value="30">30 seconds</option>
-                  <option value="60">1 minute</option>
-                  <option value="120">2 minutes</option>
-                  <option value="10800">3 hours (I don't have much to do today)</option>
-                </Form.Select>
-              </div>
-
-            </form>
-          </div>
-
-          <div>
-            <Button
-              onClick={this.handleSubmit}
-            >
-              Enter Game
-            </Button>
-          </div>
-
-=======
-
+       
         <Modal.Body>
           <div className="info-modal-body">
             <div className="center mt-4 mb-4">
@@ -331,17 +245,16 @@ class PeakInfoModal extends React.Component {
             </div>
 
            
->>>>>>> design-update
 
 
 
 
 
 
-<<<<<<< HEAD
-=======
+
+
           </div>
->>>>>>> design-update
+
         </Modal.Body>
       </Modal>
 

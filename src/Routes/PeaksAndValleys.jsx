@@ -29,11 +29,9 @@ class PeaksAndValleys extends React.Component {
   
   render() {
     return (
-<<<<<<< HEAD
-      <div>
-=======
+
       <>
->>>>>>> design-update
+
         <div className="container-medium">
 
           
@@ -53,11 +51,9 @@ class PeaksAndValleys extends React.Component {
         </div>
        
         
-<<<<<<< HEAD
-      </div>
-=======
+
       </>
->>>>>>> design-update
+
     )
   }
 }

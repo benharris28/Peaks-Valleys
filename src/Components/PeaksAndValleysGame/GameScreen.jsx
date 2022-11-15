@@ -15,14 +15,11 @@ import Lottie from 'react-lottie-player';
 import energyRocket from '../../Lotties/energyRocket.json'
 import downArrow from '../../Lotties/downArrow.json'
 import selfArrow from '../../Lotties/selfArrow.json'
-<<<<<<< HEAD
-import gwelcome from '../../Lotties/welcome.json'
-=======
 import newRocket from '../../Lotties/newRocket.json'
 import welcome from '../../Lotties/welcome.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
->>>>>>> design-update
+
 
 
 
@@ -46,11 +43,7 @@ class GameScreen extends React.Component {
     secondsRemaining: '',
     status: 'started',
     time: {},
-<<<<<<< HEAD
-    seconds: 200,
-=======
     seconds: '',
->>>>>>> design-update
     timer: 0,
     running: false,
     initialSeconds: 200,
@@ -63,15 +56,11 @@ class GameScreen extends React.Component {
     this.setState({
       newLottie: lottie
     })
-<<<<<<< HEAD
-    
-  }
-  
-=======
+
 
   }
 
->>>>>>> design-update
+
   secondsToTime = (secs) => {
     let hours = Math.floor(secs / (60 * 60));
 
@@ -160,11 +149,9 @@ class GameScreen extends React.Component {
 
     const { symbolNumber } = this.state;
     const symbolArray = [1, 2, 3];
-<<<<<<< HEAD
-    const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: energyRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
-=======
+
     const symbolArray2 = [{ id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: newRocket, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
->>>>>>> design-update
+
     { id: 2, newClass: "hero blue", hint: "Bring the energy down...", symbol: downArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666888518/GET_28_jdkbd8.png" },
     { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: selfArrow, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
@@ -180,13 +167,10 @@ class GameScreen extends React.Component {
     console.log(filterSymbol2)
     console.log(newSymbol)
 
-<<<<<<< HEAD
-    const minTime = 5000
-    const maxTime = 10000
-=======
+
     const minTime = 10000
     const maxTime = 15000
->>>>>>> design-update
+
     const rand = Math.round(Math.random() * (maxTime - minTime)) + minTime;
     console.log(rand)
 
@@ -209,19 +193,13 @@ class GameScreen extends React.Component {
   }
 
 
-<<<<<<< HEAD
-setAnimationPostion = () => {
-  this.setState({
-    animationPostion: 0
-  })
-}
-=======
+
   setAnimationPostion = () => {
     this.setState({
       animationPostion: 0
     })
   }
->>>>>>> design-update
+
 
 
 
@@ -231,34 +209,12 @@ setAnimationPostion = () => {
     console.log(this.state)
     const { time } = this.props
     const lottie = this.state.symbolLottie
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> design-update
 
 
     return (
       <div className="game">
-<<<<<<< HEAD
-         
-        <div className="pb-2 pt-4 pr-4 pl-4">
-           
-          <Container fluid fluid={true}>
-             <div className="progress-bar-container mb-3">
-                        <div className="progress-bar-label">Time Left: {this.state.seconds}</div>
-                        <ProgressBar className="timer-bar" now={this.state.seconds} min={0} max={time} />
-                      </div>
-         
-            <Row>
-              <Col sm={12} md={12} lg={6}>
 
-                <div className={this.state.newClass}>
-                  <div className="hero-image">
-                    
-                    <div className="hero-wrap">
-                      <Lottie 
-=======
 
         <div className="pt-4 pb-4 pr-4 pl-4 full">
 
@@ -276,29 +232,22 @@ setAnimationPostion = () => {
 
                     <div className="hero-wrap">
                       <Lottie
->>>>>>> design-update
+
                         key={this.state.symbolNumber}
                         loop={3}
                         goTo={0}
                         animationData={lottie}
                         play={true}
-<<<<<<< HEAD
-                        style={{ width: "70%" }}
-                        />
-                      <div><h2 className="white">{this.state.hint}</h2></div>
-=======
+
                         style={{ width: "150px" }}
                       />
 
->>>>>>> design-update
+
                     </div>
 
                   </div>
 
-<<<<<<< HEAD
 
-
-=======
                   <div className="hint">
                     <div className="icon-box mr-1">
                       <FontAwesomeIcon className="icon" icon={faCircleInfo} />
@@ -310,76 +259,12 @@ setAnimationPostion = () => {
 
                   </div>
 
->>>>>>> design-update
+
 
 
 
                 </div>
-<<<<<<< HEAD
-              </Col>
 
-              <Col sm={12} md={12} lg={6}>
-                <div className="content">
-
-
-                  {this.state.running === true &&
-                  <div className="topic-container mb-4">
- 
-                    <div>Your Topic</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">{this.state.prompt}</h1>
-                    </div>
-                  
-                  </div>
-}
-
-                  {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
-                  <div className="topic-container mb-4">
- 
-                    <div>Get Ready</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">Are you ready to play?</h1>
-                    </div>
-                  
-                  </div>
-                  }
-
-                    {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
-                  <div className="topic-container mb-4">
- 
-                    <div>Great Work!</div>
-                    <div className="margin-bottom">
-                      <h1 className="topic">Should we play again??</h1>
-                    </div>
-                  
-                  </div>
-                    }
-
-
-                  <div className="button-container">
-
-                    {this.state.running === false && this.context.userGameInfo.peakGameOver === false &&
-
-                      <Button
-                        className="game-button"
-                        onClick={() => this.startTimer()}>
-                        Start Game
-                      </Button>
-                    }
-
-                    {this.state.running === false && this.context.userGameInfo.peakGameOver === true &&
-
-                      <Button
-                        className="game-button"
-                        onClick={() => this.props.show()}>
-                        Play Again
-                      </Button>
-                    }
-
-              
-                  </div>
-
-=======
 
               </Col>
             </Row>
@@ -459,7 +344,7 @@ setAnimationPostion = () => {
 
 
 
->>>>>>> design-update
+
                 </div>
               </Col>
 

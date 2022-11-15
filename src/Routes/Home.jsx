@@ -8,10 +8,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-<<<<<<< HEAD
-=======
 import Nav from '../Components/Nav'
->>>>>>> design-update
+
 
 class Home extends React.Component {
   render() {
@@ -25,17 +23,12 @@ class Home extends React.Component {
 
     return (
 
-<<<<<<< HEAD
-      <div className="mt-3">
-        
-        <Container>
-          <div className="mb-5">
-=======
+
       <div>
         <Nav />
         <Container>
           <div className="mt-3 mb-5">
->>>>>>> design-update
+
             <h1>Game Zone</h1>
           </div>
           <Row>

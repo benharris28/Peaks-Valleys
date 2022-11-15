@@ -19,12 +19,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #F7FFF7!important;
-}
-
-=======
-  background-color: #000!important;
-  
+  background-color: #000!important; 
 }
 
 .full {
@@ -66,12 +61,10 @@ body.lock-zoom {
 }
 
 @keyframes changeToPink {
-<<<<<<< HEAD
+
 
   to {background-color: #FF79A3;}
-=======
- to {background-color: #FF79A3}
->>>>>>> design-update
+
 }
 
 .yellow {
@@ -101,8 +94,6 @@ body.lock-zoom {
 /* App */
 .app {
   z-index: 5;
-<<<<<<< HEAD
-=======
   margin: auto;
   max-width: 500px;
 }
@@ -139,7 +130,6 @@ body.lock-zoom {
   margin: auto;
   height: 100%;
  
->>>>>>> design-update
 }
 
 /*
@@ -167,11 +157,8 @@ h1 {
 }
 
 .container-medium {
-<<<<<<< HEAD
-  
-=======
+
   height: 100%;
->>>>>>> design-update
   margin: auto;
 }
 
@@ -188,11 +175,7 @@ h1 {
 }
 
 .main {
-<<<<<<< HEAD
-  height: 80vh;
-=======
   height: 100%;
->>>>>>> design-update
 }
 
 
@@ -203,14 +186,7 @@ h1 {
   object-fit: cover!important;
 }
 
-<<<<<<< HEAD
-/* Content Section */
 
-.content {
-  padding-top: 8rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
-=======
 /* Game Grid */
 .title-box {
   color: #47FFBE;
@@ -253,16 +229,11 @@ h1 {
   padding-left: 3rem;
   border: 2px solid #47FFBE;
   height: 100%;
->>>>>>> design-update
 }
 
 /* Topic */ 
 
 .topic {
-<<<<<<< HEAD
-  font-size: 5rem!important;
-  font-family: 'Anton'
-=======
   font-size: 1.5rem!important;
   font-weight: 300;
   color: #fff;
@@ -278,8 +249,6 @@ h1 {
   border-radius: 30px;
   padding: 0.3rem;
   margin-bottom: 1rem;
-  
->>>>>>> design-update
 }
 
 
@@ -296,11 +265,7 @@ h1 {
   border-style: solid grey;
   border-width: 3px!important;
   border-color: rgba(234, 233, 238, 0.3);
-<<<<<<< HEAD
-  background-color: #fd92fe!important;
-=======
   background-color: #47ffbe!important;
->>>>>>> design-update
   padding: 3px!important;
   
   
@@ -310,19 +275,7 @@ h1 {
   position: relative;
  
 }
-<<<<<<< HEAD
-/*
 
-.progress-bar-label {
-  position: absolute;
-  width: 100%;
-  top: 15%;
-  text-align: center;
-
-}
-
-*/
-=======
 
 
 .progress-bar-label {
@@ -333,36 +286,10 @@ h1 {
 }
 
 
->>>>>>> design-update
 
 /* Hero */
 
 .hero {
-<<<<<<< HEAD
-  height: 80vh;
- 
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-}
-
-.hero-image {
-  height: 100%;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  
-}
-
-.hero-wrap {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-=======
-  
- 
   border-radius: 30px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   width: 100%;
@@ -383,8 +310,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-   
->>>>>>> design-update
+
 }
 
 /* Time Container */
@@ -413,36 +339,7 @@ h1 {
 
 /* Buttons */
 
-<<<<<<< HEAD
-.game-button {
-    width: 30%;
-    height: 50px;
-    background-color: #47ffbe!important;
-    color: black!important;
-    border: 2px solid black!important;
-    font-weight: 700!important;
-  }
 
-@media only screen and (max-width: 600px) {
-  .hero {
-    height: 40vh;
-  }
-
-  .content {
-  padding-top: 1rem;
-    padding-right: 1rem;
-  padding-left: 1rem;
-}
-  
-  .topic {
-  font-size: 2.5rem!important;
-  font-family: 'Anton'
-}
-
-
-  .topic-container {
-    text-align: center;
-=======
 .buttons {
   display: flex;
   flex-direction: column;
@@ -481,7 +378,6 @@ h1 {
 
   .topic-container {
     text-align: left;
->>>>>>> design-update
   }
 
   /* Button Container */ 
@@ -490,18 +386,6 @@ h1 {
   text-align: center;
 }
 
-<<<<<<< HEAD
-  .game-button {
-    width: 100%;
-    height: 50px;
-    background-color: #47ffbe!important;
-    color: black!important;
-    border: 2px solid black!important;
-    font-weight: 700!important;
-  }
-=======
- 
->>>>>>> design-update
 
   .mobile-timer {
     display: block;
@@ -517,9 +401,5 @@ h1 {
     padding-left: 1rem;
     font-size: 14px;
   }
-<<<<<<< HEAD
-=======
 
- 
->>>>>>> design-update
 }

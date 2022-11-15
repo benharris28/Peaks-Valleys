@@ -19,9 +19,6 @@ class App extends React.Component {
       peakPrompt: 'Advice to my younger self',
       peakTime: '',
       peakGameOver: false
-<<<<<<< HEAD
-    }
-=======
     },
     height: '100%'
   }
@@ -36,7 +33,7 @@ class App extends React.Component {
   componentDidMount() {
     this.setState({ height: window.innerHeight + 'px' });
     window.addEventListener('resize', this.handleResizedScreen);
->>>>>>> design-update
+
   }
 
   handlePeakGame = (prompt, time) => {
@@ -59,20 +56,13 @@ class App extends React.Component {
     this.setState({
       userGameInfo: {
         ...userGameInfo,
-<<<<<<< HEAD
-=======
         peakPrompt: '',
->>>>>>> design-update
       peakGameOver: status
       }
       
     })
   }
-<<<<<<< HEAD
-  
-  render() {
-    console.log(this.state)
-=======
+
 
   handleResize = () => {
     this.setState({
@@ -87,7 +77,7 @@ class App extends React.Component {
     const height = this.state.height
    
    
->>>>>>> design-update
+
 
       const value = {
       ...this.state,
@@ -98,15 +88,11 @@ class App extends React.Component {
     
     return (
       <ApiContext.Provider value={value}>
-<<<<<<< HEAD
-      <div className="app">
-        <div className="background"></div>
-        <Nav />
-=======
+
       <div className="app" style={{ height: `${height}`}}>
         <div className="background"></div>
       
->>>>>>> design-update
+
         <div className="main">
         <Routes>
           <Route path="/" element={<Home />} />

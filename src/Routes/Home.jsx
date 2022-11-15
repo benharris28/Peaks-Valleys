@@ -25,19 +25,19 @@ class Home extends React.Component {
 
 
       <div>
-        <Nav />
+        
         <Container>
-          <div className="mt-3 mb-5">
+          <div className="mt-5 mb-5 center">
 
-            <h1>Game Zone</h1>
+            <h1 className="green-font">Game Zone</h1>
           </div>
           <Row>
             {games.map((game, index) =>
               <Link className="no-decoration" key={index} to={game.link}>
-                <Card>
+                <Card className="off-white green-border">
                   <Card.Body>
-                  <Card.Title>{game.name}</Card.Title>
-                  <Card.Text>
+                  <Card.Title className="blue-font">{game.name}</Card.Title>
+                  <Card.Text className="blue-font">
                     {game.subtitle}
                   </Card.Text>
                   </Card.Body>

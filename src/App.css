@@ -91,6 +91,24 @@ body.lock-zoom {
   background-color: #231F20;
 }
 
+.off-white {
+  background-color: #F7FFF7!important;
+}
+
+.green-font {
+  color: #47FFBE;
+}
+
+.blue-font {
+  color: #1A535C;
+}
+
+.green-border {
+  border: 2px solid #47FFBE!important;
+}
+
+
+
 /* App */
 .app {
   z-index: 5;
@@ -98,8 +116,18 @@ body.lock-zoom {
   max-width: 500px;
 }
 
+/* Peaks Home Screen */
+
+.no-decoration {
+  text-decoration: none;
+}
+
 /* Info Modal */ 
 
+.info-modal-content {
+  border: 0px;
+  background-color: #F7FFF7;
+}
 .toggle-container {
   display: flex;
   justify-content: space-evenly;

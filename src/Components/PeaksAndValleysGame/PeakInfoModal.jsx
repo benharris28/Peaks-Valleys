@@ -112,16 +112,17 @@ class PeakInfoModal extends React.Component {
     return (
       <Modal
         {...this.props}
+        size="md"
         dialogClassName="info-modal"
-        contentClassName="info-modal-content"
+        contentClassName="info-modal-content off-white"
         aria-labelledby="contained-modal-title-vcenter"
         backdrop="static"
         centered>
 
 
        
-        <Modal.Body>
-          <div className="info-modal-body">
+        <Modal.Body className="off-white">
+          <div className="info-modal-body off-white">
             <div className="center mt-4 mb-4">
               <h2>How to Play Peaks and Valleys</h2>
             </div>
@@ -144,7 +145,7 @@ class PeakInfoModal extends React.Component {
                   <ToggleButton
                     id="toggle-check"
                     type="checkbox"
-                    variant="outline-primary"
+                    variant="outline-dark"
                     checked={this.state.promptCheck}
                     value="true"
                     onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
@@ -157,7 +158,7 @@ class PeakInfoModal extends React.Component {
               
                     id="toggle-check"
                     type="checkbox"
-                    variant="outline-primary"
+                    variant="outline-dark"
                     checked={!this.state.promptCheck}
                     value="true"
                     onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}

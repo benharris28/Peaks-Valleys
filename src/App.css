@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton");
+@import url("https://fonts.googleapis.com/css?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
@@ -19,7 +21,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #000!important; 
+  background-color: #231F20!important; 
 }
 
 .full {
@@ -120,6 +122,23 @@ body.lock-zoom {
 
 .no-decoration {
   text-decoration: none;
+}
+
+.home-title {
+  background: linear-gradient(rgba(255,121,163,1), rgba(255,237,103,1));
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: Orbitron;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
 }
 
 /* Info Modal */ 

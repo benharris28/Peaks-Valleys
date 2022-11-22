@@ -9,6 +9,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Nav from '../Components/Nav';
+import SpeakerLabsStackedLogo from '../Assets/SpeakerLabsStackedLogo.png';
+import GameCard from '../Components/GameCard';
 
 
 class Home extends React.Component {
@@ -28,10 +30,12 @@ class Home extends React.Component {
         
         <Container>
           <div className="mt-5 mb-5 center">
+            <img src={SpeakerLabsStackedLogo} alt="home"/>
 
-            <h1 className="green-font">Game Zone</h1>
+          
           </div>
           <Row>
+            <h1 className="home-title">Game Zone</h1>
             {games.map((game, index) =>
               <Link className="no-decoration" key={index} to={game.link}>
                 <Card className="off-white green-border">
@@ -43,6 +47,12 @@ class Home extends React.Component {
                   </Card.Body>
                 </Card>
               </Link>)}
+          </Row>
+          <Row>
+            <Col>
+              <GameCard />
+            </Col>
+            
           </Row>
           
           

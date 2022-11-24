@@ -15,12 +15,33 @@ class GameCard extends React.Component {
   render() {
     return (
       
-        <Card>
-          <Card.Img variant="top" src={hiker} />
-          <Card.Body>
+        <div className="gamecard">
+          <div className="gamecard-image-container">
+             <img className="gamecard-image" src={hiker} 
+          
+            />
+          </div>
+         
+           
+     
+          
+  
+         
+     
+          <div className="gamecard-body">
+            <div className="gamecard-content-container">
+              <div className="border-gradient border-gradient-pink">
+                <div className="gamecard-content-thumbnail border-gradient-pink">
+              </div>
+              
+                
+              </div>
+              <div className="gamecard-content-title">Peaks & Valleys</div>
+              <div className="gamecard-content-subtitle">Fun Game to Play</div>
+            </div>
             Testing
-          </Card.Body>
-        </Card>
+          </div>
+        </div>
       
     )
   }

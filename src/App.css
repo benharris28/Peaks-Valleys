@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
+
 :root {
   height: 100!;
 }
@@ -21,7 +22,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #231F20!important; 
+  background-color: #0C0D27!important; 
 }
 
 .full {
@@ -40,7 +41,7 @@ body.lock-zoom {
   padding-top: 1rem;
   box-shadow: 0px 0px 56px 00000;
   border-radius: 30px;
-  background-color: #4A4E55;
+  background-color: #0C0D27;
   
   
 
@@ -139,6 +140,90 @@ body.lock-zoom {
   font-size: 32px;
   opacity: 1;
   text-align: center;
+}
+
+/* Game Card */
+.gamecard {
+  background-color: #0C0D27!important;
+  border: 0px solid #0C0D27!important;
+  width: 100%;
+}
+
+.gamecard-image-container {
+  width: 100%;
+  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
+  background: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
+}
+
+.gamecard-body {
+  background-color: #0C0D27!important;
+  border: 0px solid #0C0D27!important;
+}
+
+.gamecard-image {
+  border-radius: 8px;
+  width: 100%;
+  object-fit: cover;
+  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
+}
+
+.gamecard-overlay {
+  background: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
+}
+
+.gamecard-content-container {
+  position: relative;
+  top: -30px;
+  background-color: #231F20;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  filter: drop-shadow(10.6269px 12.7522px 23.3791px rgba(0, 0, 0, 0.5));
+}
+
+.gamecard-content-thumbnail {
+  background-image: url('/src/Assets/hikerthumbnail2.png');
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+}
+
+.border-gradient {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-image: linear-gradient(to left, #FF79A3, #FFED67);
+  position: relative;
+}
+
+
+
+.gamecard-content-title {
+  font-size: 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  color: #fff
+}
+
+.gamecard-content-subtitle {
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+  color: #fff;
+  font-size: 12px;
 }
 
 /* Info Modal */ 

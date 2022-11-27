@@ -116,7 +116,7 @@ body.lock-zoom {
 .app {
   z-index: 5;
   margin: auto;
-  max-width: 500px;
+  max-width: 680px;
 }
 
 /* Peaks Home Screen */
@@ -158,6 +158,8 @@ body.lock-zoom {
 .gamecard-body {
   background-color: #0C0D27!important;
   border: 0px solid #0C0D27!important;
+  width: 95%;
+  margin: auto
 }
 
 .gamecard-image {
@@ -226,6 +228,13 @@ font-weight: 400;
   font-size: 12px;
 }
 
+/* Form Flow */
+
+.form-flow {
+  z-index: 5;
+  height: 100%;
+}
+
 /* Info Modal */ 
 
 .info-modal-content {
@@ -292,6 +301,7 @@ h1 {
 
   height: 100%;
   margin: auto;
+  position: relative;
 }
 
 .margin-bottom {

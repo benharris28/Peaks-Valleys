@@ -3,7 +3,7 @@ import ApiContext from '../ApiContext'
 import Button from 'react-bootstrap/Button';
 import GameScreen from '../Components/PeaksAndValleysGame/GameScreen'
 import PeakInfoModal from '../Components/PeaksAndValleysGame/PeakInfoModal'
-
+import PeakFormFlow from '../Components/PeaksAndValleysGame/PeakFormFlow'
 
 class PeaksAndValleys extends React.Component {
   static contextType = ApiContext;
@@ -44,10 +44,9 @@ class PeaksAndValleys extends React.Component {
             time={this.context.userGameInfo.peakTime}
             />
 
-          <PeakInfoModal
-              show={this.state.showPeakInfoModal}
-              onHide={() => this.setPeakInfoModal(false)}
-            />
+          
+
+          <PeakFormFlow />
         </div>
        
         

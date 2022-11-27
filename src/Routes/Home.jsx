@@ -34,23 +34,12 @@ class Home extends React.Component {
 
           
           </div>
-          <Row>
-            <h1 className="home-title">Game Zone</h1>
-            {games.map((game, index) =>
-              <Link className="no-decoration" key={index} to={game.link}>
-                <Card className="off-white green-border">
-                  <Card.Body>
-                  <Card.Title className="blue-font">{game.name}</Card.Title>
-                  <Card.Text className="blue-font">
-                    {game.subtitle}
-                  </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>)}
-          </Row>
+          
           <Row>
             <Col>
-              <GameCard />
+              <Link className="no-decoration" to={'/peaks-valleys'}>
+                <GameCard />
+              </Link>
             </Col>
             
           </Row>

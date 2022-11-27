@@ -235,6 +235,14 @@ font-weight: 400;
   height: 100%;
 }
 
+.form-flow-background {
+  background-image: url('/src/Assets/peakmodalbackground.png');
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  height: 500px;
+  width: 100%;
+}
+
 /* Info Modal */ 
 
 .info-modal-content {

@@ -37,16 +37,20 @@ class PeaksAndValleys extends React.Component {
           
 
        
-          
+          {!this.state.showPeakInfoModal &&
           <GameScreen 
             show={() => this.setPeakInfoModal(true)}
             onHide={() => this.setPeakInfoModal(false)}
             time={this.context.userGameInfo.peakTime}
             />
+          }
 
-          
+
+          {this.state.showPeakInfoModal && 
 
           <PeakFormFlow />
+
+          }
         </div>
        
         

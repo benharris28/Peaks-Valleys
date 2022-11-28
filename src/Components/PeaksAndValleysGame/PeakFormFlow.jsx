@@ -43,6 +43,23 @@ class PeakFormFlow extends React.Component {
 
   }
 
+  handleNextButton = () => {
+    const { promptCheck } = this.state;
+    let nextButtonDisabled;
+   
+    if (promptCheck) {
+      nextButtonDisabled = false;
+    }
+
+    else if (!promptCheck && this.state.prompt.length > 1) {
+      nextButtonDisabled = false;
+    } else {
+      nextButtonDisabled = true;
+    }
+
+    return nextButtonDisabled;
+  }
+
   handleTime = (time) => {
     this.setState({
       time: time
@@ -51,6 +68,8 @@ class PeakFormFlow extends React.Component {
 
   handlePromptCheck = () => {
     const checked = this.state.promptCheck
+    
+    
     this.setState({
       promptCheck: !checked
     })
@@ -113,57 +132,49 @@ class PeakFormFlow extends React.Component {
       <div className="form-flow">
 
         <div className="form-flow-background">
-          
-        </div>
-
-
-       
-       
-          <div>
+          <div className="form-flow-container">
+            <div className="form-flow-content">
             <div className="center mt-4 mb-4">
               <h2>How to Play Peaks and Valleys</h2>
             </div>
 
-
-
-
             <div className="center">
-              
-              
               <form>
                 {this.state.page === 1 && 
                 <>
                   <div className="mb-2">
-                First, let's pick a topic to talk about. Would you like us to provide a topic for you?
-              </div>
-                <div className="toggle-container">
-                <ButtonGroup className="toggle-button">
-                 
-                  <ToggleButton
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="outline-dark"
-                    checked={this.state.promptCheck}
-                    value="true"
-                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
-                  >
-                    Yes
-                  </ToggleButton>
-                  </ButtonGroup>
-                <ButtonGroup className="toggle-button">
-                  <ToggleButton
-              
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="outline-dark"
-                    checked={!this.state.promptCheck}
-                    value="true"
-                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
-                  >
-                    No
-                  </ToggleButton>
+                    First, let's pick a topic to talk about. Would you like us to provide a topic for you?
+                  </div>
                   
-                </ButtonGroup>
+                  <div className="toggle-container">
+                    <ButtonGroup className="toggle-button">
+                 
+                      <ToggleButton
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-dark"
+                        checked={this.state.promptCheck}
+                        value="true"
+                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                        >
+                        Yes
+                      </ToggleButton>
+                    </ButtonGroup>
+                    
+                    <ButtonGroup className="toggle-button">
+                      <ToggleButton
+              
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-dark"
+                        checked={!this.state.promptCheck}
+                        value="true"
+                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                      >
+                        No
+                      </ToggleButton>
+                  
+                    </ButtonGroup>
                 </div>
                 
                
@@ -196,9 +207,10 @@ class PeakFormFlow extends React.Component {
                 }
                   <div>
                   <Button
+                    className="button"
                     onClick={this.handlePageForward}
-                    disabled={this.state.disableNextButton}>
-                    Next
+                    disabled={this.handleNextButton()}>
+                    NEXT
                   </Button>
                 </div>
                 
@@ -241,17 +253,17 @@ class PeakFormFlow extends React.Component {
 
               </form>
             </div>
+            
 
-           
-
-
-
-
-
-
-
-
+           </div> 
           </div>
+          
+        </div>
+
+
+       
+       
+         
 
        
       </div>

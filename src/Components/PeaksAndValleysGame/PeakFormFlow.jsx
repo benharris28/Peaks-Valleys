@@ -237,11 +237,11 @@ class PeakFormFlow extends React.Component {
                 
 
 
-                    <div className="time-select-container">
+                    <div className="time-select-container mb-4">
                     
 
                 <Container className="time-select-container">
-                  <Row>
+                  <Row className="mb-2">
                     <Col>
                        <ButtonGroup>
                       <ToggleButton
@@ -319,14 +319,9 @@ class PeakFormFlow extends React.Component {
                     
                      <div className="button-container">
                       
-              <Button
-                className="form-button"
-                variant="outline-primary"
-                onClick={this.handlePageBack}
-              >
-                Back
-              </Button>
+            
                        <Button
+                         className="button"
                 onClick={this.handleSubmit}
               >
                 Enter Game

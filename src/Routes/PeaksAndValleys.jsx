@@ -48,7 +48,9 @@ class PeaksAndValleys extends React.Component {
 
           {this.state.showPeakInfoModal && 
 
-          <PeakFormFlow />
+          <PeakFormFlow 
+            onHide={() => this.setPeakInfoModal(false)}
+            />
 
           }
         </div>

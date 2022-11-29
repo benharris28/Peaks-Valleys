@@ -323,7 +323,7 @@ font-weight: 400;
 
 .prompt-rectangle {
   background-color: #7ACDE1;
-  height: 200px;
+  height: 180px;
   position: relative;
   border-radius: 15px;
 }
@@ -351,6 +351,18 @@ margin-right:auto;
   
 }
 
+.prompt-image {
+  position: absolute;
+  top: 0;
+  left:0;
+right:0;
+  bottom: 0;
+margin-left:auto;
+margin-right:auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .prompt-text {
   position: absolute;
   bottom: 20px;
@@ -360,6 +372,9 @@ right:10px;
   margin-left:auto;
 margin-right:auto;
   text-align: center;
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 500;
   
 }
 /* Info Modal */ 

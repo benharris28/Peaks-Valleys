@@ -7,7 +7,8 @@ import {
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Prompt from './Prompt'
+import Prompt from './Prompt';
+import Timer from './Timer';
 
 
 class PeakGame extends React.Component {
@@ -29,6 +30,11 @@ class PeakGame extends React.Component {
           <Row>
             <Col>
               <Prompt />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Timer />
             </Col>
           </Row>
         </Container>

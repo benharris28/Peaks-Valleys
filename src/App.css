@@ -308,6 +308,11 @@ font-weight: 400;
   border: 0px!important;
 }
 
+.time-select-container {
+  width: 300px;
+  margin: auto;
+}
+
 /* Info Modal */ 
 
 

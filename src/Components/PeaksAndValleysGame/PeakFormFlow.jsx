@@ -2,6 +2,9 @@ import React from 'react';
 import ApiContext from '../../ApiContext'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
@@ -15,7 +18,8 @@ class PeakFormFlow extends React.Component {
     prompt: '',
     time: 30,
     promptCheck: true,
-    disableNextButton: false
+    disableNextButton: false,
+    timeRadioValue: 30
   }
 
   componentDidMount = () => {
@@ -93,13 +97,19 @@ class PeakFormFlow extends React.Component {
     
   }
 
+  setTimeRadioValue = (value) => {
+    this.setState({
+      timeRadioValue: value
+    })
+  }
+
 
   handleSubmit = (e) => {
     e.preventDefault()
 
 
     const prompt = this.state.prompt
-    const time = this.state.time
+    const time = this.state.timeRadioValue
 
 
    if (prompt) {
@@ -125,6 +135,8 @@ class PeakFormFlow extends React.Component {
   render() {
     const { show, onHide } = this.props;
     console.log(this.state)
+
+
 
 
 
@@ -219,19 +231,92 @@ class PeakFormFlow extends React.Component {
 
                 {this.state.page === 2 &&
                   <>
-                <div className="margin-bottom">
-                  <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
-                  <Form.Select aria-label="Default select example"
-                    onChange={(e) => this.handleTime(e.target.value)}
-                    value={this.state.time}
-                  >
-                    <option value="5">5 seconds</option>
-                    <option value="30">30 seconds</option>
-                    <option value="60">1 minute</option>
-                    <option value="120">2 minutes</option>
-                    <option value="10800">3 hours (I don't have much to do today)</option>
-                  </Form.Select>
-                </div>
+                    <div className="mb-4">
+                      How long would you like to play for?
+                    </div>
+                
+
+
+                    <div className="time-select-container">
+                    
+
+                <Container className="time-select-container">
+                  <Row>
+                    <Col>
+                       <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-0`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={30}
+                        checked={this.state.timeRadioValue == 30}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        30 sec
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                       
+                    <Col>
+                      <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-1`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={60}
+                        checked={this.state.timeRadioValue == 60}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        60 sec
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                       <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-2`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={120}
+                        checked={this.state.timeRadioValue == 120}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        2 mins
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                       
+                    <Col>
+                      <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-3`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={300}
+                        checked={this.state.timeRadioValue == 300}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        5 mins
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                  </Row>
+                  
+                </Container>
+                      </div>
+
+
+                    
                      <div className="button-container">
                       
               <Button

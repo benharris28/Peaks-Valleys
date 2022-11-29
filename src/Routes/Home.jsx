@@ -34,6 +34,8 @@ class Home extends React.Component {
 
           
           </div>
+
+          <h1 className="home-title">Game Zone</h1> 
           
           <Row>
             <Col>

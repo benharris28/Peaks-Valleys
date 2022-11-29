@@ -4,17 +4,19 @@ import Button from 'react-bootstrap/Button';
 import GameScreen from '../Components/PeaksAndValleysGame/GameScreen'
 import PeakInfoModal from '../Components/PeaksAndValleysGame/PeakInfoModal'
 import PeakFormFlow from '../Components/PeaksAndValleysGame/PeakFormFlow'
+import PeakGame from '../Components/PeaksAndValleysGame/PeakGame'
 
 class PeaksAndValleys extends React.Component {
   static contextType = ApiContext;
  
   state = {
     showPeakInfoModal: false,
+    showGame: false,
     gameOver: this.context.userGameInfo.peakGameOver
   }
 
   componentDidMount() {
-    this.setPeakInfoModal(true)
+    //this.setPeakInfoModal(true)
   }
 
   setPeakInfoModal = (status) => {
@@ -23,9 +25,6 @@ class PeaksAndValleys extends React.Component {
     })
   }
 
-  resetPeakGame = () => {
-    
-  }
   
   render() {
     return (
@@ -34,10 +33,10 @@ class PeaksAndValleys extends React.Component {
 
         <div className="container-medium">
 
-          
+          <PeakGame />
 
        
-          {!this.state.showPeakInfoModal &&
+          {!this.state.showPeakInfoModal && this.state.showGame &&
           <GameScreen 
             show={() => this.setPeakInfoModal(true)}
             onHide={() => this.setPeakInfoModal(false)}

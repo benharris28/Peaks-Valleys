@@ -313,6 +313,55 @@ font-weight: 400;
   margin: auto;
 }
 
+/* Peak Game */
+
+.game-content {
+  margin-top: 100px;
+}
+
+/* Prompt */
+
+.prompt-rectangle {
+  background-color: #7ACDE1;
+  height: 200px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.prompt-circle {
+  background-color: #7ACDE1;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: -75px;
+  left:0;
+right:0;
+margin-left:auto;
+margin-right:auto;
+  border-radius: 50%;
+}
+
+.prompt-inner-circle {
+  height: 150px;
+  width: 150px;
+  background-color: #91E5F9;
+  margin: auto;
+  margin-top: 25px;
+  border-radius: 50%;
+  
+}
+
+.prompt-text {
+  position: absolute;
+  bottom: 20px;
+  
+  left:10px;
+right:10px;
+  margin-left:auto;
+margin-right:auto;
+  text-align: center;
+  
+}
 /* Info Modal */ 
 
 

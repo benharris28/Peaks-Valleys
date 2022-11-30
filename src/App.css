@@ -321,12 +321,18 @@ font-weight: 400;
 
 /* Prompt */
 
+.prompt-container {
+  position: relative;
+  height: 300px;
+}
+
 .prompt-rectangle {
   background-color: #7ACDE1;
   height: 180px;
-  position: relative;
+  width: 100%;
+  position: absolute;
   border-radius: 15px;
-  margin-bottom: 1.5rem;
+  top: 80px;
 }
 
 .prompt-circle {

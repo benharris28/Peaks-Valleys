@@ -8,7 +8,7 @@ class Prompt extends React.Component {
     
     
     return (
-      <div>
+      <div className="prompt-container">
         <div className="prompt-rectangle">
           <div className="prompt-circle">
             <div className="prompt-inner-circle"></div>

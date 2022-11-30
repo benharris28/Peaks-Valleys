@@ -20,17 +20,21 @@ class PeakGame extends React.Component {
 
 
       <div className="mt-4">
-        <div>
-            <h2 className="home-title">Peaks & Valleys</h2>
-            
-          </div>
-        <div className="game-content">
+        
+       
         <Container>
-          
+          <Row>
+            <Col>
+              <h2 className="home-title">Peaks & Valleys</h2>
+            </Col>
+          </Row>
 
           <Row>
             <Col>
-              <Prompt />
+              <div>
+                <Prompt />
+              </div>
+              
             </Col>
           </Row>
           <Row>
@@ -44,7 +48,7 @@ class PeakGame extends React.Component {
             </Col>
           </Row>
         </Container>
-          </div>
+          
       </div>
     )
   }

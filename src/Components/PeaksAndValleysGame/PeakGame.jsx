@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Prompt from './Prompt';
 import Timer from './Timer';
+import Topic from './Topic';
 
 
 class PeakGame extends React.Component {
@@ -35,6 +36,11 @@ class PeakGame extends React.Component {
           <Row>
             <Col>
               <Timer />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Topic />
             </Col>
           </Row>
         </Container>

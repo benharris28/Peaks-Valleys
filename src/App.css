@@ -22,7 +22,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #0C0D27!important; 
+  background: #1A1718!important; 
 }
 
 .full {
@@ -129,7 +129,7 @@ body.lock-zoom {
 .app {
   z-index: 5;
   margin: auto;
-  max-width: 680px;
+  max-width: 600px;
 }
 
 /* Peaks Home Screen */
@@ -373,9 +373,10 @@ right:10px;
   margin-left:auto;
 margin-right:auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 24px;
   font-family: 'Inter';
   font-weight: 500;
+  color: #000000;
   
 }
 
@@ -384,16 +385,63 @@ margin-right:auto;
 .timer-rectangle {
   background-color: #231F20;
   border-radius: 24px;
-  height: 100px;
+  height: 80px;
 }
 
 .timer-text {
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Inter';
   font-weight: 500;
   color: #fff;
   text-align: center;
   width: 100%;
+}
+
+.thumbnail {
+  height: 20px;
+  width: 20px;
+}
+
+/* Topic */
+
+.topic-rectangle {
+  background-color: #231F20;
+  border-radius: 24px;
+ 
+}
+
+.icon-container {
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  background: rgba(255, 200, 80, .1) 
+ 
+}
+
+.icon {
+  margin: auto;
+ 
+}
+
+.icon-badge {
+  width: 100px;
+  height: 25px;
+  background-color: #fff;
+  border-radius: 8px;
+  background: linear-gradient(97.5deg, #FF79A3 40.91%, #FFED67 102.28%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.topic-container {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 21px;
 }
 /* Info Modal */ 
 

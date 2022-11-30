@@ -13,7 +13,7 @@ class Timer extends React.Component {
     
     
     return (
-      <div>
+      <div className="mb-4">
         <div className="timer-rectangle pt-2 pb-2">
           <Container>
             <Row className="mb-4">

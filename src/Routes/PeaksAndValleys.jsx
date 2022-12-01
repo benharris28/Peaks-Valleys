@@ -33,7 +33,9 @@ class PeaksAndValleys extends React.Component {
 
         <div className="container-medium">
 
-          <PeakGame />
+          <PeakGame 
+            show={() => this.setPeakInfoModal(true)}
+            />
 
        
           {!this.state.showPeakInfoModal && this.state.showGame &&

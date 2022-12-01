@@ -19,7 +19,7 @@ class App extends React.Component {
       peakPrompt: 'Advice to my younger self',
       peakTime: '',
       peakGameOver: false,
-      gameStatus: 'Not Started'
+      peakGameStatus: 'Not Started'
     },
     height: '100%'
   }
@@ -65,6 +65,20 @@ class App extends React.Component {
     })
   }
 
+  endPeakGame = () => {
+    const { userGameInfo } = this.state;
+
+    this.setState({
+      userGameInfo: {
+        ...userGameInfo,
+        peakPrompt: '',
+      peakGameOver: status,
+      peakGameStatus: 'Game Over'
+      }
+      
+    })
+  }
+
 
   handleResize = () => {
     this.setState({
@@ -84,7 +98,8 @@ class App extends React.Component {
       const value = {
       ...this.state,
         handlePeakGame: this.handlePeakGame,
-        resetPeakGame: this.resetPeakGame
+        resetPeakGame: this.resetPeakGame,
+        endPeakGame: this.endGame
      
     }
     

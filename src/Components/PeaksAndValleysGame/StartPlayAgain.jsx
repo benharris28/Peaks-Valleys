@@ -4,17 +4,31 @@ import Button from 'react-bootstrap/Button';
 
 class StartPlayAgain extends React.Component {
   render() {
-   
+   const { status, startTimer, show } = this.props;
     
     
     
     return (
       <div>
-        Test
-        <Button className="button">
-          Start
-        </Button>
-     
+        {status === "Not Started" && 
+          <Button 
+            className="button"
+            onClick={() => startTimer()}
+            >
+            Start
+          </Button>
+        }
+
+        {status === "Game Over" && 
+          <Button 
+            className="button"
+            onClick={() => show()}
+            >
+            Play Again
+          </Button>
+        }
+
+        
       </div>
     )
   }

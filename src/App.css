@@ -21,7 +21,6 @@ html {
 }
 
 body {
-  height: 100%;
   background: #1A1718!important; 
 }
 
@@ -719,9 +718,7 @@ h1 {
  
 
 
-  .topic-container {
-    text-align: left;
-  }
+  
 
   /* Button Container */ 
 

@@ -18,7 +18,8 @@ class App extends React.Component {
       peakGames: '',
       peakPrompt: 'Advice to my younger self',
       peakTime: '',
-      peakGameOver: false
+      peakGameOver: false,
+      gameStatus: 'Not Started'
     },
     height: '100%'
   }
@@ -57,7 +58,8 @@ class App extends React.Component {
       userGameInfo: {
         ...userGameInfo,
         peakPrompt: '',
-      peakGameOver: status
+      peakGameOver: status,
+      peakGameStatus: 'Not Started'
       }
       
     })
@@ -89,7 +91,7 @@ class App extends React.Component {
     return (
       <ApiContext.Provider value={value}>
 
-      <div className="app" style={{ height: `${height}`}}>
+      <div className="app">
         <div className="background"></div>
       
 

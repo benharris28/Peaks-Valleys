@@ -16,7 +16,7 @@ class PeaksAndValleys extends React.Component {
   }
 
   componentDidMount() {
-    //this.setPeakInfoModal(true)
+    this.setPeakInfoModal(true)
   }
 
   setPeakInfoModal = (status) => {
@@ -32,11 +32,11 @@ class PeaksAndValleys extends React.Component {
       <>
 
         <div className="container-medium">
-
+           {!this.state.showPeakInfoModal &&
           <PeakGame 
             show={() => this.setPeakInfoModal(true)}
             />
-
+           }
        
           {!this.state.showPeakInfoModal && this.state.showGame &&
           <GameScreen 

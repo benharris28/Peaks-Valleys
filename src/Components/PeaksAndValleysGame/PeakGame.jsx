@@ -82,7 +82,8 @@ class PeakGame extends React.Component {
         this.setState({
           interval: interval,
           running: true,
-          gameOver: false
+          gameOver: false,
+          gameStatus: "Running"
         })
       }
 
@@ -138,6 +139,7 @@ class PeakGame extends React.Component {
     { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: 3, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
+    // Find a random new symbol that is not a repeat of the current symbol
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
     console.log(filterSymbol)
 
@@ -175,7 +177,7 @@ class PeakGame extends React.Component {
   }
   
   render() {
-    const { gameStatus } = this.state;
+    const { gameStatus, symbolNumber } = this.state;
     console.log(this.state)
    
     console.log(gameStatus)
@@ -197,7 +199,7 @@ class PeakGame extends React.Component {
           <Row>
             <Col>
               <div>
-                <Prompt />
+                <Prompt symbol={symbolNumber}/>
               </div>
               
             </Col>

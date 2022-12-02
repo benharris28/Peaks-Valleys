@@ -39,7 +39,8 @@ class PeakGame extends React.Component {
     initialSeconds: 20,
     initialMilliseconds: 3000,
     milliSeconds: 3000,
-    gameStatus: 'Not Started'
+    gameStatus: 'Not Started',
+    symbolObject: { id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: 1, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" }
   }
   //Render topic component or start / play again button component based on game status
   secondsToTime = (secs) => {
@@ -139,14 +140,16 @@ class PeakGame extends React.Component {
     { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: 3, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666889067/GET_29_lkib63.png" }
     ];
 
-    // Find a random new symbol that is not a repeat of the current symbol
+    // Prepare an array of symbols that does not contain the current symbol
     const filterSymbol = symbolArray.filter(symbol => symbol !== symbolNumber)
     console.log(filterSymbol)
 
 
-
+    // Find a random new symbol number from the filtered list
     const newSymbol = filterSymbol[Math.floor(Math.random() * filterSymbol.length)];
 
+
+    // Grab the whole symbol object for the new symbol number
     const filterSymbol2 = symbolArray2.filter(symbol => symbol.id == newSymbol)
     console.log(filterSymbol2)
     console.log(newSymbol)
@@ -162,6 +165,7 @@ class PeakGame extends React.Component {
 
       symbolNumber: newSymbol,
       currentSymbol: filterSymbol2[0].url,
+      symbolObject: filterSymbol2[0],
       symbolLottie: filterSymbol2[0].symbol,
       hint: filterSymbol2[0].hint,
       newClass: filterSymbol2[0].newClass,

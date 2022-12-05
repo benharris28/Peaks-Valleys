@@ -11,9 +11,9 @@ class Prompt extends React.Component {
 
     const symbolArray = 
       [
-        { id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
-        { id: 2, newClass: "hero blue", hint: "Bring the energy down...", symbol: 2, image: bringdownenergy  },
-        { id: 3, newClass: "hero pink", hint: "Talk about yourself", symbol: 3, image: handpointing  }
+        { id: 1, newClass: "yellow", innerCircleClass: "light-yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
+        { id: 2, newClass: "blue", innerCircleClass: "light-blue", hint: "Bring the energy down...", symbol: 2, image: bringdownenergy  },
+        { id: 3, newClass: "pink", innerCircleClass: "light-pink", hint: "Talk about yourself", symbol: 3, image: handpointing  }
       ];
 
     const symbolToDisplay = symbolArray.filter(s => s.id == symbol)[0]
@@ -26,7 +26,7 @@ class Prompt extends React.Component {
       <div className="prompt-container">
         <div className={`prompt-rectangle ${symbolToDisplay.newClass}`}>
           <div className={`prompt-circle ${symbolToDisplay.newClass}`}>
-            <div className="prompt-inner-circle"></div>
+            <div className={`prompt-inner-circle ${symbolToDisplay.innerCircleClass}`}></div>
             
                <img className="prompt-image" src={symbolToDisplay.image} />
           

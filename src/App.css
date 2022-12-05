@@ -57,9 +57,19 @@ body.lock-zoom {
   to {background-color: #FFED67;}
 }
 
+@keyframes changeToLightYellow {
+
+  to {background-color: #FFF7B2;}
+}
+
 @keyframes changeToBlue {
 
-  to {background-color: #67CFE3}
+  to {background-color: #7ACDE1}
+}
+
+@keyframes changeToLightBlue {
+
+  to {background-color: #91E5F9}
 }
 
 @keyframes changeToPink {
@@ -69,9 +79,22 @@ body.lock-zoom {
 
 }
 
+@keyframes changeToLightPink {
+
+
+  to {background-color: #FFA1BF;}
+
+}
+
 .yellow {
  
   animation-name: changeToYellow;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.light-yellow {
+  animation-name: changeToLightYellow;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
@@ -83,8 +106,21 @@ body.lock-zoom {
   animation-fill-mode: forwards;
 }
 
+.light-blue {
+ 
+  animation-name: changeToLightBlue;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
 .pink {
   animation-name: changeToPink;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.light-pink {
+  animation-name: changeToLightPink;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }

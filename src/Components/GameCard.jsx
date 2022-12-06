@@ -39,7 +39,7 @@ class GameCard extends React.Component {
               <div className="gamecard-content-title">Peaks & Valleys</div>
               <div className="gamecard-content-subtitle">Fun Game to Play</div>
             </div>
-            Testing
+         
           </div>
         </div>
       

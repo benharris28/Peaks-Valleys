@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
 
 
 class PeakFormFlow extends React.Component {
@@ -144,7 +145,13 @@ class PeakFormFlow extends React.Component {
       <div className="form-flow">
 
         <div className="form-flow-background">
+          <div className="form-flow-logo">
+              <img src={SpeakerLabsStackedLogo} alt="home"/>
+
+          
+            </div>
           <div className="form-flow-container">
+            
             <div className="form-flow-content">
             <div className="center mt-4 mb-4">
               <h2>How to Play Peaks and Valleys</h2>

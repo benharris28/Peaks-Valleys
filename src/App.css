@@ -204,6 +204,8 @@ body.lock-zoom {
   background-color: #0C0D27!important;
   border: 0px solid #0C0D27!important;
   width: 100%;
+  max-width: 350px;
+  margin: auto;
 }
 
 .gamecard-image-container {
@@ -215,7 +217,6 @@ body.lock-zoom {
 .gamecard-body {
   background-color: #0C0D27!important;
   border: 0px solid #0C0D27!important;
-  width: 95%;
   margin: auto
 }
 
@@ -303,6 +304,15 @@ font-weight: 400;
   background-size: cover;
   
   
+}
+
+.form-flow-logo {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  margin: auto;
 }
 
 .form-flow-container {

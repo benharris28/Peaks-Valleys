@@ -11,6 +11,7 @@ class Prompt extends React.Component {
 
     const symbolArray = 
       [
+        { id: 0, newClass: "card-grey", circleClass: 'prompt-circle-border-gradient', innerCircleClass: "light-yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
         { id: 1, newClass: "yellow", innerCircleClass: "light-yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
         { id: 2, newClass: "blue", innerCircleClass: "light-blue", hint: "Bring the energy down...", symbol: 2, image: bringdownenergy  },
         { id: 3, newClass: "pink", innerCircleClass: "light-pink", hint: "Talk about yourself", symbol: 3, image: handpointing  }
@@ -25,16 +26,21 @@ class Prompt extends React.Component {
     return (
       <div className="prompt-container">
         <div className={`prompt-rectangle ${symbolToDisplay.newClass}`}>
-          <div className={`prompt-circle ${symbolToDisplay.newClass}`}>
-            <div className={`prompt-inner-circle ${symbolToDisplay.innerCircleClass}`}></div>
+          <div className={symbolToDisplay.id > 0 ? `prompt-circle ${symbolToDisplay.newClass}` : 'prompt-circle prompt-circle-border-gradient'}>
             
+            <div className={symbolToDisplay.id > 0 ? `prompt-inner-circle ${symbolToDisplay.innerCircleClass}` : 'prompt-inner-circle prompt-thumbnail'}></div>
+
+            {symbolToDisplay.id > 0 &&
                <img className="prompt-image" src={symbolToDisplay.image} />
           
-           
+            }
+
+          
             
             
           </div>
-          <div className="prompt-text">{symbolToDisplay.hint}</div>
+          
+          <div className={symbolToDisplay.id > 0 ? "prompt-text" : "prompt-text-white" }>{symbolToDisplay.hint}</div>
         </div>
       </div>
     )

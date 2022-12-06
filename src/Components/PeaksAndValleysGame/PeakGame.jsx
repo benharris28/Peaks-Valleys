@@ -19,7 +19,7 @@ class PeakGame extends React.Component {
   static contextType = ApiContext;
 
   state = {
-    symbolNumber: 1,
+    symbolNumber: 0,
     animationPosition: 0,
     newClass: 'hero black',
     hint: 'Peaks & Valleys',
@@ -115,6 +115,7 @@ class PeakGame extends React.Component {
         running: false,
         gameStatus: 'Game Over',
         gameOver: true,
+        symbolNumber: 0,
         currentSymbol: 'https://res.cloudinary.com/dhkmle6ei/image/upload/v1666713463/GET_17_g1fja8.png',
       })
 

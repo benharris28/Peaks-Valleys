@@ -61,9 +61,11 @@ class PeakGame extends React.Component {
   }
 
   componentDidMount() {
-    let timeLeftVar = this.secondsToTime(this.state.initialSeconds);
+    let timeLeftVar = this.secondsToTime(this.context.userGameInfo.peakTime);
     this.setState({
       time: timeLeftVar,
+      seconds: this.context.userGameInfo.peakTime,
+      initialSeconds: this.context.userGameInfo.peakTime,
       prompt: this.context.userGameInfo.peakPrompt,
 
 
@@ -211,7 +213,7 @@ class PeakGame extends React.Component {
           </Row>
           <Row>
             <Col>
-              <Timer />
+              <Timer seconds={this.state.seconds} initialSeconds={this.state.initialSeconds} />
             </Col>
           </Row>
           <Row>

@@ -9,7 +9,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 class Timer extends React.Component {
   render() {
     const time = 30;
-    
+    const { seconds, initialSeconds } = this.props;
     
     
     return (
@@ -18,11 +18,11 @@ class Timer extends React.Component {
           <Container>
             <Row className="mb-4">
               <Col xs={6}><img className="thumbnail" src={clockimage} /></Col>
-              <Col xs={6}><div className="timer-text">Time Left: 26</div></Col>
+              <Col xs={6}><div className="timer-text">Time Left: {seconds > 0 ? seconds : 'Ready'}</div></Col>
             </Row>
             <Row>
               <Col>
-                <ProgressBar className="timer-bar" now={26} min={0} max={time} />
+                <ProgressBar className="timer-bar" now={seconds} min={0} max={initialSeconds} />
               </Col>
             </Row>
           </Container>

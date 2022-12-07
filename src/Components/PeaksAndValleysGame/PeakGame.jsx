@@ -13,6 +13,8 @@ import Timer from './Timer';
 import Topic from './Topic';
 import StartPlayAgain from './StartPlayAgain';
 import { secondsToTime } from '../../Services/PeakGameCalcs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 class PeakGame extends React.Component {
@@ -184,7 +186,7 @@ class PeakGame extends React.Component {
   }
   
   render() {
-    const { gameStatus, symbolNumber } = this.state;
+    const { gameStatus, symbolNumber, prompt } = this.state;
     console.log(this.state)
    
     console.log(gameStatus)
@@ -197,7 +199,14 @@ class PeakGame extends React.Component {
         
        
         <Container>
-          <Row>
+          <Row className="mb-4">
+            <Col>
+              <Link to='/'>
+                <FontAwesomeIcon className="back-button" icon={faCircleChevronLeft} />
+             </Link>
+              </Col>
+          </Row>
+          <Row className="mb-2">
             <Col>
               <h2 className="home-title">Peaks & Valleys</h2>
             </Col>
@@ -229,7 +238,7 @@ class PeakGame extends React.Component {
                 
 
               {gameStatus === 'Running' && 
-                <Topic />
+                <Topic chosenTopic={prompt}/>
               }
 
               

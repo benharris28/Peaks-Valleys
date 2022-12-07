@@ -7,19 +7,29 @@ import lightbulbicon from '../../Assets/lightbulbicon.png';
 
 class Topic extends React.Component {
   render() {
-    const time = 30;
+   const { chosenTopic } = this.props;
     
     
     
     return (
       <div>
         <div className="topic-rectangle pt-3 pb-3">
-          <div className="icon-container mb-2">
-            <img className="icon" src={lightbulbicon} />
-          </div>
-          <div className="icon-badge mb-2"><div>Your Topic</div></div>
+         
+          <div className="icon-badge mb-2">
+            <Container>
+              <Row>
+                <Col xs={3}>
+                  <img className="topic-icon" src={lightbulbicon} />
+                </Col>
+                <Col xs={9}>
+                  <div> Your Topic</div>
+                </Col>
+              </Row>
+            </Container>
+            
+            </div>
           <div className="topic-container">
-            Advice to my younger self
+            {chosenTopic}
           </div>
         </div>
      

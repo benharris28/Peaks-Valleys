@@ -11,10 +11,10 @@ class Prompt extends React.Component {
 
     const symbolArray = 
       [
-        { id: 0, newClass: "card-grey", circleClass: 'prompt-circle-border-gradient', innerCircleClass: "light-yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
-        { id: 1, newClass: "yellow", innerCircleClass: "light-yellow", hint: "Raise the energy level!", symbol: 1, image: bringupenergy },
-        { id: 2, newClass: "blue", innerCircleClass: "light-blue", hint: "Bring the energy down...", symbol: 2, image: bringdownenergy  },
-        { id: 3, newClass: "pink", innerCircleClass: "light-pink", hint: "Talk about yourself", symbol: 3, image: handpointing  }
+        { id: 0, newClass: "card-grey", circleClass: 'prompt-circle-border-gradient', innerCircleClass: "light-yellow", hint: "", symbol: 1, image: bringupenergy },
+        { id: 1, newClass: "yellow", innerCircleClass: "light-yellow", hint: "Bring the energy up - get the audience excited!", symbol: 1, image: bringupenergy },
+        { id: 2, newClass: "blue", innerCircleClass: "light-blue", hint: "Bring the vibe down - draw the audience in", symbol: 2, image: bringdownenergy  },
+        { id: 3, newClass: "pink", innerCircleClass: "light-pink", hint: "Speak like you - however feels natural", symbol: 3, image: handpointing  }
       ];
 
     const symbolToDisplay = symbolArray.filter(s => s.id == symbol)[0]

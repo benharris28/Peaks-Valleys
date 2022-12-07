@@ -16,11 +16,8 @@ class GameCard extends React.Component {
     return (
       
         <div className="gamecard">
-          <div className="gamecard-image-container">
-             <img className="gamecard-image" src={hiker} 
           
-            />
-          </div>
+        
          
            
      
@@ -30,12 +27,14 @@ class GameCard extends React.Component {
      
           <div className="gamecard-body">
             <div className="gamecard-content-container">
-              <div className="border-gradient border-gradient-pink">
-                <div className="gamecard-content-thumbnail border-gradient-pink">
-              </div>
-              
+              <div className="gamecard-circle">
+                  <div className="border-gradient border-gradient-pink">
+                    <div className="gamecard-content-thumbnail border-gradient-pink"></div>
                 
-              </div>
+                  
+                  </div>
+                </div>
+              
               <div className="gamecard-content-title">Peaks & Valleys</div>
               <div className="gamecard-content-subtitle">Fun Game to Play</div>
             </div>

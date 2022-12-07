@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
+import logonotext from '../../Assets/logonotext.png';
 
 
 class PeakFormFlow extends React.Component {
@@ -142,11 +143,11 @@ class PeakFormFlow extends React.Component {
 
 
     return (
-      <div className="form-flow">
+      <div className="form-flow" style={{ height: `${this.context.height}` }}>
 
         <div className="form-flow-background">
-          <div className="form-flow-logo">
-              <img src={SpeakerLabsStackedLogo} alt="home"/>
+          <div className="form-flow-logo-container">
+              <img className="form-flow-logo" src={logonotext} alt="logo"/>
 
           
             </div>
@@ -213,7 +214,7 @@ class PeakFormFlow extends React.Component {
 
                       />
 
-                      <Form.Text id="passwordHelpBlock" muted>
+                      <Form.Text id="helpBlock" muted>
                         You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
                       </Form.Text>
 

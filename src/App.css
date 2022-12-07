@@ -296,23 +296,31 @@ font-weight: 400;
 }
 
 .form-flow-background {
-  background-image: url('/src/Assets/peakmodalbackground.png');
+  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 9.79%, #0D0E28 101.21%), url('/src/Assets/peakmodalbackground.png');
   background-position: 0% 0%; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-size: cover;
+ 
   
   
 }
 
-.form-flow-logo {
-  position: absolute;
-  top: 100px;
-  left: 0;
-  right: 0;
+.form-flow-logo-container {
   display: flex;
+  justify-content: center;
+  align-items: middle;
   margin: auto;
+  width: 100px;
+  height: 200px;
+  
+}
+
+.form-flow-logo {
+  width: 69px;
+  height: 91.58px;
+  margin-top: 50px;
 }
 
 .form-flow-container {
@@ -363,6 +371,10 @@ font-weight: 400;
 .prompt-form-input {
   background-color: #1A1718!important;
   border: 0px!important;
+}
+
+.form-control {
+  color: #fff!important;
 }
 
 .time-select-container {

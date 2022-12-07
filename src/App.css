@@ -21,8 +21,9 @@ html {
 }
 
 body {
-  height: 100%;
-  background-color: #0C0D27!important; 
+
+  background: #1A1718!important; 
+
 }
 
 .full {
@@ -58,9 +59,21 @@ body.lock-zoom {
   to {background-color: #FFED67;}
 }
 
+
+@keyframes changeToLightYellow {
+
+  to {background-color: #FFF7B2;}
+}
+
 @keyframes changeToBlue {
 
-  to {background-color: #67CFE3}
+  to {background-color: #7ACDE1}
+}
+
+@keyframes changeToLightBlue {
+
+  to {background-color: #91E5F9}
+
 }
 
 @keyframes changeToPink {
@@ -70,12 +83,29 @@ body.lock-zoom {
 
 }
 
+
+@keyframes changeToLightPink {
+
+
+  to {background-color: #FFA1BF;}
+
+}
+
+
 .yellow {
  
   animation-name: changeToYellow;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
+
+
+.light-yellow {
+  animation-name: changeToLightYellow;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
 
 .blue {
  
@@ -84,11 +114,33 @@ body.lock-zoom {
   animation-fill-mode: forwards;
 }
 
+
+.light-blue {
+ 
+  animation-name: changeToLightBlue;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+
 .pink {
   animation-name: changeToPink;
   animation-duration: 3s;
   animation-fill-mode: forwards;
 }
+
+
+.light-pink {
+  animation-name: changeToLightPink;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+.card-grey {
+  background-color: #231F20;
+ 
+}
+
 
 .black {
   background-color: #231F20;
@@ -97,6 +149,12 @@ body.lock-zoom {
 .off-white {
   background-color: #F7FFF7!important;
 }
+
+
+.white {
+  color: #fff;
+}
+
 
 .green-font {
   color: #47FFBE;
@@ -111,12 +169,27 @@ body.lock-zoom {
 }
 
 
+/* Buttons */
+
+.button {
+  width: 100%;
+  background-color: #47FFBE!important;
+  border: 0px!important;
+  border-radius: 15px!important;
+  height: 3rem;
+  color: #13142A!important;
+  font-family: 'Inter'!important;
+  font-size: 1.2rem!important;
+  font-weight: bold!important;
+}
+
+
 
 /* App */
 .app {
   z-index: 5;
   margin: auto;
-  max-width: 680px;
+  max-width: 600px;
 }
 
 /* Peaks Home Screen */
@@ -144,23 +217,37 @@ body.lock-zoom {
 
 /* Game Card */
 .gamecard {
-  background-color: #0C0D27!important;
+  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 9.79%, #0D0E28 101.21%), url('/src/Assets/peakmodalbackground.png');
+  background-size: cover;
+  background-position: 50% 10%;
+  background-repeat: no-repeat;
+  height: 300px;
   border: 0px solid #0C0D27!important;
   width: 100%;
-}
-
-.gamecard-image-container {
-  width: 100%;
-  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
-  background: linear-gradient(180deg, rgba(20, 21, 50, 0) 16.27%, #231F20 69.18%);
+  max-width: 350px;
+  margin: auto;
+  position: relative;
+  border-radius: 15px;
 }
 
 .gamecard-body {
-  background-color: #0C0D27!important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border: 0px solid #0C0D27!important;
-  width: 95%;
   margin: auto
 }
+
+.gamecard-circle {
+    height: 80px;
+    width: 80px;
+    background-color: #231F20;
+    border-radius: 180px;
+    position: absolute;
+    top: -40px;
+}
+
 
 .gamecard-image {
   border-radius: 8px;
@@ -175,7 +262,6 @@ body.lock-zoom {
 
 .gamecard-content-container {
   position: relative;
-  top: -30px;
   background-color: #231F20;
   border-radius: 15px;
   display: flex;
@@ -183,6 +269,7 @@ body.lock-zoom {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  height: 150px;
   filter: drop-shadow(10.6269px 12.7522px 23.3791px rgba(0, 0, 0, 0.5));
 }
 
@@ -206,9 +293,12 @@ body.lock-zoom {
   height: 60px;
   width: 60px;
   background-image: linear-gradient(to left, #FF79A3, #FFED67);
-  position: relative;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
 }
-
 
 
 .gamecard-content-title {
@@ -235,23 +325,280 @@ font-weight: 400;
   height: 100%;
 }
 
-/* Info Modal */ 
 
-.info-modal-content {
-  border: 0px;
-  background-color: #F7FFF7;
+.form-flow-background {
+  background-image: linear-gradient(180deg, rgba(20, 21, 50, 0) 9.79%, #0D0E28 101.21%), url('/src/Assets/peakmodalbackground.png');
+  background-position: 0% 0%; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+ 
+  
+  
 }
+
+.form-flow-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: middle;
+  margin: auto;
+  width: 100px;
+  height: 200px;
+  
+}
+
+.form-flow-logo {
+  width: 69px;
+  height: 91.58px;
+  margin-top: 50px;
+}
+
+.form-flow-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #231F20;
+  color: white;
+  padding: 2rem;
+  
+  border-radius: 30px 30px 0px 0px;
+}
+
+.form-flow-content {
+  max-width: 500px;
+  margin: auto;
+}
+
+
+.btn-check:checked+.btn {
+  background-image: linear-gradient(to right, #FF79A3 , #FFED67);
+  border: 0px;
+
+}
+
+
 .toggle-container {
   display: flex;
   justify-content: space-evenly;
   width: 250px;
   margin: auto;
   margin-bottom: 2rem;
+  padding: 0.5rem;
+  background-color: #1A1718;
+  border-radius: 30px;
 }
 
 .toggle-button {
   width: 100px;
+  color: white;
+  border: 1px solid white;
 }
+
+.toggle-button label {
+  color: white;
+}
+
+.prompt-form-input {
+  background-color: #1A1718!important;
+  border: 0px!important;
+}
+
+.form-control {
+  color: #fff!important;
+}
+
+.time-select-container {
+  width: 300px;
+  margin: auto;
+}
+
+/* Peak Game */
+
+/* Back Button */
+.back-button {
+  color: white;
+  height: 30px;
+}
+
+.game-content {
+  margin-top: 100px;
+}
+
+/* Prompt */
+
+.prompt-container {
+  position: relative;
+  height: 280px;
+}
+
+.prompt-rectangle {
+  height: 180px;
+  width: 100%;
+  position: absolute;
+  border-radius: 15px;
+  top: 80px;
+}
+
+.prompt-circle {
+  background-color: #7ACDE1;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: -75px;
+  left:0;
+right:0;
+margin-left:auto;
+margin-right:auto;
+  border-radius: 50%;
+}
+
+.prompt-circle-border-gradient {
+  background-image: linear-gradient(to left, #FF79A3, #FFED67);
+ 
+}
+
+
+.prompt-inner-circle {
+  height: 150px;
+  width: 150px;
+  background-color: #91E5F9;
+  margin: auto;
+  margin-top: 25px;
+  border-radius: 50%;
+  
+}
+
+.prompt-thumbnail {
+  background-image: url('/src/Assets/hiker.png');
+  background-size: cover;
+  object-fit: contain;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  border-radius: 50%;
+  height: 175px;
+  width: 175px;
+  margin-top: 12.5px;
+
+}
+
+.prompt-image {
+  position: absolute;
+  top: 0;
+  left:0;
+right:0;
+  bottom: 0;
+margin-left:auto;
+margin-right:auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.prompt-text {
+  position: absolute;
+  bottom: 20px;
+  
+  left:10px;
+right:10px;
+  margin-left:auto;
+margin-right:auto;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Inter';
+  font-weight: 500;
+  color: #000000;
+  
+}
+
+.prompt-text-white {
+  position: absolute;
+  bottom: 20px;
+  
+  left:10px;
+right:10px;
+  margin-left:auto;
+margin-right:auto;
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Inter';
+  font-weight: 500;
+  color: #fff;
+  
+}
+
+/* Timer */
+
+.timer-rectangle {
+  background-color: #231F20;
+  border-radius: 24px;
+  height: 80px;
+}
+
+.timer-text {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.thumbnail {
+  height: 20px;
+  width: 20px;
+}
+
+/* Topic */
+
+.topic-rectangle {
+  background-color: #231F20;
+  border-radius: 24px;
+ 
+}
+
+.icon-container {
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  background: rgba(255, 200, 80, .1) 
+ 
+}
+
+.icon {
+  margin: auto;
+ 
+}
+
+.icon-badge {
+  width: 140px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  background: linear-gradient(97.5deg, #FF79A3 40.91%, #FFED67 102.28%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.topic-icon {
+  font-size: 1rem;
+  height: 1.2rem;
+}
+
+.topic-container {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 21px;
+}
+/* Info Modal */ 
+
+
+
 
 .button-container {
   display: flex;
@@ -518,9 +865,8 @@ h1 {
  
 
 
-  .topic-container {
-    text-align: left;
-  }
+
+  
 
   /* Button Container */ 
 

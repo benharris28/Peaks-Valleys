@@ -34,8 +34,12 @@ class Home extends React.Component {
 
           
           </div>
+
+
+          <h1 className="home-title">Game Zone</h1> 
           
-          <Row>
+          <Row className="mt-4">
+
             <Col>
               <Link className="no-decoration" to={'/peaks-valleys'}>
                 <GameCard />

@@ -57,7 +57,23 @@ class App extends React.Component {
       userGameInfo: {
         ...userGameInfo,
         peakPrompt: '',
-      peakGameOver: status
+      peakGameOver: status,
+      peakGameStatus: 'Not Started'
+      }
+      
+    })
+  }
+
+  endPeakGame = () => {
+    const { userGameInfo } = this.state;
+
+    this.setState({
+      userGameInfo: {
+        ...userGameInfo,
+        peakPrompt: '',
+      peakGameOver: status,
+      peakGameStatus: 'Game Over'
+
       }
       
     })
@@ -82,14 +98,17 @@ class App extends React.Component {
       const value = {
       ...this.state,
         handlePeakGame: this.handlePeakGame,
-        resetPeakGame: this.resetPeakGame
+        resetPeakGame: this.resetPeakGame,
+        endPeakGame: this.endGame
      
     }
     
     return (
       <ApiContext.Provider value={value}>
-
+        
       <div className="app" style={{ height: `${height}`}}>
+
+  
         <div className="background"></div>
       
 

@@ -2,9 +2,15 @@ import React from 'react';
 import ApiContext from '../../ApiContext'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
+import logonotext from '../../Assets/logonotext.png';
+
 
 
 class PeakFormFlow extends React.Component {
@@ -15,7 +21,8 @@ class PeakFormFlow extends React.Component {
     prompt: '',
     time: 30,
     promptCheck: true,
-    disableNextButton: false
+    disableNextButton: false,
+    timeRadioValue: 30
   }
 
   componentDidMount = () => {
@@ -43,6 +50,25 @@ class PeakFormFlow extends React.Component {
 
   }
 
+
+  handleNextButton = () => {
+    const { promptCheck } = this.state;
+    let nextButtonDisabled;
+   
+    if (promptCheck) {
+      nextButtonDisabled = false;
+    }
+
+    else if (!promptCheck && this.state.prompt.length > 1) {
+      nextButtonDisabled = false;
+    } else {
+      nextButtonDisabled = true;
+    }
+
+    return nextButtonDisabled;
+  }
+
+
   handleTime = (time) => {
     this.setState({
       time: time
@@ -51,6 +77,8 @@ class PeakFormFlow extends React.Component {
 
   handlePromptCheck = () => {
     const checked = this.state.promptCheck
+    
+    
     this.setState({
       promptCheck: !checked
     })
@@ -75,12 +103,21 @@ class PeakFormFlow extends React.Component {
   }
 
 
+  setTimeRadioValue = (value) => {
+    this.setState({
+      timeRadioValue: value
+    })
+  }
+
+
   handleSubmit = (e) => {
     e.preventDefault()
 
 
     const prompt = this.state.prompt
-    const time = this.state.time
+
+    const time = this.state.timeRadioValue
+
 
 
    if (prompt) {
@@ -109,57 +146,67 @@ class PeakFormFlow extends React.Component {
 
 
 
+
+
+
     return (
-      <div className="form-flow">
+      <div className="form-flow" style={{ height: `${this.context.height}` }}>
 
+        <div className="form-flow-background">
+          <div className="form-flow-logo-container">
+              <img className="form-flow-logo" src={logonotext} alt="logo"/>
 
-       
-       
-          <div>
+          
+            </div>
+          <div className="form-flow-container">
+            
+            <div className="form-flow-content">
+
             <div className="center mt-4 mb-4">
               <h2>How to Play Peaks and Valleys</h2>
             </div>
 
 
-
-
             <div className="center">
-              
-              
+
               <form>
                 {this.state.page === 1 && 
                 <>
                   <div className="mb-2">
-                First, let's pick a topic to talk about. Would you like us to provide a topic for you?
-              </div>
-                <div className="toggle-container">
-                <ButtonGroup className="toggle-button">
-                 
-                  <ToggleButton
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="outline-dark"
-                    checked={this.state.promptCheck}
-                    value="true"
-                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
-                  >
-                    Yes
-                  </ToggleButton>
-                  </ButtonGroup>
-                <ButtonGroup className="toggle-button">
-                  <ToggleButton
-              
-                    id="toggle-check"
-                    type="checkbox"
-                    variant="outline-dark"
-                    checked={!this.state.promptCheck}
-                    value="true"
-                    onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
-                  >
-                    No
-                  </ToggleButton>
+
+                    First, let's pick a topic to talk about. Would you like us to provide a topic for you?
+                  </div>
                   
-                </ButtonGroup>
+                  <div className="toggle-container">
+                    <ButtonGroup className="toggle-button">
+                 
+                      <ToggleButton
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-dark"
+                        checked={this.state.promptCheck}
+                        value="true"
+                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                        >
+                        Yes
+                      </ToggleButton>
+                    </ButtonGroup>
+                    
+                    <ButtonGroup className="toggle-button">
+                      <ToggleButton
+              
+                        id="toggle-check"
+                        type="checkbox"
+                        variant="outline-dark"
+                        checked={!this.state.promptCheck}
+                        value="true"
+                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                      >
+                        No
+                      </ToggleButton>
+                  
+                    </ButtonGroup>
+
                 </div>
                 
                
@@ -179,7 +226,8 @@ class PeakFormFlow extends React.Component {
 
                       />
 
-                      <Form.Text id="passwordHelpBlock" muted>
+                      <Form.Text id="helpBlock" muted>
+
                         You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
                       </Form.Text>
 
@@ -192,9 +240,12 @@ class PeakFormFlow extends React.Component {
                 }
                   <div>
                   <Button
+
+                    className="button"
                     onClick={this.handlePageForward}
-                    disabled={this.state.disableNextButton}>
-                    Next
+                    disabled={this.handleNextButton()}>
+                    NEXT
+
                   </Button>
                 </div>
                 
@@ -203,29 +254,99 @@ class PeakFormFlow extends React.Component {
 
                 {this.state.page === 2 &&
                   <>
-                <div className="margin-bottom">
-                  <Form.Label htmlFor="chooseTime">How long do you want to play for?</Form.Label>
-                  <Form.Select aria-label="Default select example"
-                    onChange={(e) => this.handleTime(e.target.value)}
-                    value={this.state.time}
-                  >
-                    <option value="5">5 seconds</option>
-                    <option value="30">30 seconds</option>
-                    <option value="60">1 minute</option>
-                    <option value="120">2 minutes</option>
-                    <option value="10800">3 hours (I don't have much to do today)</option>
-                  </Form.Select>
-                </div>
+
+                    <div className="mb-4">
+                      How long would you like to play for?
+                    </div>
+                
+
+
+                    <div className="time-select-container mb-4">
+                    
+
+                <Container className="time-select-container">
+                  <Row className="mb-2">
+                    <Col>
+                       <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-0`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={30}
+                        checked={this.state.timeRadioValue == 30}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        30 sec
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                       
+                    <Col>
+                      <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-1`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={60}
+                        checked={this.state.timeRadioValue == 60}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        60 sec
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                       <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-2`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={120}
+                        checked={this.state.timeRadioValue == 120}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        2 mins
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                       
+                    <Col>
+                      <ButtonGroup>
+                      <ToggleButton
+                        id={`radio-3`}
+                        type="radio"
+                        variant={'outline-success'}
+                        name="radio"
+                        value={300}
+                        checked={this.state.timeRadioValue == 300}
+                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                      >
+                        5 mins
+                      </ToggleButton>
+                      
+                    </ButtonGroup>
+                    </Col>
+                  </Row>
+                  
+                </Container>
+                      </div>
+
+
+                    
                      <div className="button-container">
                       
-              <Button
-                className="form-button"
-                variant="outline-primary"
-                onClick={this.handlePageBack}
-              >
-                Back
-              </Button>
+            
                        <Button
+                         className="button"
+
                 onClick={this.handleSubmit}
               >
                 Enter Game
@@ -238,16 +359,18 @@ class PeakFormFlow extends React.Component {
               </form>
             </div>
 
-           
+            
 
-
-
-
-
-
-
-
+           </div> 
           </div>
+          
+        </div>
+
+
+       
+       
+         
+
 
        
       </div>

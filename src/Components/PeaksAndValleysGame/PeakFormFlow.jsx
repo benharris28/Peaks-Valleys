@@ -10,6 +10,8 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
 import logonotext from '../../Assets/logonotext.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -188,7 +190,8 @@ class PeakFormFlow extends React.Component {
                         value="true"
                         onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
                         >
-                        Yes
+                        {this.state.promptCheck ? <>Yes <FontAwesomeIcon className="check-icon ml-2" icon={faSquareCheck} /></> : 'Yes'}
+                        
                       </ToggleButton>
                     </ButtonGroup>
                     
@@ -202,7 +205,7 @@ class PeakFormFlow extends React.Component {
                         value="true"
                         onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
                       >
-                        No
+                        {!this.state.promptCheck ? <>No <FontAwesomeIcon className="check-icon ml-2" icon={faSquareCheck} /></> : 'No'}
                       </ToggleButton>
                   
                     </ButtonGroup>

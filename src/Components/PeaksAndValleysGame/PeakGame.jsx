@@ -8,6 +8,7 @@ import ApiContext from '../../ApiContext'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Badge from 'react-bootstrap/Badge';
 import Prompt from './Prompt';
 import Timer from './Timer';
 import Topic from './Topic';
@@ -15,6 +16,7 @@ import StartPlayAgain from './StartPlayAgain';
 import { secondsToTime } from '../../Services/PeakGameCalcs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import clockimage from '../../Assets/clockimage.png';
 
 
 class PeakGame extends React.Component {
@@ -126,7 +128,7 @@ class PeakGame extends React.Component {
       clearInterval(this.state.interval);
       clearInterval(this.state.symbolInterval)
 
-      
+
     }
   }
 
@@ -176,7 +178,7 @@ class PeakGame extends React.Component {
       newClass: filterSymbol2[0].newClass,
       gameStarted: true
     }, () => {
-   
+
       const symbolInterval = setTimeout(this.generateNewSymbol, rand)
       this.setState({
         symbolInterval: symbolInterval
@@ -184,27 +186,35 @@ class PeakGame extends React.Component {
     })
 
   }
-  
+
   render() {
-    const { gameStatus, symbolNumber, prompt } = this.state;
+    const { gameStatus, symbolNumber, prompt, seconds, time } = this.state;
     console.log(this.state)
-   
+
     console.log(gameStatus)
-    
+
 
     return (
 
 
       <div className="mt-4">
-        
-       
+
+
         <Container>
           <Row className="mb-4">
-            <Col>
+            <Col xs={3}>
               <Link to='/'>
                 <FontAwesomeIcon className="back-button" icon={faCircleChevronLeft} />
-             </Link>
-              </Col>
+              </Link>
+            </Col>
+            <Col xs={6}>
+            </Col>
+            <Col xs={3}>
+              <div className="timer-box">
+                <img className="thumbnail" src={clockimage} />
+                <div className="timer-text">{seconds > 0 ? `${time.m} : ${time.s}` : 'Ready'}</div>
+              </div>
+            </Col>
           </Row>
           <Row className="mb-2">
             <Col>
@@ -215,37 +225,33 @@ class PeakGame extends React.Component {
           <Row>
             <Col>
               <div>
-                <Prompt symbol={symbolNumber}/>
+                <Prompt symbol={symbolNumber} />
               </div>
-              
+
             </Col>
           </Row>
+         
           <Row>
             <Col>
-              <Timer seconds={this.state.seconds} initialSeconds={this.state.initialSeconds} />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-             
-              {gameStatus === 'Not Started' && 
+
+              {gameStatus === 'Not Started' &&
                 <StartPlayAgain status={gameStatus} startTimer={this.startTimer} />
               }
 
-              {gameStatus === 'Game Over' && 
+              {gameStatus === 'Game Over' &&
                 <StartPlayAgain status={gameStatus} show={this.props.show} />
               }
-                
 
-              {gameStatus === 'Running' && 
-                <Topic chosenTopic={prompt}/>
+
+              {gameStatus === 'Running' &&
+                <Topic chosenTopic={prompt} />
               }
 
-              
+
             </Col>
           </Row>
         </Container>
-          
+
       </div>
     )
   }

@@ -207,12 +207,12 @@ class PeakGame extends React.Component {
                 <FontAwesomeIcon className="back-button" icon={faCircleChevronLeft} />
               </Link>
             </Col>
-            <Col xs={6}>
+            <Col xs={5} md={6}>
             </Col>
-            <Col xs={3}>
+            <Col xs={4} md={3}>
               <div className="timer-box">
                 <img className="thumbnail" src={clockimage} />
-                <div className="timer-text">{seconds > 0 ? `${time.m} : ${time.s}` : 'Ready'}</div>
+                <div className="timer-text">{seconds > 0 ? `0${time.m} : ${time.s}` : 'Ready'}</div>
               </div>
             </Col>
           </Row>

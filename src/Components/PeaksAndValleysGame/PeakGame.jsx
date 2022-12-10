@@ -230,10 +230,14 @@ class PeakGame extends React.Component {
 
             </Col>
           </Row>
-         
+
+          <Row className="mb-4">
+            <Col>
+              <Topic chosenTopic={prompt} gameStatus={gameStatus} />
+            </Col>
+          </Row>
           <Row>
             <Col>
-
               {gameStatus === 'Not Started' &&
                 <StartPlayAgain status={gameStatus} startTimer={this.startTimer} />
               }
@@ -241,13 +245,6 @@ class PeakGame extends React.Component {
               {gameStatus === 'Game Over' &&
                 <StartPlayAgain status={gameStatus} show={this.props.show} />
               }
-
-
-              {gameStatus === 'Running' &&
-                <Topic chosenTopic={prompt} />
-              }
-
-
             </Col>
           </Row>
         </Container>

@@ -7,8 +7,8 @@ import lightbulbicon from '../../Assets/lightbulbicon.png';
 
 class Topic extends React.Component {
   render() {
-   const { chosenTopic } = this.props;
-    
+   const { chosenTopic, gameStatus } = this.props;
+  const topicClass = gameStatus === 'Not Started' ? 'topic-container blur' : 'topic-container';
     
     
     return (
@@ -28,7 +28,7 @@ class Topic extends React.Component {
             </Container>
             
             </div>
-          <div className="topic-container">
+          <div className={topicClass}>
             {chosenTopic}
           </div>
         </div>

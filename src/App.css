@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton");
 @import url("https://fonts.googleapis.com/css?family=Orbitron&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Inter:wght@600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 
@@ -16,7 +16,7 @@ html {
 * {
   box-sizing: border-box;
 
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Inter';
 
 }
 
@@ -226,7 +226,7 @@ body.lock-zoom {
   color: #13142A!important;
   font-family: 'Inter'!important;
   font-size: 1.2rem!important;
-  font-weight: bold!important;
+  font-weight: 800!important;
 }
 
 
@@ -274,6 +274,7 @@ body.lock-zoom {
   margin: auto;
   position: relative;
   border-radius: 15px;
+  box-shadow: rgba(71, 255, 190, 0.2) 0px 8px 24px;
 }
 
 .gamecard-body {
@@ -315,7 +316,7 @@ body.lock-zoom {
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  height: 150px;
+  height: 200px;
   filter: drop-shadow(10.6269px 12.7522px 23.3791px rgba(0, 0, 0, 0.5));
 }
 
@@ -348,12 +349,14 @@ body.lock-zoom {
 
 
 .gamecard-content-title {
-  font-size: 20px;
+  font-size: 24px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   line-height: 130%;
-  color: #fff
+  color: #fff;
+  margin-top: 1rem;
+  
 }
 
 .gamecard-content-subtitle {
@@ -362,6 +365,7 @@ font-style: normal;
 font-weight: 400;
   color: #fff;
   font-size: 12px;
+  margin-top: 0.5rem;
 }
 
 /* Form Flow */
@@ -408,6 +412,8 @@ font-weight: 400;
   background-color: #231F20;
   color: white;
   padding: 2rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
   
   border-radius: 30px 30px 0px 0px;
 }
@@ -417,6 +423,10 @@ font-weight: 400;
   margin: auto;
 }
 
+.title {
+  font-weight: 600;
+  font-family: 'Inter';
+}
 
 .btn-check:checked+.btn {
   background-image: linear-gradient(to right, #FF79A3 , #FFED67);

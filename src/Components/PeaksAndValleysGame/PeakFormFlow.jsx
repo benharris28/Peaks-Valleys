@@ -164,8 +164,8 @@ class PeakFormFlow extends React.Component {
             
             <div className="form-flow-content">
 
-            <div className="center mt-4 mb-4">
-              <h2>How to Play Peaks and Valleys</h2>
+            <div className="center title mt-4 mb-4">
+              <h2 className="title">How to Play Peaks and Valleys</h2>
             </div>
 
 

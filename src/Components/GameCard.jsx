@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Nav from '../Components/Nav';
 import hiker from '../Assets/hiker.png';
 
@@ -40,7 +41,9 @@ class GameCard extends React.Component {
               
               <div className="gamecard-content-title">Peaks & Valleys</div>
               <div className="gamecard-content-subtitle">Fun Game to Play</div>
+              <Button className="button black mt-4">PLAY</Button>
             </div>
+            
          
 
           </div>

@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
 import logonotext from '../../Assets/logonotext.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,6 +24,8 @@ class PeakFormFlow extends React.Component {
     prompt: '',
     time: 30,
     promptCheck: true,
+    yesButtonEnabled: true,
+    noButtonEnabled: false,
     disableNextButton: false,
     timeRadioValue: 30
   }
@@ -77,12 +80,13 @@ class PeakFormFlow extends React.Component {
     })
   }
 
-  handlePromptCheck = () => {
-    const checked = this.state.promptCheck
-    
+  handleChange = (val) => {
+
+    const newPromptCheck = val === 'true' ? true : false;
     
     this.setState({
-      promptCheck: !checked
+      promptCheck: newPromptCheck,
+     
     })
   }
 
@@ -178,37 +182,41 @@ class PeakFormFlow extends React.Component {
 
                     First, let's pick a topic to talk about. Would you like us to provide a topic for you?
                   </div>
+
+                  <div>
+                  </div>
                   
                   <div className="toggle-container">
-                    <ButtonGroup className="toggle-button">
+                    <ToggleButtonGroup type="radio" value={this.state.promptCheck} name="options" defaultValue={true} >
                  
                       <ToggleButton
                         id="toggle-check"
-                        type="checkbox"
-                        variant="outline-dark"
-                        checked={this.state.promptCheck}
-                        value="true"
-                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                        className="toggle-button"
+                        name="toggle-check1"
+                        variant="outline-primary"
+                        value={true}
+                        onChange={e => this.handleChange(e.target.value)}
                         >
-                        {this.state.promptCheck ? <>Yes <FontAwesomeIcon className="check-icon ml-2" icon={faSquareCheck} /></> : 'Yes'}
+                        Yes
                         
                       </ToggleButton>
-                    </ButtonGroup>
+                
                     
-                    <ButtonGroup className="toggle-button">
+                  
                       <ToggleButton
               
-                        id="toggle-check"
-                        type="checkbox"
-                        variant="outline-dark"
-                        checked={!this.state.promptCheck}
-                        value="true"
-                        onChange={(e) => this.handlePromptCheck(e.currentTarget.checked)}
+                        id="toggle-check1"
+                        name="toggle-check2"
+                        variant="outline-primary"
+                        className="toggle-button"
+                        value={false}
+                        onChange={e => this.handleChange(e.target.value)}
+                       
                       >
-                        {!this.state.promptCheck ? <>No <FontAwesomeIcon className="check-icon ml-2" icon={faSquareCheck} /></> : 'No'}
+                        No
                       </ToggleButton>
                   
-                    </ButtonGroup>
+                    </ToggleButtonGroup>
 
                 </div>
                 

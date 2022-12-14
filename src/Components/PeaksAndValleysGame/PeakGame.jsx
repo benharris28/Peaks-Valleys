@@ -168,8 +168,8 @@ class PeakGame extends React.Component {
     console.log(newSymbol)
 
 
-    const minTime = 10000
-    const maxTime = 15000
+    const minTime = 15000
+    const maxTime = 20000
 
     const rand = Math.round(Math.random() * (maxTime - minTime)) + minTime;
     console.log(rand)

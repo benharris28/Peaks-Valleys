@@ -205,7 +205,7 @@ class PeakFormFlow extends React.Component {
                         id="toggle-check"
                         className="toggle-button"
                         name="toggle-check1"
-                        variant="outline-primary"
+                        variant="outline-secondary"
                         value={true}
                         onChange={e => this.handleChange(e.target.value)}
                         aria-controls="example-collapse-text"
@@ -221,7 +221,7 @@ class PeakFormFlow extends React.Component {
               
                         id="toggle-check1"
                         name="toggle-check2"
-                        variant="outline-primary"
+                        variant="outline-secondary"
                         className="toggle-button"
                         value={false}
                         onChange={e => this.handleChange(e.target.value)}
@@ -298,7 +298,7 @@ class PeakFormFlow extends React.Component {
                       <ToggleButton
                         id={`radio-0`}
                         type="radio"
-                        variant={'outline-success'}
+                        variant={'outline-secondary'}
                         name="radio"
                         value={30}
                         checked={this.state.timeRadioValue == 30}
@@ -315,7 +315,7 @@ class PeakFormFlow extends React.Component {
                       <ToggleButton
                         id={`radio-1`}
                         type="radio"
-                        variant={'outline-success'}
+                        variant={'outline-secondary'}
                         name="radio"
                         value={60}
                         checked={this.state.timeRadioValue == 60}
@@ -333,7 +333,7 @@ class PeakFormFlow extends React.Component {
                       <ToggleButton
                         id={`radio-2`}
                         type="radio"
-                        variant={'outline-success'}
+                        variant={'outline-secondary'}
                         name="radio"
                         value={120}
                         checked={this.state.timeRadioValue == 120}
@@ -350,7 +350,7 @@ class PeakFormFlow extends React.Component {
                       <ToggleButton
                         id={`radio-3`}
                         type="radio"
-                        variant={'outline-success'}
+                        variant={'outline-secondary'}
                         name="radio"
                         value={300}
                         checked={this.state.timeRadioValue == 300}

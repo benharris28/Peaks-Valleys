@@ -56,6 +56,12 @@ class PeakGame extends React.Component {
     let divisor_for_seconds = divisor_for_minutes % 60;
     let seconds = Math.ceil(divisor_for_seconds);
 
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    } else {
+      seconds
+    }
+
     let obj = {
       "h": hours,
       "m": minutes,

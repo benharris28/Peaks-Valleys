@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import Collapse from 'react-bootstrap/Collapse';
 import SpeakerLabsStackedLogo from '../../Assets/SpeakerLabsStackedLogo.png';
 import logonotext from '../../Assets/logonotext.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,7 +28,8 @@ class PeakFormFlow extends React.Component {
     yesButtonEnabled: true,
     noButtonEnabled: false,
     disableNextButton: false,
-    timeRadioValue: 30
+    timeRadioValue: 30,
+    textBox: false
   }
 
   componentDidMount = () => {
@@ -83,11 +85,21 @@ class PeakFormFlow extends React.Component {
   handleChange = (val) => {
 
     const newPromptCheck = val === 'true' ? true : false;
+
+    if (val === 'false') {
+      this.setState({
+        promptCheck: false,
+        textBox: true
+      })
+    } else {
+      this.setState({
+        promptCheck: true,
+        textBox: false
+      })
+    }
+   
+
     
-    this.setState({
-      promptCheck: newPromptCheck,
-     
-    })
   }
 
 
@@ -196,6 +208,8 @@ class PeakFormFlow extends React.Component {
                         variant="outline-primary"
                         value={true}
                         onChange={e => this.handleChange(e.target.value)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={this.state.textBox}
                         >
                         Yes
                         
@@ -211,6 +225,8 @@ class PeakFormFlow extends React.Component {
                         className="toggle-button"
                         value={false}
                         onChange={e => this.handleChange(e.target.value)}
+                        aria-controls="example-collapse-text"
+                        aria-expanded={this.state.textBox}
                        
                       >
                         No
@@ -221,10 +237,10 @@ class PeakFormFlow extends React.Component {
                 </div>
                 
                
-                {!this.state.promptCheck &&
+             
 
-                  <>
-                  <div className="margin-bottom">
+                  <Collapse in={this.state.textBox}>
+                  <div id="example-collapse-text" className="margin-bottom">
                     <Form.Group className="mb-3" controlId="promptInput">
                       <Form.Control type="text" placeholder="test"
                         as="textarea" rows={3}
@@ -247,8 +263,8 @@ class PeakFormFlow extends React.Component {
                 
                 
                 
-                  </>
-                }
+                  </Collapse>
+                
                   <div>
                   <Button
 

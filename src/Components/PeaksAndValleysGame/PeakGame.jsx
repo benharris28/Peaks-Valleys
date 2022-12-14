@@ -218,7 +218,7 @@ class PeakGame extends React.Component {
             <Col xs={4} md={3}>
               <div className="timer-box">
                 <img className="thumbnail" src={clockimage} />
-                <div className="timer-text">{seconds > 0 ? `0${time.m} : ${time.s}` : 'Ready'}</div>
+                <div className="timer-text">{seconds > 0 ? `0${time.m} : ${time.s}` : 'Done'}</div>
               </div>
             </Col>
           </Row>

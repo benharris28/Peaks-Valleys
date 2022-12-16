@@ -44,7 +44,9 @@ class PeakGame extends React.Component {
     initialMilliseconds: 3000,
     milliSeconds: 3000,
     gameStatus: 'Not Started',
-    symbolObject: { id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: 1, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" }
+    symbolObject: { id: 1, newClass: "hero yellow", hint: "Raise the energy level!", symbol: 1, url: "https://res.cloudinary.com/dhkmle6ei/image/upload/v1666887876/GET_26_plxqdz.png" },
+    minTime: 15000,
+    maxTime: 20000
   }
   //Render topic component or start / play again button component based on game status
   secondsToTime = (secs) => {
@@ -168,8 +170,8 @@ class PeakGame extends React.Component {
     console.log(newSymbol)
 
 
-    const minTime = 15000
-    const maxTime = 20000
+    const minTime = this.state.minTime;
+    const maxTime = this.state.maxTime;
 
     const rand = Math.round(Math.random() * (maxTime - minTime)) + minTime;
     console.log(rand)

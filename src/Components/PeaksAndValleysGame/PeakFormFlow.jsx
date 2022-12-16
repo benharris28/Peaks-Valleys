@@ -29,12 +29,18 @@ class PeakFormFlow extends React.Component {
     noButtonEnabled: false,
     disableNextButton: false,
     timeRadioValue: 30,
-    textBox: false
+    textBox: false,
+    topics: [],
+    minTime: null,
+    maxTime: null
   }
 
   componentDidMount = () => {
     this.setState({
-      prompt: ''
+      prompt: '',
+      topics: this.context.peakGameParams.topics,
+      minTime: this.context.peakGameParams.minTime,
+      maxTime: this.context.peakGameParams.maxTime
     })
   }
 

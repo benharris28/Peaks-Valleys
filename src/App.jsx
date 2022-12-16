@@ -20,6 +20,11 @@ class App extends React.Component {
       peakTime: '',
       peakGameOver: false
     },
+    peakGameParams: {
+      minTime: 15000,
+      maxTime: 20000,
+      topics: ['Advice to my younger self', 'What I want to be when I grow up'],
+    },
     height: '100%'
   }
 

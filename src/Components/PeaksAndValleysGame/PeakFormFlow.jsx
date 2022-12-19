@@ -152,7 +152,7 @@ class PeakFormFlow extends React.Component {
 
 
 
-    if (prompt) {
+    if (prompt.length > 1) {
 
       const newPrompt = this.state.prompt
       this.context.handlePeakGame(newPrompt, time)

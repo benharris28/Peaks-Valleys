@@ -1,18 +1,14 @@
-import React from 'react';
-import Nav from './Components/Nav'
-import './App.css'
-import {
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Nav from './Components/Nav';
+import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
 import Home from './Routes/Home';
 import PeaksAndValleys from './Routes/PeaksAndValleys';
 import ApiContext from './ApiContext';
+import Airtable from 'airtable';
 
-class App extends React.Component {
-
-  state = {
+const App = () => {
+  const [state, setState] = useState({
     showPeaksInfoModal: false,
     userGameInfo: {
       peakGames: '',
@@ -26,108 +22,153 @@ class App extends React.Component {
       topics: ['Advice to my younger self', 'What I want to be when I grow up'],
     },
     height: '100%'
-  }
+  });
 
-  handleResizedScreen = () => {
-    this.setState({
-     
+  const API_KEY = 'keyP9Ri1WHoSEV5W1';
+
+  const base = new Airtable({ apiKey: API_KEY }).base('appRAwLmFacqU1GwT');
+
+  const handleResizedScreen = () => {
+    setState({
       height: window.innerHeight + 'px'
     });
   };
 
-  componentDidMount() {
-    this.setState({ height: window.innerHeight + 'px' });
-    window.addEventListener('resize', this.handleResizedScreen);
+  useEffect(() => {
+  base('Topics').select({
+    view: 'Grid view'
+  }).eachPage((records, fetchNextPage) => {
+    // This function (`page`) will get called for each page of records.
 
-  }
+    const topics = records.map(record => record.get('topic'));
 
-  handlePeakGame = (prompt, time) => {
-    const { userGameInfo } = this.state;
+    setState(prevState => ({
+      ...prevState,
+      peakGameParams: {
+        ...prevState.peakGameParams,
+        topics
+      }
+    }));
+
+    // To fetch the next page of records, call `fetchNextPage`.
+    // If there are more records, `page` will get called again.
+    // If there are no more records, `done` will get called.
+    fetchNextPage();
+
+  }, function done(err) {
+    if (err) { console.error(err); return; }
+  });
+
+  base('Game Parameters').select({
+    view: 'Grid view',
+    filterByFormula: `AND({min_time}, {max_time})`,
+  }).firstPage((error, records) => {
+    if (error) {
+      console.log(error)
+      return;
+    }
     
-    this.setState({
+    const record = records[0];
+    const minTime = record.get('min_time');
+    const maxTime = record.get('max_time');
+   
+
+    setState(prevState => ({
+      ...prevState,
+      peakGameParams: {
+        ...prevState.peakGameParams,
+        minTime,
+        maxTime
+      }
+    }));
+  });
+}, []);
+
+  useEffect(() => {
+    setState(prevState => ({
+      ...prevState,
+      height: window.innerHeight + 'px'
+    }));
+    window.addEventListener('resize', handleResizedScreen);
+
+    return () => window.removeEventListener('resize', handleResizedScreen);
+  }, []);
+
+  const handlePeakGame = (prompt, time) => {
+    setState(prevState => ({
+      ...prevState,
       userGameInfo: {
-        ...userGameInfo,
+        ...prevState.userGameInfo,
         peakPrompt: prompt,
         peakTime: time,
         peakGameOver: false,
         peakGameRunning: true
       }
-      
-    })
+    }));
   }
 
-  resetPeakGame = (status) => {
-    const { userGameInfo } = this.state;
-    this.setState({
+  const resetPeakGame = (status) => {
+    setState(prevState => ({
+      ...prevState,
       userGameInfo: {
-        ...userGameInfo,
+        ...prevState.userGameInfo,
         peakPrompt: '',
-      peakGameOver: status,
-      peakGameStatus: 'Not Started'
+        peakGameOver: status,
+        peakGameStatus: 'Not Started'
       }
-      
-    })
+    }));
   }
 
-  endPeakGame = () => {
-    const { userGameInfo } = this.state;
-
-    this.setState({
+  const endPeakGame = () => {
+    setState(prevState => ({
+      ...prevState,
       userGameInfo: {
-        ...userGameInfo,
+        ...prevState.userGameInfo,
         peakPrompt: '',
-      peakGameOver: status,
-      peakGameStatus: 'Game Over'
-
+        peakGameOver: status,
+        peakGameStatus: 'Game Over'
       }
-      
-    })
+    }));
   }
 
-
-  handleResize = () => {
-    this.setState({
-      height: window.innerHeight,
-    
-  });
+  const handleResize = () => {
+    setState(prevState => ({
+      ...prevState,
+      height: window.innerHeight
+    }));
   }
-  
-  render() {
-    console.log(this.state)
-    console.log(this.state.height)
-    const height = this.state.height
-   
-   
+
+  console.log(state);
+  console.log(state.height);
+  const height = state.height;
+
+  const value = {
+    ...state,
+    handlePeakGame,
+    resetPeakGame,
+    endPeakGame
+  };
+
+  return (
+    <ApiContext.Provider value={value}>
+
+      <div className="app" style={{ height: `${height}` }}>
 
 
-      const value = {
-      ...this.state,
-        handlePeakGame: this.handlePeakGame,
-        resetPeakGame: this.resetPeakGame,
-        endPeakGame: this.endGame
-     
-    }
-    
-    return (
-      <ApiContext.Provider value={value}>
-        
-      <div className="app" style={{ height: `${height}`}}>
-
-  
         <div className="background"></div>
-      
+
 
         <div className="main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/peaks-valleys" element={<PeaksAndValleys />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/peaks-valleys" element={<PeaksAndValleys />} />
+          </Routes>
         </div>
-       
+
       </div>
-      </ApiContext.Provider>
-    )
-  }
+    </ApiContext.Provider>
+  )
 }
+
 
 export default App;

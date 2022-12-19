@@ -79,6 +79,8 @@ class PeakGame extends React.Component {
       seconds: this.context.userGameInfo.peakTime,
       initialSeconds: this.context.userGameInfo.peakTime,
       prompt: this.context.userGameInfo.peakPrompt,
+      minTime: this.context.peakGameParams.minTime,
+      maxTime: this.context.peakGameParams.maxTime,
 
 
     });

@@ -57,7 +57,7 @@ class PeakFormFlow extends React.Component {
     } else {
       this.setState({
         disableNextButton: true
-      
+
       })
     }
 
@@ -67,7 +67,7 @@ class PeakFormFlow extends React.Component {
   handleNextButton = () => {
     const { promptCheck } = this.state;
     let nextButtonDisabled;
-   
+
     if (promptCheck) {
       nextButtonDisabled = false;
     }
@@ -103,27 +103,27 @@ class PeakFormFlow extends React.Component {
         textBox: false
       })
     }
-   
 
-    
+
+
   }
 
 
   handlePageForward = () => {
-    
 
-   
-    
+
+
+
     this.setState({
-        page: 2
-      })
+      page: 2
+    })
   }
 
   handlePageBack = () => {
     this.setState({
       page: 1
     })
-    
+
   }
 
 
@@ -133,6 +133,14 @@ class PeakFormFlow extends React.Component {
     })
   }
 
+  handleRandomPrompt = () => {
+    const topics = this.state.topics;
+    console.log(topics)
+
+    let randomString;
+    randomString = topics[Math.floor(Math.random() * topics.length)];
+    return randomString;
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -144,17 +152,17 @@ class PeakFormFlow extends React.Component {
 
 
 
-   if (prompt) {
+    if (prompt) {
 
       const newPrompt = this.state.prompt
       this.context.handlePeakGame(newPrompt, time)
     } else {
-      const newPrompt = 'Advice to my younger self'
+      const newPrompt = this.handleRandomPrompt()
       this.context.handlePeakGame(newPrompt, time)
     }
 
 
-    
+
 
     this.props.onHide()
     this.setState({
@@ -178,234 +186,234 @@ class PeakFormFlow extends React.Component {
 
         <div className="form-flow-background">
           <div className="form-flow-logo-container">
-              <img className="form-flow-logo" src={logonotext} alt="logo"/>
+            <img className="form-flow-logo" src={logonotext} alt="logo" />
 
-          
-            </div>
+
+          </div>
           <div className="form-flow-container">
-            
+
             <div className="form-flow-content">
 
-            <div className="center title mt-4 mb-4">
-              <h2 className="title">How to Play Peaks and Valleys</h2>
-            </div>
+              <div className="center title mt-4 mb-4">
+                <h2 className="title">How to Play Peaks and Valleys</h2>
+              </div>
 
 
-            <div className="center">
+              <div className="center">
 
-              <form>
-                {this.state.page === 1 && 
-                <>
-                  <div className="mb-2">
+                <form>
+                  {this.state.page === 1 &&
+                    <>
+                      <div className="mb-2">
 
-                    First, let's pick a topic to talk about. Would you like us to provide a topic for you?
-                  </div>
+                        First, let's pick a topic to talk about. Would you like us to provide a topic for you?
+                      </div>
 
-                  <div>
-                  </div>
-                  
-                  <div className="toggle-container">
-                    <ToggleButtonGroup type="radio" value={this.state.promptCheck} name="options" defaultValue={true} >
-                 
-                      <ToggleButton
-                        id="toggle-check"
-                        className="toggle-button"
-                        name="toggle-check1"
-                        variant="outline-secondary"
-                        value={true}
-                        onChange={e => this.handleChange(e.target.value)}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={this.state.textBox}
-                        >
-                        Yes
-                        
-                      </ToggleButton>
-                
-                    
-                  
-                      <ToggleButton
-              
-                        id="toggle-check1"
-                        name="toggle-check2"
-                        variant="outline-secondary"
-                        className="toggle-button"
-                        value={false}
-                        onChange={e => this.handleChange(e.target.value)}
-                        aria-controls="example-collapse-text"
-                        aria-expanded={this.state.textBox}
-                       
-                      >
-                        No
-                      </ToggleButton>
-                  
-                    </ToggleButtonGroup>
+                      <div>
+                      </div>
 
-                </div>
-                
-               
-             
+                      <div className="toggle-container">
+                        <ToggleButtonGroup type="radio" value={this.state.promptCheck} name="options" defaultValue={true} >
 
-                  <Collapse in={this.state.textBox}>
-                  <div id="example-collapse-text" className="margin-bottom">
-                    <Form.Group className="mb-3" controlId="promptInput">
-                      <Form.Control type="text" placeholder="test"
-                        as="textarea" rows={3}
-                        name="prompt"
-                        className="prompt-form-input"
-                        type="text"
-                        placeholder="Type in your topic"
-                        value={this.state.prompt}
-                        onChange={(e) => this.handlePrompt(e.target.value)}
+                          <ToggleButton
+                            id="toggle-check"
+                            className="toggle-button"
+                            name="toggle-check1"
+                            variant="outline-secondary"
+                            value={true}
+                            onChange={e => this.handleChange(e.target.value)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={this.state.textBox}
+                          >
+                            Yes
 
-                      />
-
-                      <Form.Text id="helpBlock" muted>
-
-                        You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
-                      </Form.Text>
-
-                    </Form.Group>
-                  </div>
-                
-                
-                
-                  </Collapse>
-                
-                  <div>
-                  <Button
-
-                    className="button"
-                    onClick={this.handlePageForward}
-                    disabled={this.handleNextButton()}>
-                    NEXT
-
-                  </Button>
-                </div>
-                
-                </>
-                }
-
-                {this.state.page === 2 &&
-                  <>
-
-                    <div className="mb-4">
-                      How long would you like to play for?
-                    </div>
-                
+                          </ToggleButton>
 
 
-                    <div className="time-select-container mb-4">
-                    
 
-                <Container className="time-select-container">
-                  <Row className="mb-2">
-                    <Col>
-                       <ButtonGroup>
-                      <ToggleButton
-                        id={`radio-0`}
-                        type="radio"
-                        variant={'outline-secondary'}
-                        name="radio"
-                        value={30}
-                        checked={this.state.timeRadioValue == 30}
-                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
-                      >
-                        30 sec
-                      </ToggleButton>
-                      
-                    </ButtonGroup>
-                    </Col>
-                       
-                    <Col>
-                      <ButtonGroup>
-                      <ToggleButton
-                        id={`radio-1`}
-                        type="radio"
-                        variant={'outline-secondary'}
-                        name="radio"
-                        value={60}
-                        checked={this.state.timeRadioValue == 60}
-                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
-                      >
-                        60 sec
-                      </ToggleButton>
-                      
-                    </ButtonGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                       <ButtonGroup>
-                      <ToggleButton
-                        id={`radio-2`}
-                        type="radio"
-                        variant={'outline-secondary'}
-                        name="radio"
-                        value={120}
-                        checked={this.state.timeRadioValue == 120}
-                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
-                      >
-                        2 mins
-                      </ToggleButton>
-                      
-                    </ButtonGroup>
-                    </Col>
-                       
-                    <Col>
-                      <ButtonGroup>
-                      <ToggleButton
-                        id={`radio-3`}
-                        type="radio"
-                        variant={'outline-secondary'}
-                        name="radio"
-                        value={300}
-                        checked={this.state.timeRadioValue == 300}
-                        onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
-                      >
-                        5 mins
-                      </ToggleButton>
-                      
-                    </ButtonGroup>
-                    </Col>
-                  </Row>
-                  
-                </Container>
+                          <ToggleButton
+
+                            id="toggle-check1"
+                            name="toggle-check2"
+                            variant="outline-secondary"
+                            className="toggle-button"
+                            value={false}
+                            onChange={e => this.handleChange(e.target.value)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={this.state.textBox}
+
+                          >
+                            No
+                          </ToggleButton>
+
+                        </ToggleButtonGroup>
+
                       </div>
 
 
-                    
-                     <div className="button-container">
-                      
-            
-                       <Button
-                         className="button"
 
-                onClick={this.handleSubmit}
-              >
-                Enter Game
-              </Button>
-                         
+
+                      <Collapse in={this.state.textBox}>
+                        <div id="example-collapse-text" className="margin-bottom">
+                          <Form.Group className="mb-3" controlId="promptInput">
+                            <Form.Control type="text" placeholder="test"
+                              as="textarea" rows={3}
+                              name="prompt"
+                              className="prompt-form-input"
+                              type="text"
+                              placeholder="Type in your topic"
+                              value={this.state.prompt}
+                              onChange={(e) => this.handlePrompt(e.target.value)}
+
+                            />
+
+                            <Form.Text id="helpBlock" muted>
+
+                              You can choose any topic to talk about. If you can't think of anything, we'll automatically choose a random one for you!
+                            </Form.Text>
+
+                          </Form.Group>
+                        </div>
+
+
+
+                      </Collapse>
+
+                      <div>
+                        <Button
+
+                          className="button"
+                          onClick={this.handlePageForward}
+                          disabled={this.handleNextButton()}>
+                          NEXT
+
+                        </Button>
+                      </div>
+
+                    </>
+                  }
+
+                  {this.state.page === 2 &&
+                    <>
+
+                      <div className="mb-4">
+                        How long would you like to play for?
+                      </div>
+
+
+
+                      <div className="time-select-container mb-4">
+
+
+                        <Container className="time-select-container">
+                          <Row className="mb-2">
+                            <Col>
+                              <ButtonGroup>
+                                <ToggleButton
+                                  id={`radio-0`}
+                                  type="radio"
+                                  variant={'outline-secondary'}
+                                  name="radio"
+                                  value={30}
+                                  checked={this.state.timeRadioValue == 30}
+                                  onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                                >
+                                  30 sec
+                                </ToggleButton>
+
+                              </ButtonGroup>
+                            </Col>
+
+                            <Col>
+                              <ButtonGroup>
+                                <ToggleButton
+                                  id={`radio-1`}
+                                  type="radio"
+                                  variant={'outline-secondary'}
+                                  name="radio"
+                                  value={60}
+                                  checked={this.state.timeRadioValue == 60}
+                                  onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                                >
+                                  60 sec
+                                </ToggleButton>
+
+                              </ButtonGroup>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <ButtonGroup>
+                                <ToggleButton
+                                  id={`radio-2`}
+                                  type="radio"
+                                  variant={'outline-secondary'}
+                                  name="radio"
+                                  value={120}
+                                  checked={this.state.timeRadioValue == 120}
+                                  onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                                >
+                                  2 mins
+                                </ToggleButton>
+
+                              </ButtonGroup>
+                            </Col>
+
+                            <Col>
+                              <ButtonGroup>
+                                <ToggleButton
+                                  id={`radio-3`}
+                                  type="radio"
+                                  variant={'outline-secondary'}
+                                  name="radio"
+                                  value={300}
+                                  checked={this.state.timeRadioValue == 300}
+                                  onChange={(e) => this.setTimeRadioValue(e.currentTarget.value)}
+                                >
+                                  5 mins
+                                </ToggleButton>
+
+                              </ButtonGroup>
+                            </Col>
+                          </Row>
+
+                        </Container>
+                      </div>
+
+
+
+                      <div className="button-container">
+
+
+                        <Button
+                          className="button"
+
+                          onClick={this.handleSubmit}
+                        >
+                          Enter Game
+                        </Button>
+
+                      </div>
+                    </>
+                  }
+
+                </form>
+              </div>
+
+
+
             </div>
-                  </>
-                }
-
-              </form>
-            </div>
-
-            
-
-           </div> 
           </div>
-          
+
         </div>
 
 
-       
-       
-         
 
 
-       
+
+
+
+
       </div>
 
 

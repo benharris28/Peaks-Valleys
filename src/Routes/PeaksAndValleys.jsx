@@ -1,8 +1,6 @@
 import React from 'react';
 import ApiContext from '../ApiContext'
 import Button from 'react-bootstrap/Button';
-import GameScreen from '../Components/PeaksAndValleysGame/GameScreen'
-import PeakInfoModal from '../Components/PeaksAndValleysGame/PeakInfoModal'
 import PeakFormFlow from '../Components/PeaksAndValleysGame/PeakFormFlow'
 import PeakGame from '../Components/PeaksAndValleysGame/PeakGame'
 

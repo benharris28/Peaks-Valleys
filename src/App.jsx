@@ -8,12 +8,13 @@ import ApiContext from './ApiContext';
 import Airtable from 'airtable';
 
 const App = () => {
+  const [height, setHeight] = useState(window.innerHeight);
   const [state, setState] = useState({
     showPeaksInfoModal: false,
     userGameInfo: {
       peakGames: '',
       peakPrompt: 'Advice to my younger self',
-      peakTime: '',
+      peakTime: 30,
       peakGameOver: false
     },
     peakGameParams: {
@@ -21,18 +22,26 @@ const App = () => {
       maxTime: 20000,
       topics: ['Advice to my younger self', 'What I want to be when I grow up'],
     },
-    height: '100%'
   });
+
+  const hasWindow = typeof window !== 'undefined';
+
+    useEffect(() => {
+      const handleResizedScreen = () => {
+        setHeight(window.innerHeight);
+      };
+
+    
+      window.addEventListener('resize', handleResizedScreen);
+    
+      return () => window.removeEventListener('resize', handleResizedScreen);
+    }, [hasWindow]);
 
   const API_KEY = 'keyP9Ri1WHoSEV5W1';
 
   const base = new Airtable({ apiKey: API_KEY }).base('appZyKiZkjj23ORuN');
 
-  const handleResizedScreen = () => {
-    setState({
-      height: window.innerHeight + 'px'
-    });
-  };
+
 
   useEffect(() => {
   base('Topics').select({
@@ -72,6 +81,10 @@ const App = () => {
     const minTime = record.get('min_time');
     const maxTime = record.get('max_time');
    
+    
+
+    
+    
 
     setState(prevState => ({
       ...prevState,
@@ -84,15 +97,7 @@ const App = () => {
   });
 }, []);
 
-  useEffect(() => {
-    setState(prevState => ({
-      ...prevState,
-      height: window.innerHeight + 'px'
-    }));
-    window.addEventListener('resize', handleResizedScreen);
-
-    return () => window.removeEventListener('resize', handleResizedScreen);
-  }, []);
+ 
 
   const handlePeakGame = (prompt, time) => {
     setState(prevState => ({
@@ -131,16 +136,10 @@ const App = () => {
     }));
   }
 
-  const handleResize = () => {
-    setState(prevState => ({
-      ...prevState,
-      height: window.innerHeight
-    }));
-  }
+  
 
   console.log(state);
-  console.log(state.height);
-  const height = state.height;
+  console.log(height)
 
   const value = {
     ...state,
@@ -149,10 +148,12 @@ const App = () => {
     endPeakGame
   };
 
+  console.log(value)
+
   return (
     <ApiContext.Provider value={value}>
 
-      <div className="app">
+      <div className="app" style={{ height: `${height}px` }}>
 
 
         <div className="background"></div>

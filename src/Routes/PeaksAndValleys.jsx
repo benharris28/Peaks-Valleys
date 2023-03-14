@@ -11,7 +11,7 @@ class PeaksAndValleys extends React.Component {
   state = {
     showPeakInfoModal: false,
     showGame: false,
-    gameOver: this.context.userGameInfo.peakGameOver
+    gameOver: false
   }
 
   componentDidMount() {

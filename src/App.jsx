@@ -152,7 +152,7 @@ const App = () => {
   return (
     <ApiContext.Provider value={value}>
 
-      <div className="app" style={{ height: `${height}` }}>
+      <div className="app">
 
 
         <div className="background"></div>
